@@ -22,25 +22,6 @@ const router = createBrowserRouter([
         element: (
             <App />
         ),
-        children: [
-            {
-                index: true,
-                element: <React.Fragment />,
-                loader: () => redirect('/overview'), // Redirect to /overview
-            },
-            {
-                path: '/overview',
-                element: <App />,
-            },
-            {
-                path: '/bookings',
-                element: <App />,
-            },
-            {
-                path: '/calendar',
-                element: <App />,
-            },
-        ],
         errorElement: <ErrorPage />,
     },
     {
