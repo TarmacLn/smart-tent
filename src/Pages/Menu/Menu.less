@@ -1,0 +1,45 @@
+body {
+    background-image: url('../../assets/frame.svg'); // Background image
+    background-color: aliceblue;
+    height: 100vh; // Full viewport height
+    background-size: 100% 100%; // Ensures the background covers the entire area
+    background-position: center;
+    background-repeat: no-repeat;
+    .Menu {
+        display: flex;
+        justify-content: top;
+        align-items: top;
+        height: 100vh; // Full viewport height
+        flex-direction: column;
+        background-color: aqua;
+
+        .menu-items {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem; // Space between buttons
+            flex-wrap: wrap; // Wrap buttons to the next line if they don't fit
+            justify-content: top;
+            align-items: top;
+            background-color: aquamarine;
+            padding: 1rem;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: auto; // Add scrollbars if the content is too big
+        }
+
+        .container {
+            background-color: yellow;
+            flex-direction: column;
+            max-height: fit-content;
+            max-width: fit-content;
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem; // Space between buttons
+    
+            }
+        }
+    }
+}

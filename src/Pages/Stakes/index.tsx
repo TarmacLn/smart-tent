@@ -5,7 +5,8 @@ function Stakes() {
     return (
         <div className='Page stakes'>
             {' '}
-            <Link to='/'>Menu</Link>
+            Stakes
+            <Link to='/'>Menu</Link>            
         </div>
     );
 }

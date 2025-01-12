@@ -11,6 +11,7 @@ import Setup from './Pages/Setup';
 import Stakes from './Pages/Stakes';
 import Covers from './Pages/Covers';
 import Lights from './Pages/Lights';
+import Menu from './Pages/Menu';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -19,34 +20,29 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <App />
-        ),
+        element: <App />,
+        loader: () => redirect('/menu'),
         errorElement: <ErrorPage />,
     },
     {
+        path: '/menu',
+        element: <Menu />,
+    },
+    {
         path: '/setup',
-        element: (
-            <Setup />
-        ),
+        element: <Setup />,
     },
     {
         path: '/stakes',
-        element: (
-            <Stakes />
-        ),
+        element: <Stakes />,
     },
     {
         path: '/covers',
-        element: (
-            <Covers />
-        ),
+        element: <Covers />,
     },
     {
         path: '/lights',
-        element: (
-            <Lights />
-        ),
+        element: <Lights />,
     },
 ]);
 
@@ -55,4 +51,3 @@ root.render(
     <RouterProvider router={router} />
     // </React.StrictMode>
 );
-
