@@ -94,7 +94,8 @@ module.exports = (env, argv) => {
 
         devServer: {
             port: 8081,
-            open: true
+            open: true,
+            historyApiFallback: true
         },
 
         performance: {
