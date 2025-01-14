@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Gaiatype';
+    src: url('../../assets/fonts/Gaiatype.eot'),
+         url('../../assets/fonts/Gaiatype.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     .Menu {
         background-image: url('../../assets/test.jpg'); // Background image
@@ -21,6 +29,12 @@ body {
             overflow: auto; // Add scrollbars if the content is too big
         }
 
+        .title {
+            font-size: 2rem; // Set the font size
+            padding-bottom: 1rem;
+            font-family: 'Gaiatype', sans-serif; // Apply the custom font
+            color: white;
+        }
         .container {
             background-image: url('../../assets/banner.png'); // Background image
             background-size: 100% 100%; // Ensures the background covers the entire area
