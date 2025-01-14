@@ -18,11 +18,11 @@ function Menu() {
     useEffect(() => {
         uiStore.setCurrentTab(0);
     }, []);
-    
+
     return (
         <div className='Menu'>
             <div className='menu-items'>
-                <Grid container >
+                <Grid container>
                     <Grid xs={8} item>
                         <Box display='flex' justifyContent='flex-start'>
                             <IconButton
@@ -30,14 +30,14 @@ function Menu() {
                                 color='primary'
                                 // onClick={() => navigate('/left')}
                             >
-                                <Info />                            
+                                <Info />
                             </IconButton>
                             <IconButton
                                 aria-label='left-button'
                                 color='primary'
                                 // onClick={() => navigate('/left')}
                             >
-                                <Speaker />                            
+                                <Speaker />
                             </IconButton>
                             <IconButton
                                 aria-label='left-button'
@@ -59,53 +59,57 @@ function Menu() {
                             </IconButton>
                         </Box>
                     </Grid>
-                <Grid container>
-                    <Grid xs={12}>
-                        <Box display='flex' justifyContent='center' className='title'>
+                    <Grid container>
+                        <Grid xs={12}>
+                            <Box
+                                display='flex'
+                                justifyContent='center'
+                                className='title'
+                            >
                                 Smart Tent
-                        </Box>
+                            </Box>
+                        </Grid>
+                        <Grid xs={12} item>
+                            <Container className='container' color='primary'>
+                                <div className='menu'>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/setup')}
+                                    >
+                                        <Tent />
+                                        <div className='imageLA' />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/stakes')}
+                                    >
+                                        <Stake />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/covers')}
+                                    >
+                                        <Covers />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/lights')}
+                                    >
+                                        <Light />
+                                    </IconButton>
+                                    <br />
+                                </div>
+                            </Container>
+                        </Grid>
                     </Grid>
-                    <Grid xs={12} item>
-                        <Container className='container' color='primary' >
-                            <div className='menu'>
-                                <br />
-                                <IconButton
-                                    aria-label='delete'
-                                    color='success'
-                                    onClick={() => navigate('/setup')}
-                                >
-                                    <Tent />
-                                    <div className='imageLA' />
-                                </IconButton>
-                                <br />
-                                <IconButton
-                                    aria-label='delete'
-                                    color='success'
-                                    onClick={() => navigate('/stakes')}
-                                >
-                                    <Stake />
-                                </IconButton>
-                                <br />
-                                <IconButton
-                                    aria-label='delete'
-                                    color='success'
-                                    onClick={() => navigate('/covers')}
-                                >
-                                    <Covers />
-                                </IconButton>
-                                <br />
-                                <IconButton
-                                    aria-label='delete'
-                                    color='success'
-                                    onClick={() => navigate('/lights')}
-                                >
-                                    <Light />
-                                </IconButton>
-                                <br />
-                            </div>
-                        </Container>
-                    </Grid>
-                </Grid>
                 </Grid>
             </div>
         </div>

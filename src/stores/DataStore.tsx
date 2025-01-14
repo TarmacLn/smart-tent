@@ -1,4 +1,4 @@
-import { Tent, TentLocation, TentStats, TentTypeEnum } from "./types";
+import { Tent, TentLocation, TentStats, TentTypeEnum } from './types';
 
 class DataStore {
     private tent: Tent | undefined = undefined;
@@ -24,7 +24,7 @@ class DataStore {
     public getTent(): Tent | undefined {
         return this.tent;
     }
-    
+
     public setTent(tent: Tent): void {
         this.tent = tent;
     }
@@ -44,7 +44,6 @@ class DataStore {
     public setTentStats(tentStats: TentStats[]): void {
         this.tentStats = tentStats;
     }
-
 }
 
 export default DataStore;

@@ -1,4 +1,14 @@
-import { Box, Button, Container, Divider, Grid, IconButton, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import {
+    Box,
+    Button,
+    Container,
+    Divider,
+    Grid,
+    IconButton,
+    TextField,
+    ToggleButton,
+    ToggleButtonGroup,
+} from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TentTypeEnum } from '../../../stores/types';
@@ -6,7 +16,6 @@ import Home from '../../../assets/Home.svg';
 import Back from '../../../assets/Back.svg';
 import './TentDetails.less';
 import { uiStore } from '../../../stores';
-
 
 //Tab no1
 function TentDetails() {

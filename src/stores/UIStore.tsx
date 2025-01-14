@@ -1,11 +1,11 @@
 import { makeAutoObservable } from 'mobx';
 
 class UIStore {
-  private currentTab: number = 0;
+    private currentTab: number = 0;
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+    constructor() {
+        makeAutoObservable(this);
+    }
 
     get CurrentTab() {
         return this.currentTab;
