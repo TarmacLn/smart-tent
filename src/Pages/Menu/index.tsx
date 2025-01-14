@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Menu.less';
 import { Box, Container, Grid, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +10,15 @@ import Tent from '../../assets/Tent.svg';
 import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
-
-
-
+import { uiStore } from '../../stores';
 
 function Menu() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        uiStore.setCurrentTab(0);
+    }, []);
+    
     return (
         <div className='Menu'>
             <div className='menu-items'>
@@ -58,8 +61,8 @@ function Menu() {
                     </Grid>
                 <Grid container>
                     <Grid xs={12}>
-                        <Box display='flex' justifyContent='center'>
-                                <h1>Smart Tent</h1>
+                        <Box display='flex' justifyContent='center' className='title'>
+                                Smart Tent
                         </Box>
                     </Grid>
                     <Grid xs={12} item>
