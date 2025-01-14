@@ -1,7 +1,18 @@
 import React from 'react';
 import './Menu.less';
-import { Box, Container, Divider, Grid, IconButton } from '@mui/material';
+import { Box, Container, Grid, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import Info from '../../assets/Info.svg';
+import Speaker from '../../assets/Speaker.svg';
+import Refresh from '../../assets/Refresh.svg';
+import Exit from '../../assets/Exit.svg';
+import Tent from '../../assets/Tent.svg';
+import Stake from '../../assets/Stake.svg';
+import Covers from '../../assets/Covers.svg';
+import Light from '../../assets/Light.svg';
+
+
+
 
 function Menu() {
     const navigate = useNavigate();
@@ -16,21 +27,21 @@ function Menu() {
                                 color='primary'
                                 // onClick={() => navigate('/left')}
                             >
-                                INFO
+                                <Info />                            
                             </IconButton>
                             <IconButton
                                 aria-label='left-button'
                                 color='primary'
                                 // onClick={() => navigate('/left')}
                             >
-                                SOUND
+                                <Speaker />                            
                             </IconButton>
                             <IconButton
                                 aria-label='left-button'
                                 color='primary'
                                 // onClick={() => navigate('/left')}
                             >
-                                REFRESH
+                                <Refresh />
                             </IconButton>
                         </Box>
                     </Grid>
@@ -41,7 +52,7 @@ function Menu() {
                                 color='secondary'
                                 // onClick={() => navigate('/right')}
                             >
-                                EXIT
+                                <Exit />
                             </IconButton>
                         </Box>
                     </Grid>
@@ -52,7 +63,7 @@ function Menu() {
                         </Box>
                     </Grid>
                     <Grid xs={12} item>
-                        <Container className='container' color='primary'>
+                        <Container className='container' color='primary' >
                             <div className='menu'>
                                 <br />
                                 <IconButton
@@ -60,7 +71,7 @@ function Menu() {
                                     color='success'
                                     onClick={() => navigate('/setup')}
                                 >
-                                    Tent Setup
+                                    <Tent />
                                     <div className='imageLA' />
                                 </IconButton>
                                 <br />
@@ -69,7 +80,7 @@ function Menu() {
                                     color='success'
                                     onClick={() => navigate('/stakes')}
                                 >
-                                    Tent Stakes
+                                    <Stake />
                                 </IconButton>
                                 <br />
                                 <IconButton
@@ -77,7 +88,7 @@ function Menu() {
                                     color='success'
                                     onClick={() => navigate('/covers')}
                                 >
-                                    Tent Covers
+                                    <Covers />
                                 </IconButton>
                                 <br />
                                 <IconButton
@@ -85,7 +96,7 @@ function Menu() {
                                     color='success'
                                     onClick={() => navigate('/lights')}
                                 >
-                                    Tent Lights
+                                    <Light />
                                 </IconButton>
                                 <br />
                             </div>

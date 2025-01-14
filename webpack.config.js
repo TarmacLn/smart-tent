@@ -37,8 +37,15 @@ module.exports = (env, argv) => {
                 },
 
                 {
-                    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-                    loader: 'file-loader'
+                    test: /\.svg$/i,
+                    issuer: /\.[jt]sx?$/,
+                    use: ['@svgr/webpack'],
+                },
+
+                {
+                    test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot)$/,
+                    // loader: 'file-loader'
+                    type: 'asset/resource'
                 },
 
                 {
