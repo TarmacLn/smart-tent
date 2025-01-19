@@ -56,6 +56,8 @@ function TentDetails() {
                             </IconButton>
                         </Box>
                     </Grid>
+                </Grid>
+                <Grid container>
                     <Grid xs={12} item>
                         <Container className='container' color='primary'>
                             <div className='title'>
@@ -168,7 +170,7 @@ function TentDetails() {
                                 <Button
                                     variant='contained'
                                     color='primary'
-                                    style={{ backgroundColor: 'black' }}
+                                    style={{ backgroundColor: 'black' , width: '150px'}}
                                     onClick={() => uiStore.setCurrentTab(1)}
                                 >
                                     Continue

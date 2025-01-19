@@ -1,0 +1,87 @@
+body {
+    .TentStats {
+        background-color: #aedadd;
+        display: flex;
+        height: 100vh; // Full viewport height
+        flex-direction: column;
+        overflow: scroll;
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+
+            .title {
+                font-size: 2rem; // Set the font size
+                padding-bottom: 1rem;
+                font-family: 'Gaiatype', sans-serif; // Apply the custom font
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 20px;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            .banner {
+                background-image: url('../../../assets/map.png');
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                min-height: 700px;
+                max-width: 1000px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .container {
+                    background-color: white;
+                    min-height: 500px;
+                    max-width: 800px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    padding-top: 10px;
+                    .stats {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        padding: 40px;
+                        font-size: x-large;
+
+                        .perfect{
+                            color: green;
+                        }
+                        
+                        .normal{
+                            color: orange;
+                        }
+                        .danger {
+                            color: red;
+                        }
+
+                        .warnings {
+                            color: orange;
+                            font-size: large;
+                        }
+                        .button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: flex-end;
+                        }
+                    }
+                }
+            }
+
+            .button {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-end;
+            }
+        }
+    }
+}

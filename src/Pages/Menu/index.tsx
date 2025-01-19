@@ -1,6 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Menu.less';
-import { Box, Container, Grid, IconButton } from '@mui/material';
+import {
+    Alert,
+    Box,
+    Container,
+    Grid,
+    IconButton,
+    Snackbar,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Info from '../../assets/Info.svg';
 import Speaker from '../../assets/Speaker.svg';
@@ -11,17 +18,41 @@ import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
 import { uiStore } from '../../stores';
+import { observer } from 'mobx-react-lite';
 
 function Menu() {
     const navigate = useNavigate();
-
+    const [open, setOpen] = useState(false);
     useEffect(() => {
         uiStore.setCurrentTab(0);
+        if (uiStore.TentSuccess === true) {
+        setOpen(true);
+        }
     }, []);
 
     return (
         <div className='Menu'>
             <div className='menu-items'>
+                <Snackbar
+                    open={open}
+                    autoHideDuration={4000}
+                    onClose={() => {
+                        uiStore.setTentSuccess(false);
+                        setOpen(false);
+                    }}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                >
+                    <Alert
+                        onClose={() => {
+                            uiStore.setTentSuccess(false);
+                            setOpen(false);
+                        }}
+                        severity='success'
+                        sx={{ width: '100%' }}
+                    >
+                        Tent Location set successfully!
+                    </Alert>
+                </Snackbar>
                 <Grid container>
                     <Grid xs={8} item>
                         <Box display='flex' justifyContent='flex-start'>
@@ -116,4 +147,4 @@ function Menu() {
     );
 }
 
-export default Menu;
+export default observer(Menu);
