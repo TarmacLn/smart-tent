@@ -16,6 +16,7 @@ import Home from '../../../assets/Home.svg';
 import Back from '../../../assets/Back.svg';
 import './TentDetails.less';
 import { uiStore } from '../../../stores';
+import Header from '../../../components/Header';
 
 //Tab no1
 function TentDetails() {
@@ -32,31 +33,8 @@ function TentDetails() {
     };
     return (
         <div className='TentDetails'>
+            <Header title='' onClickBack={() => navigate('/menu')} />{' '}
             <div className='header'>
-                <Grid container>
-                    <Grid xs={8} item>
-                        <Box display='flex' justifyContent='flex-start'>
-                            <IconButton
-                                aria-label='left-button'
-                                color='primary'
-                                onClick={() => navigate('/menu')}
-                            >
-                                <Back />
-                            </IconButton>
-                        </Box>
-                    </Grid>
-                    <Grid xs={4}>
-                        <Box display='flex' justifyContent='flex-end'>
-                            <IconButton
-                                aria-label='right-button'
-                                color='secondary'
-                                onClick={() => navigate('/menu')}
-                            >
-                                <Home />
-                            </IconButton>
-                        </Box>
-                    </Grid>
-                </Grid>
                 <Grid container>
                     <Grid xs={12} item>
                         <Container className='container' color='primary'>
