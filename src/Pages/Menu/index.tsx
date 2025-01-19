@@ -26,7 +26,7 @@ function Menu() {
     useEffect(() => {
         uiStore.setCurrentTab(0);
         if (uiStore.TentSuccess === true) {
-        setOpen(true);
+            setOpen(true);
         }
     }, []);
 

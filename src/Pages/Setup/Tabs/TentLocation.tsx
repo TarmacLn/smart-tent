@@ -13,7 +13,10 @@ import Header from '../../../components/Header';
 function TentLocation() {
     return (
         <div className='TentLocation'>
-            <Header title='Tent Location' onClickBack={() => uiStore.setCurrentTab(0)}/>
+            <Header
+                title='Tent Location'
+                onClickBack={() => uiStore.setCurrentTab(0)}
+            />
             <div className='content'>
                 <Grid container>
                     <Grid xs={9} item>
@@ -25,18 +28,22 @@ function TentLocation() {
                         <Grid container className='right'>
                             <Grid xs={12} item>
                                 <Container className='stats'>
-                                    <Grid container className='stats-grid' spacing={1}>
+                                    <Grid
+                                        container
+                                        className='stats-grid'
+                                        spacing={1}
+                                    >
                                         <Grid xs={3} item>
-                                            <Home /> 
+                                            <Home />
                                         </Grid>
                                         <Grid xs={7} item>
-                                            <div >Humidity</div>
+                                            <div>Humidity</div>
                                         </Grid>
                                         <Grid xs={2} item>
                                             <div>50%</div>
                                         </Grid>
                                         <Grid xs={3} item>
-                                            <Home /> 
+                                            <Home />
                                         </Grid>
                                         <Grid xs={7} item>
                                             <div>Sunshine</div>
@@ -60,7 +67,10 @@ function TentLocation() {
                                 <Button
                                     variant='contained'
                                     color='primary'
-                                    style={{ backgroundColor: 'black' , width: '150px'}}
+                                    style={{
+                                        backgroundColor: 'black',
+                                        width: '150px',
+                                    }}
                                     onClick={() => uiStore.setCurrentTab(2)}
                                 >
                                     Continue

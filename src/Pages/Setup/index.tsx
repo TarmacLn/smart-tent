@@ -5,7 +5,6 @@ import { observer } from 'mobx-react-lite';
 import TentLocation from './Tabs/TentLocation';
 import TentStats from './Tabs/TentStats';
 
-
 function Setup() {
     const [currentTab, setCurrentTab] = React.useState(uiStore.CurrentTab);
 

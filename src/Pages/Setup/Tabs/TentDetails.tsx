@@ -170,7 +170,10 @@ function TentDetails() {
                                 <Button
                                     variant='contained'
                                     color='primary'
-                                    style={{ backgroundColor: 'black' , width: '150px'}}
+                                    style={{
+                                        backgroundColor: 'black',
+                                        width: '150px',
+                                    }}
                                     onClick={() => uiStore.setCurrentTab(1)}
                                 >
                                     Continue
