@@ -27,48 +27,49 @@ body {
                 background-color: white;
                 min-height: 650px;
                 border-radius: 15px; // Add rounded corners
-                padding: 2rem; // Optional: Add some padding inside the container
                 display: flex;
                 flex-direction: column;
+                font-size: larger;
+                padding: 50px;
+                border: 15px;
 
                 .title {
                     font-size: 2rem; // Set the font size
-                    padding-bottom: 1rem;
+                    padding-bottom: 20px;
                     font-family: 'Gaiatype', sans-serif; // Apply the custom font
                 }
 
                 .content {
                     display: flex;
                     flex-direction: row;
-                    justify-content: flex-start;
                     align-items: center;
-                    .box {
+                    justify-content: center;
+                    min-height: 350px;
+                    border-radius: 15px; // Add rounded corners
+
+                    .check {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 40px;
+
+                        .check-title{
+                            font-size: x-large;
+                            font-weight: bold;
+                        }
+
+                    }
+
+                    .image-grid {
                         display: flex;
                         flex-direction: column;
+                        align-items: center;
                         justify-content: center;
-                        align-items: flex-start;
-                        gap: 1rem; // Space between buttons
-                        padding-left: 20px;
-                        padding-top: 20px;
-                        font-weight: bold;
-                        font-size: larger;
-                        .text {
-                            gap: 1px;
-                        }
-
-                        .AFrame {
-                            height: 200px;
-                            width: 250px;
-                            background-image: url('../../../assets/AFrame.png'); // Background image
-                            background-size: 100% 100%; // Ensures the background covers the entire area
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-color: lightgray;
-                        }
-
-                        .Dome {
-                            height: 200px;
-                            width: 250px;
+                        min-height: 450px;
+                        .image {
+                            height: 300px;
+                            width: 400px;
                             background-image: url('../../../assets/Dome.png'); // Background image
                             background-size: 100% 100%; // Ensures the background covers the entire area
                             background-position: center;

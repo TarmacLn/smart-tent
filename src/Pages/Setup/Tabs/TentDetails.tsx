@@ -13,7 +13,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TentTypeEnum } from '../../../stores/types';
 import Home from '../../../assets/Home.svg';
-import Back from '../../../assets/Back.svg';
 import './TentDetails.less';
 import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
