@@ -1,6 +1,13 @@
 import React from 'react';
 import './TentStats.less';
-import { Box, Button, Container, Grid, IconButton } from '@mui/material';
+import {
+    Box,
+    Button,
+    colors,
+    Container,
+    Grid,
+    IconButton,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Home from '../../../assets/Home.svg';
 import Back from '../../../assets/Back.svg';
@@ -8,7 +15,6 @@ import Droplet from '../../../assets/Droplet.svg';
 import Ground from '../../../assets/Ground.svg';
 import Sun from '../../../assets/Sun.svg';
 import Skull from '../../../assets/Skull.svg';
-
 import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
@@ -20,6 +26,7 @@ function TentStats() {
             <Header
                 title='Tent Location Details'
                 onClickBack={() => uiStore.setCurrentTab(1)}
+                color='black'
             />
             <div className='content'>
                 <Grid container>

@@ -16,6 +16,7 @@ function TentLocation() {
             <Header
                 title='Tent Location'
                 onClickBack={() => uiStore.setCurrentTab(0)}
+                color='black'
             />
             <div className='content'>
                 <Grid container>
@@ -34,7 +35,7 @@ function TentLocation() {
                                         spacing={1}
                                     >
                                         <Grid xs={3} item>
-                                            <Home />
+                                            <Droplet />
                                         </Grid>
                                         <Grid xs={7} item>
                                             <div>Humidity</div>
@@ -43,7 +44,7 @@ function TentLocation() {
                                             <div>50%</div>
                                         </Grid>
                                         <Grid xs={3} item>
-                                            <Home />
+                                            <Sun />
                                         </Grid>
                                         <Grid xs={7} item>
                                             <div>Sunshine</div>
@@ -52,7 +53,7 @@ function TentLocation() {
                                             <div>50%</div>
                                         </Grid>
                                         <Grid xs={3} item>
-                                            <Home />
+                                            <Ground />
                                         </Grid>
                                         <Grid xs={7} item>
                                             <div>Ground Stability</div>

@@ -33,7 +33,11 @@ function TentDetails() {
     };
     return (
         <div className='TentDetails'>
-            <Header title='' onClickBack={() => navigate('/menu')} />{' '}
+            <Header
+                title=''
+                onClickBack={() => navigate('/menu')}
+                color='white'
+            />{' '}
             <div className='header'>
                 <Grid container>
                     <Grid xs={12} item>

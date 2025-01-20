@@ -9,9 +9,10 @@ import { uiStore } from '../../stores';
 interface HeaderProps {
     onClickBack: () => void;
     title: string;
+    color: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onClickBack, title }) => {
+const Header: React.FC<HeaderProps> = ({ onClickBack, title , color}) => {
     const navigate = useNavigate();
     return (
         <div className='Header'>
@@ -27,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ onClickBack, title }) => {
                         </IconButton>
                     </Box>
                 </Grid>
-                <Grid xs={8} item className='title'>
+                <Grid xs={8} item className='title' color={color}>
                     <div>{title}</div>
                 </Grid>
                 <Grid xs={2}>
