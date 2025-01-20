@@ -1,10 +1,9 @@
-import { Box, Modal, Typography } from "@mui/material";
-import React from "react";
-import { uiStore } from "../../stores";
-import { observer } from "mobx-react-lite";
+import { Box, Modal, Typography } from '@mui/material';
+import React from 'react';
+import { uiStore } from '../../stores';
+import { observer } from 'mobx-react-lite';
 
 function InfoModal() {
-
     const modalStyle = {
         position: 'absolute',
         top: '50%',
@@ -18,7 +17,10 @@ function InfoModal() {
     };
 
     return (
-        <Modal open={uiStore.InfoModal} onClose={() => uiStore.setInfoModal(false)}>
+        <Modal
+            open={uiStore.InfoModal}
+            onClose={() => uiStore.setInfoModal(false)}
+        >
             <Box sx={modalStyle}>
                 <div className='title'>
                     <Typography

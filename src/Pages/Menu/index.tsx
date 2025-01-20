@@ -46,7 +46,10 @@ function Menu() {
         <div className='Menu'>
             <noscript>
                 <div className='noscript-error'>
-                    <p>JavaScript is disabled in your browser. Please enable JavaScript to use this application.</p>
+                    <p>
+                        JavaScript is disabled in your browser. Please enable
+                        JavaScript to use this application.
+                    </p>
                 </div>
             </noscript>
             <InfoModal />

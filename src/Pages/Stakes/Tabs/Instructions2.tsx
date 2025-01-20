@@ -18,7 +18,6 @@ import Header from '../../../components/Header';
 import './Instructions.less';
 import Check from '../../../assets/Check.svg';
 
-
 //Tab no1
 function Instructions2() {
     const navigate = useNavigate();
@@ -41,7 +40,9 @@ function Instructions2() {
                                     </Grid>
                                     <Grid xs={6} className='instructions'>
                                         <Grid container spacing={1}>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Prepare the ground on the spots
                                                 you want to put your stakes so
@@ -50,17 +51,23 @@ function Instructions2() {
                                                 anything that can be considered
                                                 unsafe
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Make sure your stakes are in
                                                 good condition!
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Let’s start correctly placing
                                                 the stakes!
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 We will place 4 stakes
                                             </Grid>

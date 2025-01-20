@@ -6,6 +6,7 @@ import Instructions2 from './Tabs/Instructions2';
 import Instructions3 from './Tabs/Instructions3';
 import Instructions4 from './Tabs/Instructions4';
 import { observer } from 'mobx-react-lite';
+import ErrorPage from '../ErrorPage';
 
 function Stakes() {
     const [currentTab, setCurrentTab] = React.useState(uiStore.CurrentTab);
@@ -21,7 +22,7 @@ function Stakes() {
             {currentTab === 2 && <Instructions2 />}
             {currentTab === 3 && <Instructions3 />}
             {currentTab === 4 && <Instructions4 />}
-            {currentTab > 4 && <div>ERROR PAGE</div>}
+            {currentTab > 4 && <ErrorPage />}
         </div>
     );
 }

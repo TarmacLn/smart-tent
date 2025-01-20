@@ -17,7 +17,6 @@ import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import './Instructions.less';
 
-
 //Tab no1
 function Instructions1() {
     const navigate = useNavigate();
@@ -40,33 +39,40 @@ function Instructions1() {
                                     </Grid>
                                     <Grid xs={6} className='instructions'>
                                         <Grid container spacing={1}>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Put your ground tarp on the
                                                 floor
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Place the body of your tent on
                                                 top of the ground tarp (make
                                                 sure the entrance of your tent
                                                 is in the correct direction!)
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Assemble your tent poles and
                                                 attach the poles to the body of
                                                 the tent.
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Start placing your stakes as
                                                 instructed on the next page!
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid xs={6} className='image1'>
-                                    </Grid>
+                                    <Grid xs={6} className='image1'></Grid>
                                 </Grid>
                             </div>
                             <div className='footer'>

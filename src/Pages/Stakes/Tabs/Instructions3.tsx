@@ -18,7 +18,6 @@ import Header from '../../../components/Header';
 import './Instructions.less';
 import Check from '../../../assets/Check.svg';
 
-
 //Tab no1
 function Instructions3() {
     const navigate = useNavigate();
@@ -41,25 +40,33 @@ function Instructions3() {
                                     </Grid>
                                     <Grid xs={6} className='instructions'>
                                         <Grid container spacing={1}>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Each stake must be inserted into
                                                 the ground vertically for utmost
                                                 efficiency
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 After lightly placing the stake
                                                 on the ground use a rock or
                                                 another hard solid object to
                                                 push the stake into the ground
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 Make sure it’s almost completely
                                                 under ground for max safety!
                                             </Grid>
-                                            <Grid xs={1}><Check /></Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
                                             <Grid xs={11}>
                                                 In the next step we’re going to
                                                 make sure you placed each stake

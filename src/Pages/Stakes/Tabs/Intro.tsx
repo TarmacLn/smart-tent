@@ -41,24 +41,30 @@ function Intro() {
                                 <Grid container>
                                     <Grid xs={6} className='check'>
                                         <Grid container spacing={3}>
-                                            <Grid xs={12} className='check-title'>
+                                            <Grid
+                                                xs={12}
+                                                className='check-title'
+                                            >
                                                 Tent Data:
-                                                
                                             </Grid>
-                                            <Grid xs={12}/> 
-                                            <Grid xs={1}><Check />
-                                            </Grid>
-                                            <Grid xs={11}>
-                                            Tent’s position has been chosen. 
-                                            </Grid>
-                                            <Grid xs={1}><Check />
+                                            <Grid xs={12} />
+                                            <Grid xs={1}>
+                                                <Check />
                                             </Grid>
                                             <Grid xs={11}>
-                                            Amount of stakes chosen: 4
+                                                Tent’s position has been chosen.
+                                            </Grid>
+                                            <Grid xs={1}>
+                                                <Check />
+                                            </Grid>
+                                            <Grid xs={11}>
+                                                Amount of stakes chosen: 4
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid xs={6} className='image-grid' ><div className='image'/></Grid>
+                                    <Grid xs={6} className='image-grid'>
+                                        <div className='image' />
+                                    </Grid>
                                 </Grid>
                             </div>{' '}
                             <div className='footer'>

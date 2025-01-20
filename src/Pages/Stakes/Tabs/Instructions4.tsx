@@ -18,7 +18,6 @@ import ShieldTick from '../../../assets/ShieldTick.svg';
 import Loader from '../../../assets/Loader.svg';
 import Check from '../../../assets/Check.svg';
 
-
 //Tab no1
 function Instructions4() {
     const navigate = useNavigate();
@@ -41,7 +40,9 @@ function Instructions4() {
                                     </Grid>
                                     <Grid xs={6} className='instructions'>
                                         <Grid container spacing={1}>
-                                            <Grid xs={1}><ShieldTick /></Grid>
+                                            <Grid xs={1}>
+                                                <ShieldTick />
+                                            </Grid>
                                             <Grid xs={10}>
                                                 Making sure the stakes are
                                                 correctly placed and are
@@ -50,7 +51,9 @@ function Instructions4() {
                                             <Grid xs={1} className='number'>
                                                 4/4 <Check />
                                             </Grid>
-                                            <Grid xs={1}><ShieldTick /></Grid>
+                                            <Grid xs={1}>
+                                                <ShieldTick />
+                                            </Grid>
                                             <Grid xs={10}>
                                                 Checking if the stakes are in
                                                 good condition
@@ -58,7 +61,9 @@ function Instructions4() {
                                             <Grid xs={1} className='number'>
                                                 4/4 <Check />
                                             </Grid>
-                                            <Grid xs={1}><ShieldTick /></Grid>
+                                            <Grid xs={1}>
+                                                <ShieldTick />
+                                            </Grid>
                                             <Grid xs={10}>
                                                 Making sure the stakes are
                                                 vertical
@@ -66,7 +71,9 @@ function Instructions4() {
                                             <Grid xs={1} className='number'>
                                                 4/4 <Check />
                                             </Grid>
-                                            <Grid xs={1}><ShieldTick /></Grid>
+                                            <Grid xs={1}>
+                                                <ShieldTick />
+                                            </Grid>
                                             <Grid xs={10}>
                                                 Checking if the stakes are
                                                 correctly placed
