@@ -21,28 +21,34 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        loader: () => redirect('/menu'),
         errorElement: <ErrorPage />,
-    },
-    {
-        path: '/menu',
-        element: <Menu />,
-    },
-    {
-        path: '/setup',
-        element: <Setup />,
-    },
-    {
-        path: '/stakes',
-        element: <Stakes />,
-    },
-    {
-        path: '/covers',
-        element: <Covers />,
-    },
-    {
-        path: '/lights',
-        element: <Lights />,
+        children: [
+            {
+                index: true, // This handles the '/' route
+                loader: () => redirect('/menu'),
+            },
+            {
+                path: '/menu',
+                element: <Menu />,
+            },
+            {
+                path: '/setup',
+                element: <Setup />,
+            },
+            {
+                path: '/stakes',
+                element: <Stakes />,
+            },
+            {
+                path: '/covers',
+                element: <Covers />,
+            },
+            {
+                path: '/lights',
+                element: <Lights />,
+            },
+
+        ]
     },
 ]);
 
