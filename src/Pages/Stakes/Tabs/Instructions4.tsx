@@ -95,7 +95,6 @@ function Instructions4() {
                                     variant='contained'
                                     color='primary'
                                     style={{
-                                        backgroundColor: 'black',
                                         width: '150px',
                                     }}
                                     onClick={() => {

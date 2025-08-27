@@ -87,7 +87,6 @@ function TentStats() {
                                             color='primary'
                                             className='button'
                                             style={{
-                                                backgroundColor: 'black',
                                                 width: '150px',
                                             }}
                                             onClick={() => {
