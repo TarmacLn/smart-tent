@@ -6,7 +6,7 @@ class UIStore {
     private stakeSuccess: boolean = false;
     private infoModal: boolean = false;
     private refreshModal: boolean = false;
-    private sound: boolean = false;
+    private sound: boolean = true;
 
     constructor() {
         makeAutoObservable(this);

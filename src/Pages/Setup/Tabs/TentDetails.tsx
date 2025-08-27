@@ -135,13 +135,15 @@ function TentDetails() {
                                                     Dome
                                                 </ToggleButton>
                                             </ToggleButtonGroup>
-                                            <div
-                                                className={
-                                                    type === TentTypeEnum.AFrame
-                                                        ? 'AFrame'
-                                                        : 'Dome'
-                                                }
-                                            ></div>
+                                            <Box className='image'>
+                                                <div
+                                                    className={
+                                                        type === TentTypeEnum.AFrame
+                                                            ? 'AFrame'
+                                                            : 'Dome'
+                                                    }
+                                                />
+                                            </Box>
                                             <br />
                                         </Box>
                                     </Grid>
