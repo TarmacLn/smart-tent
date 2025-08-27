@@ -67,7 +67,7 @@ function TentDetails() {
                             <div className='content'>
                                 <Grid container>
                                     <Grid xs={12} item>
-                                        <Box className='box tent'>
+                                        <Box className='box'>
                                             <br />
                                             Tent type:
                                             <Box className='image'>
@@ -101,6 +101,7 @@ function TentDetails() {
                                         </Box>
                                     </Grid>
                                 </Grid>
+                                <Divider orientation='vertical' flexItem/>
                                 <Grid container>
                                     <Grid xs={12} item>
                                         <Box className='box'>
@@ -110,7 +111,7 @@ function TentDetails() {
                                                 <RadioGroup
                                                     defaultValue="small"
                                                     name="tentSize"
-                                                    row
+                                                    // row
                                                 >
                                                     <FormControlLabel value="small" control={<Radio />} label="Small (1 person)" />
                                                     <FormControlLabel value="medium" control={<Radio />} label="Medium (2-3 persons)" />

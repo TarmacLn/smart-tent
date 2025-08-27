@@ -61,20 +61,20 @@ function TentLocation() {
                                         <Grid xs={2} item>
                                             <div>50%</div>
                                         </Grid>
+                                        <Grid xs={12} item className='button'>
+                                            <Button
+                                                variant='contained'
+                                                color='primary'
+                                                style={{
+                                                    width: '150px',
+                                                }}
+                                                onClick={() => uiStore.setCurrentTab(2)}
+                                            >
+                                                Continue
+                                            </Button>
+                                        </Grid>
                                     </Grid>
                                 </Container>
-                            </Grid>
-                            <Grid xs={12} item className='button'>
-                                <Button
-                                    variant='contained'
-                                    color='primary'
-                                    style={{
-                                        width: '150px',
-                                    }}
-                                    onClick={() => uiStore.setCurrentTab(2)}
-                                >
-                                    Continue
-                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
