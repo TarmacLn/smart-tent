@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TentLocation.less';
-import { Box, Button, Container, Grid, IconButton } from '@mui/material';
+import { Box, Button, Container, Divider, Grid, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Home from '../../../assets/Home.svg';
 import Back from '../../../assets/Back.svg';
@@ -22,12 +22,30 @@ function TentLocation() {
             />
             <div className='content'>
                 <Grid container>
-                    <Grid md={9} xs={12} item>
+                    <Grid md={7} xs={12} item>
                         <Map />
                     </Grid>
-                    <Grid md={3} xs={12} item>
+                    <Grid md={5} xs={12} item>
                         <Grid container className='right'>
-                            <Grid xs={12} item>
+                            <Grid xs={6} item>
+                                <Container className='stats'>
+                                    <Grid container spacing={1} className='stats-grid'>
+                                        <Grid xs={12} item>
+                                            <div className='attention'>Attention!</div>
+                                        </Grid>
+                                        <Grid xs={12} item>
+                                            <Divider />
+                                        </Grid>
+                                        <Grid xs={12} item>
+                                            <div className='red'>Red : Danger</div>
+                                        </Grid>
+                                        <Grid xs={12} item>
+                                            <div className='orange'>Orange : Warning</div>
+                                        </Grid>
+                                    </Grid>
+                                </Container>
+                            </Grid>
+                            <Grid xs={6} item>
                                 <Container className='stats'>
                                     <Grid
                                         container

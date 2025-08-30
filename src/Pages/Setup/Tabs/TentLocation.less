@@ -53,16 +53,16 @@ body {
 
             .right {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
                 height: 700px;
                 padding-right: 10px;
 
                 .stats {
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-evenly;
+                    justify-content: space-around;
                     align-items: flex-start;
                     width: 300px;
                     height: 200px;
@@ -79,7 +79,27 @@ body {
                         font-size: large;
                     }
 
+                    .attention{
+                        font-weight: bolder;
+                        display: flex;
+                        justify-content: center;
+                        font-size: larger;
+                    }
+                    .red{
+                        color: red;
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                    }
+
+                    .orange{
+                        color: orange;
+                        display: flex;
+                        justify-content: center;
+                    }
+
                 }
+
 
                 .button {
                     display: flex;
