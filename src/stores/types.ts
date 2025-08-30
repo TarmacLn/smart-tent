@@ -4,9 +4,7 @@ export enum TentTypeEnum {
 }
 
 export interface Tent {
-    length: number;
-    width: number;
-    height: number;
+    size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;
     type: TentTypeEnum;
 }
@@ -14,7 +12,6 @@ export interface Tent {
 export interface TentLocation {
     x: number;
     y: number;
-    z: number;
 }
 
 export interface TentStats {

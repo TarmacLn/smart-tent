@@ -13,39 +13,69 @@ import {
     ToggleButton,
     ToggleButtonGroup,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TentTypeEnum } from '../../../stores/types';
 import Home from '../../../assets/Home.svg';
 import './TentDetails.less';
-import { uiStore } from '../../../stores';
+import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 
 //Tab no1
 function TentDetails() {
     const navigate = useNavigate();
-    const [type, setType] = React.useState(TentTypeEnum.AFrame);
-    const [stakes, setStakes] = React.useState<number | ''>(4);
-    const stakesError = stakes !== '' && (stakes < 4 || stakes > 40);
+    const [type, setType] = React.useState<TentTypeEnum>(TentTypeEnum.AFrame);
+    const [stakes, setStakes] = React.useState<number>(4);
+    const [size, setSize] = React.useState<number>(2);
+    const stakesError = typeof stakes === 'number' && (stakes < 4 || stakes > 40);
 
-    const handleChange = (
+    useEffect(() => {
+        const tent = dataStore.getTent();
+        if (tent) {
+            setType(tent.type);
+            setStakes(tent.stakes);
+            setSize(tent.size);
+        }
+    }, []);
+
+    const handleTypeChange = (
         _: React.MouseEvent<HTMLElement>,
         newType: TentTypeEnum
     ) => {
         if (newType !== null) {
             setType(newType);
+            dataStore.setTent({ ...(dataStore.getTent() as any), type: newType });
         }
     };
 
     const handleStakesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const v = e.target.value;
-        if (v === '') return setStakes('');
+        if (v === '') return setStakes(4);
         const n = Math.floor(Number(v));
-        setStakes(Number.isNaN(n) ? '' : n);
+        setStakes(Number.isNaN(n) ? 4 : n);
+        if (!Number.isNaN(n) && n >= 4 && n <= 40) {
+            const tent = dataStore.getTent();
+            if (tent) {
+                dataStore.setTent({ ...tent, stakes: n });
+            }
+        }
+    };
+
+    const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const v = e.target.value;
+        if (v === '') return setSize(2);
+        const n = Math.floor(Number(v));
+        setSize(Number.isNaN(n) ? 2 : n);
+        if (!Number.isNaN(n) && n >= 2 && n <= 5) {
+            const tent = dataStore.getTent();
+            if (tent) {
+                dataStore.setTent({ ...tent, size: n });
+            }
+        }
     };
 
     const clampStakes = () => {
-        if (stakes === '' || Number.isNaN(Number(stakes))) return setStakes(4);
+        if (stakes === 4 || Number.isNaN(Number(stakes))) return setStakes(4);
         setStakes(Math.max(4, Math.min(40, Number(stakes))));
     };
 
@@ -83,7 +113,7 @@ function TentDetails() {
                                                 value={type}
                                                 exclusive
                                                 aria-label='text alignment'
-                                                onChange={handleChange}
+                                                onChange={handleTypeChange}
                                                 defaultValue={0}
                                             >
                                                 <ToggleButton
@@ -109,14 +139,14 @@ function TentDetails() {
                                             Tent Size:
                                             <FormControl>
                                                 <RadioGroup
-                                                    defaultValue="small"
+                                                    value={size}
                                                     name="tentSize"
+                                                    onChange={handleSizeChange}
                                                     // row
                                                 >
-                                                    <FormControlLabel value="small" control={<Radio />} label="Small (1 person)" />
-                                                    <FormControlLabel value="medium" control={<Radio />} label="Medium (2-3 persons)" />
-                                                    <FormControlLabel value="large" control={<Radio />} label="Large (4-5 persons)" />
-                                                    <FormControlLabel value="xlarge" control={<Radio />} label="X-Large (6+ persons)" />
+                                                    <FormControlLabel value={2} control={<Radio />} label="Small (1 person)" />
+                                                    <FormControlLabel value={3} control={<Radio />} label="Medium (2-3 persons)" />
+                                                    <FormControlLabel value={4} control={<Radio />} label="Large (4-5 persons)" />
                                                 </RadioGroup>
                                             </FormControl>
                                         </Box>
@@ -127,7 +157,7 @@ function TentDetails() {
                                                 type="number"
                                                 variant="outlined"
                                                 size="small"
-                                                defaultValue={4}
+                                                value={stakes}
                                                 slotProps={{
                                                     input: {
                                                         startAdornment: <InputAdornment position="start">#</InputAdornment>,
@@ -152,7 +182,9 @@ function TentDetails() {
                                     style={{
                                         width: '150px',
                                     }}
-                                    onClick={() => uiStore.setCurrentTab(1)}
+                                    onClick={() => {
+                                        uiStore.setCurrentTab(1);
+                                    }}
                                 >
                                     Continue
                                 </Button>

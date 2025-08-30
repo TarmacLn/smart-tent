@@ -2,18 +2,41 @@ import { useState } from 'react';
 import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
+import { dataStore } from '../../stores';
 
 export default function Map() {
     const rows = 9;
     const cols = 9;
+    const [size, setSize] = useState<number>(dataStore.getTent?.()?.size ?? 2);
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
 
+    const getGroupFor = (index: number, size: number): number[] => {
+        const r = Math.floor(index / cols);
+        const c = index % cols;
+
+        // clamp start so the whole size x size box fits inside grid
+        const startR = Math.max(0, Math.min(r, rows - size));
+        const startC = Math.max(0, Math.min(c, cols - size));
+
+        const coords: number[] = [];
+        for (let rr = startR; rr < startR + size; rr++) {
+            for (let cc = startC; cc < startC + size; cc++) {
+                coords.push(rr * cols + cc);
+            }
+        }
+        return coords;
+    };
+
+
     const handleCellClick = (index: number): void => {
-        setSelectedCells((prev) =>
-            prev.includes(index)
-                ? prev.filter((i) => i !== index)
-                : [...prev, index]
-        );
+        setSelectedCells((prev) => {
+            const group = getGroupFor(index, size);
+            // if clicked group is exactly the current selection -> clear
+            const same =
+                prev.length === group.length &&
+                group.every((g) => prev.includes(g));
+            return same ? [] : group;
+        });
     };
 
     return (

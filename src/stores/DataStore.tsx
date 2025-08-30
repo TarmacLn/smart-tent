@@ -7,16 +7,13 @@ class DataStore {
 
     constructor() {
         this.tent = {
-            height: 0,
-            length: 0,
-            stakes: 0,
+            size: 2,
+            stakes: 4,
             type: TentTypeEnum.AFrame,
-            width: 0,
         };
         this.tentLocation = {
             x: 0,
             y: 0,
-            z: 0,
         };
         this.tentStats = [];
     }
