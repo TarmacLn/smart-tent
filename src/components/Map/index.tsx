@@ -3,14 +3,15 @@ import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
 import { dataStore } from '../../stores';
+import { data } from 'react-router-dom';
 
 export default function Map() {
     const rows = 9;
     const cols = 9;
     const size = dataStore.getTent?.()?.size ?? 2;
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
-    const dangerCells = [0,1,9,10,18,19,27,28,36,37,5,6,7];
-    const warningCells = [2,11,20,29,38,45,46,47,4,8,14,15,16];
+    const dangerCells = dataStore.getDangerCells();
+    const warningCells = dataStore.getWarningCells();
 
     const getGroupFor = (index: number, size: number): number[] => {
         const r = Math.floor(index / cols);
