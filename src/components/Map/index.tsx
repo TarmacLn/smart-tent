@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
@@ -7,7 +7,7 @@ import { dataStore } from '../../stores';
 export default function Map() {
     const rows = 9;
     const cols = 9;
-    const [size, setSize] = useState<number>(dataStore.getTent?.()?.size ?? 2);
+    const size = dataStore.getTent?.()?.size ?? 2;
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
 
     const getGroupFor = (index: number, size: number): number[] => {
@@ -27,6 +27,15 @@ export default function Map() {
         return coords;
     };
 
+    //starting cell to save
+    const computeStartFor = (index: number, size: number) => {
+        const r = Math.floor(index / cols);
+        const c = index % cols;
+        return {
+            startR: Math.max(0, Math.min(r, rows - size)),
+            startC: Math.max(0, Math.min(c, cols - size)),
+        };
+    };
 
     const handleCellClick = (index: number): void => {
         setSelectedCells((prev) => {
@@ -35,9 +44,32 @@ export default function Map() {
             const same =
                 prev.length === group.length &&
                 group.every((g) => prev.includes(g));
-            return same ? [] : group;
+            if (same) {
+                // clear selection and persist
+                dataStore.setTentLocation({ x: 0, y: 0});
+                return [];
+            }
+            // persist top-left of selected box
+            const { startR, startC } = computeStartFor(index, size);
+            dataStore.setTentLocation({ x: startC, y: startR });
+            return group;
         });
+        if (selectedCells.length > 0) {
+            // persist selection
+            dataStore.setTentLocation({ x: 0, y: 0 });
+        }
     };
+
+    //restore selection on mount
+    useEffect(() => {
+        const x = dataStore.getTentLocation()?.x;
+        const y = dataStore.getTentLocation()?.y;
+        if ((x !== 0) && (y !== 0) && x && y) {
+            const startIndex = y * cols + x;
+            const group = getGroupFor(startIndex, size);
+            setSelectedCells(group);
+        }
+    }, []);
 
     return (
         <Grid xs={9} item>
