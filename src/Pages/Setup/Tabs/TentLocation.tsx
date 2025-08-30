@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TentLocation.less';
 import { Box, Button, Container, Grid, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -9,8 +9,10 @@ import Ground from '../../../assets/Ground.svg';
 import Sun from '../../../assets/Sun.svg';
 import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
+import Map from '../../../components/Map';
 
 function TentLocation() {
+
     return (
         <div className='TentLocation'>
             <Header
@@ -20,12 +22,10 @@ function TentLocation() {
             />
             <div className='content'>
                 <Grid container>
-                    <Grid xs={9} item>
-                        <Container className='banner'>
-                            <Container className='map'></Container>
-                        </Container>
+                    <Grid md={9} xs={12} item>
+                        <Map />
                     </Grid>
-                    <Grid xs={3} item>
+                    <Grid md={3} xs={12} item>
                         <Grid container className='right'>
                             <Grid xs={12} item>
                                 <Container className='stats'>
