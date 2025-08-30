@@ -40,7 +40,7 @@ function TentLocation() {
                                             <div className='red'>Red : Danger</div>
                                         </Grid>
                                         <Grid xs={12} item>
-                                            <div className='orange'>Orange : Warning</div>
+                                            <div className='yellow'>Yellow : Warning</div>
                                         </Grid>
                                     </Grid>
                                 </Container>

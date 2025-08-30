@@ -9,6 +9,8 @@ export default function Map() {
     const cols = 9;
     const size = dataStore.getTent?.()?.size ?? 2;
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
+    const dangerCells = [0,1,9,10,18,19,27,28,36,37,5,6,7];
+    const warningCells = [2,11,20,29,38,45,46,47,4,8,14,15,16];
 
     const getGroupFor = (index: number, size: number): number[] => {
         const r = Math.floor(index / cols);
@@ -46,7 +48,7 @@ export default function Map() {
                 group.every((g) => prev.includes(g));
             if (same) {
                 // clear selection and persist
-                dataStore.setTentLocation({ x: 0, y: 0});
+                dataStore.setTentLocation({ x: 0, y: 0 });
                 return [];
             }
             // persist top-left of selected box
@@ -58,6 +60,7 @@ export default function Map() {
             // persist selection
             dataStore.setTentLocation({ x: 0, y: 0 });
         }
+        console.log(selectedCells);
     };
 
     //restore selection on mount
@@ -77,9 +80,16 @@ export default function Map() {
                 <Box className="map-container">
                     <Box className="map" />
                     <Box className="grid-overlay">
-                        {Array.from({ length: 81 }).map((_, index) => (
-                            <Box key={index} onClick={() => handleCellClick(index)} className={selectedCells.includes(index) ? 'selected' : ''} />
-                        ))}
+                        {Array.from({ length: rows * cols }).map((_, index) => {
+                            const sel = selectedCells.includes(index);
+                            const warning = warningCells.includes(index);
+                            const danger = dangerCells.includes(index);
+                            const classes = sel ? 'selected' : danger ? 'danger' : warning ? 'warning' : '';
+                            return (
+                                <Box key={index} onClick={() => handleCellClick(index)} className={classes} />
+
+                            );
+                        })}
                     </Box>
                 </Box>
             </Container>
