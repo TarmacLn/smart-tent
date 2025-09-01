@@ -109,6 +109,7 @@ function TentLocation() {
                                                     width: '150px',
                                                 }}
                                                 onClick={() => uiStore.setCurrentTab(2)}
+                                                disabled={severity === SeverityEnum.Danger || severity === undefined}
                                             >
                                                 Continue
                                             </Button>
