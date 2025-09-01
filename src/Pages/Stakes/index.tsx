@@ -201,6 +201,8 @@ function Stakes() {
                     )}
                 </Grid>,
             onClick: () => {
+                uiStore.setStakeSuccess(true);
+                uiStore.setStakeReady(true);
                 navigate('/menu');
             }
         }
@@ -225,11 +227,6 @@ function Stakes() {
                 timerRef.current = window.setTimeout(() => {
                     setLoadingProgress(prev => {
                         const next = prev + 1;
-
-                        // call success only when we cross the final step (once)
-                        if (prev < 4 && next >= 4) {
-                            uiStore.setStakeSuccess(true);
-                        }
 
                         if (next < 4) {
                             // continue to next step

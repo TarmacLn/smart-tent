@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Menu.less';
 import {
     Alert,
+    Badge,
+    badgeClasses,
     Box,
-    Button,
     Container,
     Grid,
     IconButton,
-    Modal,
     Snackbar,
-    Typography,
+    styled,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Info from '../../assets/Info.svg';
@@ -26,10 +26,18 @@ import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
 import RefreshModal from '../../components/RefreshModal';
 
+const BadgeStyled = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
+  }
+`;
+
 function Menu() {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [text, setText] = useState('');
+    const disableMenu = !uiStore.TentReady || !uiStore.StakeReady;
 
     useEffect(() => {
         uiStore.setCurrentTab(0);
@@ -141,24 +149,42 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/stakes')}
+                                        disabled={!uiStore.TentReady}
                                     >
                                         <Stake />
+                                        <BadgeStyled
+                                            badgeContent={''}
+                                            color='error'
+                                            invisible={uiStore.TentReady}
+                                        />
                                     </IconButton>
                                     <br />
                                     <IconButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
+                                        disabled={disableMenu}
                                     >
                                         <Covers />
+                                        <BadgeStyled
+                                            badgeContent={''}
+                                            color='error'
+                                            invisible={!disableMenu}
+                                        />
                                     </IconButton>
                                     <br />
                                     <IconButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
+                                        disabled={disableMenu}
                                     >
                                         <Light />
+                                        <BadgeStyled
+                                            badgeContent={''}
+                                            color='error'
+                                            invisible={!disableMenu}
+                                        />
                                     </IconButton>
                                     <br />
                                 </div>

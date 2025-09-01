@@ -4,6 +4,8 @@ class UIStore {
     private currentTab: number = 0;
     private tentSuccess: boolean = false;
     private stakeSuccess: boolean = false;
+    private tentReady: boolean = false;
+    private stakeReady: boolean = false;
     private infoModal: boolean = false;
     private refreshModal: boolean = false;
     private sound: boolean = true;
@@ -36,6 +38,14 @@ class UIStore {
         return this.sound;
     }
 
+    get TentReady() {
+        return this.tentReady;
+    }
+
+    get StakeReady() {
+        return this.stakeReady;
+    }
+
     public setCurrentTab(currentTab: number): void {
         this.currentTab = currentTab;
     }
@@ -58,6 +68,14 @@ class UIStore {
 
     public setSound(sound: boolean): void {
         this.sound = sound;
+    }
+
+    public setTentReady(tentReady: boolean): void {
+        this.tentReady = tentReady;
+    }
+
+    public setStakeReady(stakeReady: boolean): void {
+        this.stakeReady = stakeReady;
     }
 }
 

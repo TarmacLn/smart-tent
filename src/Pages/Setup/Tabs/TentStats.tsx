@@ -103,6 +103,7 @@ function TentStats() {
                                             }}
                                             onClick={() => {
                                                 uiStore.setTentSuccess(true);
+                                                uiStore.setTentReady(true);
                                                 navigate('/menu');
                                             }}
                                         >

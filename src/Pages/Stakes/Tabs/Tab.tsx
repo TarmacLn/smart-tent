@@ -29,7 +29,6 @@ export function Tab(
         loadingProgress?: number;
     }
 ) {
-    const navigate = useNavigate();
     const finishEnabled = id === 4 && loadingProgress === 4;
 
     return (
