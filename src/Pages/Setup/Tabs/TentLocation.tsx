@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TentLocation.less';
 import { Box, Button, Container, Divider, Grid, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import Home from '../../../assets/Home.svg';
-import Back from '../../../assets/Back.svg';
 import Droplet from '../../../assets/Droplet.svg';
 import Ground from '../../../assets/Ground.svg';
 import Sun from '../../../assets/Sun.svg';
-import { uiStore } from '../../../stores';
+import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import Map from '../../../components/Map';
+import { observer } from 'mobx-react-lite';
 
 function TentLocation() {
+    const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
+    const humidity = s.humidity ?? 0;
+    const sunshine = s.sunshine ?? 0;
+    const groundStability = s.groundStability ?? 0;
 
     return (
         <div className='TentLocation'>
@@ -59,7 +61,7 @@ function TentLocation() {
                                             <div>Humidity</div>
                                         </Grid>
                                         <Grid xs={2} item>
-                                            <div>50%</div>
+                                            <div>{humidity}%</div>
                                         </Grid>
                                         <Grid xs={3} item>
                                             <Sun />
@@ -68,7 +70,7 @@ function TentLocation() {
                                             <div>Sunshine</div>
                                         </Grid>
                                         <Grid xs={2} item>
-                                            <div>50%</div>
+                                            <div>{sunshine}%</div>
                                         </Grid>
                                         <Grid xs={3} item>
                                             <Ground />
@@ -77,7 +79,7 @@ function TentLocation() {
                                             <div>Ground Stability</div>
                                         </Grid>
                                         <Grid xs={2} item>
-                                            <div>50%</div>
+                                            <div>{groundStability}%</div>
                                         </Grid>
                                         <Grid xs={12} item className='button'>
                                             <Button
@@ -102,4 +104,4 @@ function TentLocation() {
     );
 }
 
-export default TentLocation;
+export default observer(TentLocation);

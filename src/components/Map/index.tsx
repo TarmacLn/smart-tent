@@ -40,6 +40,18 @@ export default function Map() {
         };
     };
 
+    // Specific range random: Math.floor(Math.random() * (max - min + 1)) + min;
+    const randomRange = (min: number, max: number): number => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+    
+    const randomStats = () => {
+        const humidity = randomRange(40, 70);
+        const sunshine = randomRange(60, 85);
+        const groundStability = randomRange(85, 100);
+        dataStore.setTentStats({ humidity, sunshine, groundStability });
+    };
+
     const handleCellClick = (index: number): void => {
         setSelectedCells((prev) => {
             const group = getGroupFor(index, size);
@@ -55,13 +67,13 @@ export default function Map() {
             // persist top-left of selected box
             const { startR, startC } = computeStartFor(index, size);
             dataStore.setTentLocation({ x: startC, y: startR });
+            randomStats();
             return group;
         });
         if (selectedCells.length > 0) {
             // persist selection
             dataStore.setTentLocation({ x: 0, y: 0 });
         }
-        console.log(selectedCells);
     };
 
     //restore selection on mount

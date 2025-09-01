@@ -1,9 +1,10 @@
 import { Tent, TentLocation, TentStats, TentTypeEnum } from './types';
+import { makeAutoObservable } from 'mobx';
 
 class DataStore {
     private tent: Tent | undefined = undefined;
     private tentLocation: TentLocation | undefined = undefined;
-    private tentStats: TentStats[] | undefined = undefined;
+    private tentStats: TentStats | undefined = undefined;
     private static dangerCells = [0,1,9,10,18,19,27,28,36,37,5,6,7];
     private static warningCells = [2,11,20,29,38,45,46,47,4,8,14,15,16];
 
@@ -17,7 +18,12 @@ class DataStore {
             x: 0,
             y: 0,
         };
-        this.tentStats = [];
+        this.tentStats = {
+            humidity: 0,
+            sunshine: 0,
+            groundStability: 0,
+        };
+        makeAutoObservable(this);
     }
 
     public getTent(): Tent | undefined {
@@ -36,11 +42,11 @@ class DataStore {
         this.tentLocation = tentLocation;
     }
 
-    public getTentStats(): TentStats[] | undefined {
+    public getTentStats(): TentStats | undefined {
         return this.tentStats;
     }
 
-    public setTentStats(tentStats: TentStats[]): void {
+    public setTentStats(tentStats: TentStats): void {
         this.tentStats = tentStats;
     }
 
