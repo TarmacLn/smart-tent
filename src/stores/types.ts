@@ -3,6 +3,12 @@ export enum TentTypeEnum {
     Dome = 'dome',
 }
 
+export enum SeverityEnum {
+    Danger = 'danger',
+    Warning = 'warning',
+    Normal = 'normal',
+}
+
 export interface Tent {
     size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;

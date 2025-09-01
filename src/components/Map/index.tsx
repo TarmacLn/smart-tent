@@ -3,7 +3,7 @@ import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
 import { dataStore } from '../../stores';
-import { data } from 'react-router-dom';
+import { SeverityEnum } from '../../stores/types';
 
 export default function Map() {
     const rows = 9;
@@ -44,15 +44,45 @@ export default function Map() {
     const randomRange = (min: number, max: number): number => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     };
-    
-    const randomStats = () => {
-        const humidity = randomRange(40, 70);
-        const sunshine = randomRange(60, 85);
-        const groundStability = randomRange(85, 100);
+
+    const randomStats = (severity: SeverityEnum) => {
+        let humidityRange: [number, number];
+        let sunshineRange: [number, number];
+        let groundRange: [number, number];
+
+        if (severity === SeverityEnum.Danger) {
+            // red cells
+            humidityRange = [70, 100];
+            sunshineRange = [20, 50];
+            groundRange = [30, 70];
+            dataStore.setSeverity(SeverityEnum.Danger);
+        } else if (severity === SeverityEnum.Warning) {
+            // yellow cells
+            humidityRange = [55, 85];
+            sunshineRange = [40, 70];
+            groundRange = [60, 90];
+            dataStore.setSeverity(SeverityEnum.Warning);    
+        } else {
+            // normal
+            humidityRange = [40, 70];
+            sunshineRange = [60, 85];
+            groundRange = [85, 100];
+            dataStore.setSeverity(SeverityEnum.Normal);
+        }
+
+        const humidity = randomRange(humidityRange[0], humidityRange[1]);
+        const sunshine = randomRange(sunshineRange[0], sunshineRange[1]);
+        const groundStability = randomRange(groundRange[0], groundRange[1]);
         dataStore.setTentStats({ humidity, sunshine, groundStability });
     };
 
     const handleCellClick = (index: number): void => {
+        // calculate if the selection is on top of warning or danger cells
+        const group = getGroupFor(index, size);
+        const overlapsDanger = group.some((i) => dangerCells.includes(i));
+        const overlapsWarning = !overlapsDanger && group.some((i) => warningCells.includes(i));
+        const severity: SeverityEnum = overlapsDanger ? SeverityEnum.Danger : overlapsWarning ? SeverityEnum.Warning : SeverityEnum.Normal;
+
         setSelectedCells((prev) => {
             const group = getGroupFor(index, size);
             // if clicked group is exactly the current selection -> clear
@@ -62,12 +92,14 @@ export default function Map() {
             if (same) {
                 // clear selection and persist
                 dataStore.setTentLocation({ x: 0, y: 0 });
+                dataStore.setTentStats({ humidity: 0, sunshine: 0, groundStability: 0 });
+                dataStore.setSeverity(undefined);
                 return [];
             }
             // persist top-left of selected box
             const { startR, startC } = computeStartFor(index, size);
             dataStore.setTentLocation({ x: startC, y: startR });
-            randomStats();
+            randomStats(severity);
             return group;
         });
         if (selectedCells.length > 0) {

@@ -8,12 +8,14 @@ import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import Map from '../../../components/Map';
 import { observer } from 'mobx-react-lite';
+import { SeverityEnum } from '../../../stores/types';
 
 function TentLocation() {
     const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
     const humidity = s.humidity ?? 0;
     const sunshine = s.sunshine ?? 0;
     const groundStability = s.groundStability ?? 0;
+    const severity = dataStore.getSeverity();
 
     return (
         <div className='TentLocation'>
@@ -39,11 +41,29 @@ function TentLocation() {
                                             <Divider />
                                         </Grid>
                                         <Grid xs={12} item>
-                                            <div className='red'>Red : Danger</div>
+                                            <div className='red'>Red Cells: Danger</div>
                                         </Grid>
                                         <Grid xs={12} item>
-                                            <div className='yellow'>Yellow : Warning</div>
+                                            <div className='yellow'>Yellow Cells : Warning</div>
                                         </Grid>
+                                        <Grid xs={12} item>
+                                            <Divider />
+                                        </Grid>
+                                        {
+                                            severity === SeverityEnum.Danger ? (
+                                                <Grid xs={12} item>
+                                                    <div className='red'>This area is dangerous!</div>
+                                                </Grid>
+                                            ) : severity === SeverityEnum.Warning ? (
+                                                <Grid xs={12} item>
+                                                    <div className='yellow'>This area is risky.</div>
+                                                </Grid>
+                                            ) : severity === SeverityEnum.Normal ? (
+                                                <Grid xs={12} item>
+                                                    <div className='green'>This area is safe.</div>
+                                                </Grid>
+                                            ) : null
+                                        }
                                     </Grid>
                                 </Container>
                             </Grid>
