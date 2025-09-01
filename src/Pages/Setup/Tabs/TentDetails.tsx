@@ -3,33 +3,82 @@ import {
     Button,
     Container,
     Divider,
+    FormControl,
+    FormControlLabel,
     Grid,
-    IconButton,
+    InputAdornment,
+    Radio,
+    RadioGroup,
     TextField,
     ToggleButton,
     ToggleButtonGroup,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TentTypeEnum } from '../../../stores/types';
 import Home from '../../../assets/Home.svg';
 import './TentDetails.less';
-import { uiStore } from '../../../stores';
+import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 
 //Tab no1
 function TentDetails() {
     const navigate = useNavigate();
-    const [type, setType] = React.useState(TentTypeEnum.AFrame);
+    const [type, setType] = React.useState<TentTypeEnum>(TentTypeEnum.AFrame);
+    const [stakes, setStakes] = React.useState<number>(4);
+    const [size, setSize] = React.useState<number>(2);
+    const stakesError = typeof stakes === 'number' && (stakes < 4 || stakes > 40);
 
-    const handleChange = (
-        event: React.MouseEvent<HTMLElement>,
+    useEffect(() => {
+        const tent = dataStore.getTent();
+        if (tent) {
+            setType(tent.type);
+            setStakes(tent.stakes);
+            setSize(tent.size);
+        }
+    }, []);
+
+    const handleTypeChange = (
+        _: React.MouseEvent<HTMLElement>,
         newType: TentTypeEnum
     ) => {
         if (newType !== null) {
             setType(newType);
+            dataStore.setTent({ ...(dataStore.getTent() as any), type: newType });
         }
     };
+
+    const handleStakesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const v = e.target.value;
+        if (v === '') return setStakes(4);
+        const n = Math.floor(Number(v));
+        setStakes(Number.isNaN(n) ? 4 : n);
+        if (!Number.isNaN(n) && n >= 4 && n <= 40) {
+            const tent = dataStore.getTent();
+            if (tent) {
+                dataStore.setTent({ ...tent, stakes: n });
+            }
+        }
+    };
+
+    const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const v = e.target.value;
+        if (v === '') return setSize(2);
+        const n = Math.floor(Number(v));
+        setSize(Number.isNaN(n) ? 2 : n);
+        if (!Number.isNaN(n) && n >= 2 && n <= 5) {
+            const tent = dataStore.getTent();
+            if (tent) {
+                dataStore.setTent({ ...tent, size: n });
+            }
+        }
+    };
+
+    const clampStakes = () => {
+        if (stakes === 4 || Number.isNaN(Number(stakes))) return setStakes(4);
+        setStakes(Math.max(4, Math.min(40, Number(stakes))));
+    };
+
     return (
         <div className='TentDetails'>
             <Header
@@ -50,78 +99,21 @@ function TentDetails() {
                                     <Grid xs={12} item>
                                         <Box className='box'>
                                             <br />
-                                            Choose the size of your tent:
-                                            <br />
-                                            <br />
-                                            <Grid
-                                                container
-                                                spacing={2}
-                                                sx={{
-                                                    justifyContent:
-                                                        'flex-start',
-                                                    alignItems: 'center',
-                                                }}
-                                            >
-                                                <Grid xs={4} item>
-                                                    <div>Length:</div>
-                                                </Grid>
-                                                <Grid xs={2} item>
-                                                    <TextField
-                                                        id='length'
-                                                        variant='outlined'
-                                                    />
-                                                </Grid>
-                                                <Grid xs={6} item>
-                                                    <div>cm</div>
-                                                </Grid>
-                                                <Grid xs={4} item>
-                                                    <div>Width:</div>
-                                                </Grid>
-                                                <Grid xs={2} item>
-                                                    <TextField
-                                                        id='width'
-                                                        variant='outlined'
-                                                    />
-                                                </Grid>
-                                                <Grid xs={6} item>
-                                                    <div>cm</div>
-                                                </Grid>
-                                                <Grid xs={4} item>
-                                                    <div>Height:</div>
-                                                </Grid>
-                                                <Grid xs={2} item>
-                                                    <TextField
-                                                        id='height'
-                                                        variant='outlined'
-                                                    />
-                                                </Grid>
-                                                <Grid xs={6} item>
-                                                    <div>cm</div>
-                                                </Grid>
-                                                <Grid xs={4} item>
-                                                    <div>Number of stakes:</div>
-                                                </Grid>
-                                                <Grid xs={2} item>
-                                                    <TextField
-                                                        id='stakes'
-                                                        variant='outlined'
-                                                    />
-                                                </Grid>
-                                            </Grid>
-                                        </Box>
-                                    </Grid>
-                                </Grid>
-                                <Divider orientation='vertical' flexItem />
-                                <Grid container>
-                                    <Grid xs={12} item>
-                                        <Box className='box'>
-                                            <br />
-                                            Choose your tent's type:
+                                            Tent type:
+                                            <Box className='image'>
+                                                <div
+                                                    className={
+                                                        type === TentTypeEnum.AFrame
+                                                            ? 'AFrame'
+                                                            : 'Dome'
+                                                    }
+                                                />
+                                            </Box>
                                             <ToggleButtonGroup
                                                 value={type}
                                                 exclusive
                                                 aria-label='text alignment'
-                                                onChange={handleChange}
+                                                onChange={handleTypeChange}
                                                 defaultValue={0}
                                             >
                                                 <ToggleButton
@@ -135,14 +127,50 @@ function TentDetails() {
                                                     Dome
                                                 </ToggleButton>
                                             </ToggleButtonGroup>
-                                            <div
-                                                className={
-                                                    type === TentTypeEnum.AFrame
-                                                        ? 'AFrame'
-                                                        : 'Dome'
-                                                }
-                                            ></div>
                                             <br />
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                                <Divider orientation='vertical' flexItem/>
+                                <Grid container>
+                                    <Grid xs={12} item>
+                                        <Box className='box'>
+                                            <br />
+                                            Tent Size:
+                                            <FormControl>
+                                                <RadioGroup
+                                                    value={size}
+                                                    name="tentSize"
+                                                    onChange={handleSizeChange}
+                                                    // row
+                                                >
+                                                    <FormControlLabel value={2} control={<Radio />} label="Small (1 person)" />
+                                                    <FormControlLabel value={3} control={<Radio />} label="Medium (2-3 persons)" />
+                                                    <FormControlLabel value={4} control={<Radio />} label="Large (4-5 persons)" />
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </Box>
+                                        <Box className='box'>
+                                            <br />
+                                            Amount of stakes:
+                                            <TextField
+                                                type="number"
+                                                variant="outlined"
+                                                size="small"
+                                                value={stakes}
+                                                slotProps={{
+                                                    input: {
+                                                        startAdornment: <InputAdornment position="start">#</InputAdornment>,
+                                                        endAdornment: <InputAdornment position="end">stakes</InputAdornment>,
+                                                        inputProps: { min: 4, max: 40 }
+                                                    },
+                                                }}
+                                                onChange={handleStakesChange}
+                                                onBlur={clampStakes}
+                                                error={stakesError}
+                                                helperText={stakesError ? 'Enter between 4 and 40 stakes' : ''}
+                                                required
+                                            />
                                         </Box>
                                     </Grid>
                                 </Grid>
@@ -152,10 +180,11 @@ function TentDetails() {
                                     variant='contained'
                                     color='primary'
                                     style={{
-                                        backgroundColor: 'black',
                                         width: '150px',
                                     }}
-                                    onClick={() => uiStore.setCurrentTab(1)}
+                                    onClick={() => {
+                                        uiStore.setCurrentTab(1);
+                                    }}
                                 >
                                     Continue
                                 </Button>

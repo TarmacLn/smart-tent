@@ -8,15 +8,6 @@
 
 body {
     .TentDetails {
-        background-image: url('../../../assets/test.jpg'); // Background image
-        background-size: 100% 100%; // Ensures the background covers the entire area
-        background-position: center;
-        background-repeat: no-repeat;
-        display: flex;
-        height: 100vh; // Full viewport height
-        flex-direction: column;
-        // background-color: aqua;
-
         .header {
             display: flex;
             flex-direction: row;
@@ -28,7 +19,7 @@ body {
             overflow: auto; // Add scrollbars if the content is too big
 
             .container {
-                background-color: white;
+                background-color: #f7fdff;
                 min-height: 650px;
                 border-radius: 15px; // Add rounded corners
                 padding: 2rem; // Optional: Add some padding inside the container
@@ -46,41 +37,57 @@ body {
                     flex-direction: row;
                     justify-content: flex-start;
                     align-items: center;
+                    flex: 1 1 auto;
+
                     .box {
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-                        align-items: flex-start;
+                        justify-content: flex-start;
+                        align-items: center;
                         gap: 1rem; // Space between buttons
                         padding-left: 20px;
                         padding-top: 20px;
                         font-weight: bold;
                         font-size: larger;
+
+
                         .text {
                             gap: 1px;
                         }
 
-                        .AFrame {
-                            height: 200px;
-                            width: 250px;
-                            background-image: url('../../../assets/AFrame.png'); // Background image
-                            background-size: 100% 100%; // Ensures the background covers the entire area
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-color: lightgray;
+                        .image {
+                            height: 230px;
+                            width: 280px;
+                            background-color: #BDE4F4;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+
+                            .AFrame {
+                                height: 200px;
+                                width: 250px;
+                                background-image: url('../../../assets/AFrame.png'); // Background image
+                                background-size: 100% 100%; // Ensures the background covers the entire area
+                                background-position: center;
+                                background-repeat: no-repeat;
+                            }
+
+                            .Dome {
+                                height: 200px;
+                                width: 250px;
+                                background-image: url('../../../assets/Dome.png'); // Background image
+                                background-size: 100% 100%; // Ensures the background covers the entire area
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                // background-color: #BDE4F4;
+                            }
+
                         }
 
-                        .Dome {
-                            height: 200px;
-                            width: 250px;
-                            background-image: url('../../../assets/Dome.png'); // Background image
-                            background-size: 100% 100%; // Ensures the background covers the entire area
-                            background-position: center;
-                            background-repeat: no-repeat;
-                            background-color: lightgray;
-                        }
                     }
                 }
+
                 .footer {
                     display: flex;
                     flex-direction: row;

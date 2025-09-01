@@ -60,7 +60,7 @@ function Menu() {
                     autoHideDuration={4000}
                     onClose={() => {
                         uiStore.setTentSuccess(false);
-                        uiStore.setStakeSuccess;
+                        uiStore.setStakeSuccess(false);
                         setOpen(false);
                     }}
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

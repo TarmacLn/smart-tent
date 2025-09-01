@@ -1,10 +1,10 @@
 body {
     .Instructions {
-        background-image: url('../../../assets/test.jpg'); // Background image
-        background-size: 100% 100%; // Ensures the background covers the entire area
-        background-position: center;
-        height: 100vh; // Full viewport height
-        background-repeat: no-repeat;
+        // background-image: url('../../../assets/test.png'); // Background image
+        // background-size: 100% 100%; // Ensures the background covers the entire area
+        // background-position: center;
+        // height: 100vh; // Full viewport height
+        // background-repeat: no-repeat;
 
         .main {
             display: flex;
@@ -19,10 +19,18 @@ body {
                 background-color: white;
                 min-height: 650px;
                 border-radius: 15px; // Add rounded corners
-                padding: 50px; // Optional: Add some padding inside the container
+                padding: 2rem; // Optional: Add some padding inside the container
                 display: flex;
                 flex-direction: column;
                 font-size: larger;
+                flex: 1 1 auto;
+
+                .title {
+                    font-size: 2rem; // Set the font size
+                    padding-bottom: 20px;
+                    font-family: 'Gaiatype', sans-serif; // Apply the custom font
+                }
+
                 .content {
                     // display: flex;
                     // flex-direction: column;
@@ -31,6 +39,7 @@ body {
                     // font-size: larger;
 
                     height: 500px;
+
                     .check {
                         display: flex;
                         flex-direction: row;
@@ -38,15 +47,19 @@ body {
                         gap: 10px;
                         padding: 10px;
                     }
+
                     .step {
                         padding: 10px;
                         margin-bottom: 30px;
+                        margin-top: 30px;
                         font-size: xx-large;
                         font-weight: bold;
                     }
+
                     .instructions {
                         display: flex;
                         flex-direction: row;
+
                         // align-items: center;
                         .number {
                             font-weight: bold;
@@ -59,6 +72,16 @@ body {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
+                    }
+
+                    .image0 {
+                        height: 300px;
+                        width: 300px;
+                        background-image: url('../../../assets/Dome.png'); // Background image
+                        // background-size: 100% 100%; // Ensures the background covers the entire area
+                        background-position: center;
+                        background-size: contain;
+                        background-repeat: no-repeat;
                     }
 
                     .image1 {
@@ -89,6 +112,7 @@ body {
                         background-position: center;
                     }
                 }
+
                 .footer {
                     display: flex;
                     flex-direction: row;

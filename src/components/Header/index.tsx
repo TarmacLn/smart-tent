@@ -37,7 +37,6 @@ const Header: React.FC<HeaderProps> = ({ onClickBack, title , color}) => {
                             aria-label='right-button'
                             color='secondary'
                             onClick={() => {
-                                uiStore.setTentSuccess(true);
                                 navigate('/menu');
                             }}
                         >

@@ -1,12 +1,5 @@
 body {
     .TentLocation {
-        background-color: #aedadd;
-        display: flex;
-        height: 100vh; // Full viewport height
-        flex-direction: column;
-        overflow: scroll;
-        // background-color: aqua;
-
         .header {
             display: flex;
             flex-direction: row;
@@ -26,42 +19,52 @@ body {
         .content {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
+
             .banner {
                 background-image: url('../../../assets/map.png');
-                background-size: 100% 100%;
-                background-position: center;
+                background-size: contain;
+                background-position: center center;
                 background-repeat: no-repeat;
-                min-height: 700px;
-                max-width: 1000px;
+                width: 100%;
+                // min-height: 700px;
+                width: 900px;
+                height: 600px;
+                padding: 10px;
+                // aspect-ratio: 16/9;
                 margin-left: 50px;
+                margin-right: 50px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                .map {
-                    background-image: url('../../../assets/map-test.png');
-                    background-size: 100% 100%;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    min-height: 500px;
-                    max-width: 800px;
-                }
             }
+
+            //     .map {
+            //         background-image: url('../../../assets/mapGrid.png');
+            //         background-size: contain;
+            //         background-position: center center;
+            //         background-repeat: no-repeat;
+            //         width: 100%;
+            //         // min-height: 500px;
+            //         max-width: 800px;
+            //         aspect-ratio: 4/3;
+            //     }
+            // }
 
             .right {
                 display: flex;
-                flex-direction: row;
-                align-items: flex-end;
-                justify-content: flex-end;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
                 height: 700px;
                 padding-right: 10px;
 
                 .stats {
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-evenly;
+                    justify-content: space-around;
                     align-items: flex-start;
-                    width: 300px;
+                    width: 400px;
                     height: 200px;
                     background-color: #f0f0f0;
                     border-radius: 10px;
@@ -76,14 +79,41 @@ body {
                         font-size: large;
                     }
 
+                    .attention{
+                        font-weight: bolder;
+                        display: flex;
+                        justify-content: center;
+                        font-size: larger;
+                    }
+                    .red{
+                        color: red;
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 10px;
+                    }
+
+                    .yellow{
+                        color: rgb(182, 182, 0);
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .green{
+                        color: green;
+                        display: flex;
+                        justify-content: center;
+                    }
+
                 }
+
 
                 .button {
                     display: flex;
                     justify-content: center;
                     align-items: flex-end;
+                    margin-top: 10px;
                 }
-                
+
             }
         }
     }
