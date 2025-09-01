@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
-import { dataStore } from '../../stores';
+import { dataStore, uiStore } from '../../stores';
 import { SeverityEnum } from '../../stores/types';
 
 export default function Map() {
@@ -12,6 +12,14 @@ export default function Map() {
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
     const dangerCells = dataStore.getDangerCells();
     const warningCells = dataStore.getWarningCells();
+    const severity = dataStore.getSeverity();
+
+    useEffect(() => {
+        if (severity === SeverityEnum.Danger || severity === undefined) {
+            uiStore.setTentReady(false);
+            uiStore.setStakeReady(false);
+        }
+    }, [severity]);
 
     const getGroupFor = (index: number, size: number): number[] => {
         const r = Math.floor(index / cols);
