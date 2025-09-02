@@ -203,6 +203,7 @@ function Stakes() {
             onClick: () => {
                 uiStore.setSuccess(true);
                 uiStore.setSuccessText('Tent Stakes set successfully!');
+                uiStore.setStakeReady(true);
                 navigate('/menu');
             }
         }

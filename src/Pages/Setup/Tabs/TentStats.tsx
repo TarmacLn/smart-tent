@@ -104,6 +104,7 @@ function TentStats() {
                                             onClick={() => {
                                                 uiStore.setSuccess(true);
                                                 uiStore.setSuccessText('Tent Setup completed successfully!');
+                                                uiStore.setTentReady(true);
                                                 navigate('/menu');
                                             }}
                                         >
