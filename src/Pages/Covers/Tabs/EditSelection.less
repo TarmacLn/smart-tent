@@ -1,4 +1,4 @@
-.Covers {
+.Edit {
     .header {
         display: flex;
         flex-direction: row;
@@ -50,7 +50,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: flex-start;
+                align-items: center;
                 width: 400px;
                 height: 550px;
                 background-color: #f0f0f0;
@@ -58,66 +58,40 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 100px;
 
-                .stats-grid {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    font-family: 'Gaiatype', sans-serif; // Apply the custom font
-                    font-size: large;
-                }
-
                 .title {
                     font-weight: bold;
                     text-align: center;
-                    font-size: x-large;
-                    color: #039be5;
-
-                }
-
-                .buttons {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-evenly;
-                    align-items: flex-start;
+                    font-size: 1.125rem;
+                    font-family: 'Gaiatype', sans-serif;
+                    color: #000;
+                    padding-bottom: 6px;
                     margin-top: 20px;
                 }
 
-                .tip {
-                    height: 70px;
-                    width: 90%;
-                    margin-top: 10px;
-                    margin-bottom: 10px;
-                    text-transform: none;
-                    font-size: large;
-                }
-
-                .attention {
-                    font-weight: bolder;
+                .stats-content {
+                    flex: 1 1 auto;
+                    width: 100%;
                     display: flex;
-                    justify-content: center;
-                    font-size: larger;
+                    flex-direction: column;
                 }
 
-                .red {
-                    color: red;
-                    display: flex;
-                    justify-content: center;
-                    margin-top: 10px;
+                .table-container {
+                    width: 100%;
+                    flex: 1 1 auto;
+                    overflow-x: hidden;
+                    height: 100%;
                 }
 
-                .yellow {
-                    color: rgb(182, 182, 0);
-                    display: flex;
-                    justify-content: center;
+                .table-container .MuiTable-root {
+                    width: 100%;
+                    table-layout: fixed;
                 }
 
-                .green {
-                    color: green;
-                    display: flex;
-                    justify-content: center;
+                .table-container td,
+                .table-container th {
+                    white-space: normal;
+                    overflow-wrap: break-word;
                 }
-
             }
 
 
@@ -126,6 +100,7 @@
                 justify-content: center;
                 align-items: flex-end;
                 margin-top: 10px;
+                margin-bottom: 20px;
             }
 
         }

@@ -27,42 +27,7 @@ export default function CoverMap() {
         return coords;
     };
 
-    //starting cell to save
-    const computeStartFor = (index: number, size: number) => {
-        const r = Math.floor(index / cols);
-        const c = index % cols;
-        return {
-            startR: Math.max(0, Math.min(r, rows - size)),
-            startC: Math.max(0, Math.min(c, cols - size)),
-        };
-    };
-
-    const handleCellClick = (index: number): void => {
-        setSelectedCells((prev) => {
-            const group = getGroupFor(index, size);
-            // if clicked group is exactly the current selection -> clear
-            const same =
-                prev.length === group.length &&
-                group.every((g) => prev.includes(g));
-            if (same) {
-                // clear selection and persist
-                dataStore.setTentLocation({ x: 0, y: 0 });
-                dataStore.setTentStats({ humidity: 0, sunshine: 0, groundStability: 0 });
-                dataStore.setSeverity(undefined);
-                return [];
-            }
-            // persist top-left of selected box
-            const { startR, startC } = computeStartFor(index, size);
-            dataStore.setTentLocation({ x: startC, y: startR });
-            return group;
-        });
-        if (selectedCells.length > 0) {
-            // persist selection
-            dataStore.setTentLocation({ x: 0, y: 0 });
-        }
-    };
-
-    //restore selection on mount
+    // fetch tent location
     useEffect(() => {
         const x = dataStore.getTentLocation()?.x;
         const y = dataStore.getTentLocation()?.y;
@@ -82,7 +47,7 @@ export default function CoverMap() {
                         {Array.from({ length: rows * cols }).map((_, index) => {
                             const sel = selectedCells.includes(index);
                             return (
-                                <Box key={index} onClick={() => handleCellClick(index)} className={sel ? 'selected' : ''} />
+                                <Box key={index} className={sel ? 'selected' : ''} />
 
                             );
                         })}

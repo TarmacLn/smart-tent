@@ -10,6 +10,9 @@ import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
 import CoverMap from '../../../components/CoverMap';
 import { useNavigate } from 'react-router-dom';
+import TipModal from '../../../components/TipModal';
+import CoverModal from '../../../components/CoverModal';
+import Shield from '../../../assets/Covers.svg';
 
 function Main() {
     const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
@@ -17,9 +20,19 @@ function Main() {
     const sunshine = s.sunshine ?? 0;
     const wind = dataStore.getWind() ?? 0;
     const navigate = useNavigate();
+    const [isVisible, setIsVisible] = useState(false);
+    const [showTips, setShowTips] = useState(false);
 
     return (
         <div className='Covers'>
+            <TipModal
+                isVisible={showTips}
+                closeModal={() => setShowTips(false)}
+            />
+            <CoverModal
+                isVisible={isVisible}
+                closeModal={() => setIsVisible(false)}
+            />
             <Header
                 title='Tent Covers'
                 onClickBack={() => navigate('/menu')}
@@ -39,6 +52,26 @@ function Main() {
                                         className='stats-grid'
                                         spacing={1}
                                     >
+                                        <Grid xs={12} item className='title'>
+                                            Covers:
+                                        </Grid>
+                                        <Grid xs={12} item sx={{ mt: 1, mb: 1 }}>
+                                            <Divider />
+                                        </Grid>
+                                        <Grid container spacing={2} xs={12} item className='cover-list'>
+                                            <Grid xs={11} item>
+                                                <div>On top of the tent:</div>
+                                            </Grid>
+                                            <Grid xs={1} item>
+                                                <div>2</div>
+                                            </Grid>
+                                            <Grid xs={11} item>
+                                                <div>Around the tent:</div>
+                                            </Grid>
+                                            <Grid xs={1} item>
+                                                <div>4</div>
+                                            </Grid>
+                                        </Grid>
                                         <Grid xs={12} item className='buttons'>
                                             <Button
                                                 variant='contained'
@@ -46,6 +79,7 @@ function Main() {
                                                 style={{
                                                     width: '150px',
                                                 }}
+                                                onClick={() => setIsVisible(true)}
                                             >
                                                 Add cover
                                             </Button>
@@ -55,12 +89,18 @@ function Main() {
                                                 style={{
                                                     width: '150px',
                                                 }}
+                                                onClick={() => uiStore.setCurrentTab(2)}
                                             >
                                                 Edit cover
                                             </Button>
                                         </Grid>
                                         <Grid xs={12} item className='buttons'>
-                                            <Button className='tip' variant='outlined' startIcon={<Tip />}>
+                                            <Button
+                                                className='tip'
+                                                variant='outlined'
+                                                startIcon={<Tip />}
+                                                onClick={() => setShowTips(true)}
+                                            >
                                                 Open quick tips
                                             </Button>
                                         </Grid>
