@@ -1,0 +1,41 @@
+.map-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    width: 550px;
+    height: 550px;
+    aspect-ratio: 4 / 3;
+    /* ensures correct aspect ratio */
+}
+
+.map {
+    background-image: url('../../assets/mapGrid.png');
+    /* adjust path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #000;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    z-index: 2;
+}
+
+.grid-overlay div {
+    cursor: pointer;
+}
+
+.grid-overlay div.selected {
+    background-color: rgba(0, 0, 255, 0.3);
+}
