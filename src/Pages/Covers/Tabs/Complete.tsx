@@ -7,22 +7,19 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Droplet from '../../../assets/Droplet.svg';
-import Ground from '../../../assets/Ground.svg';
+import Air from '../../../assets/Air.svg';
 import Sun from '../../../assets/Sun.svg';
-import Skull from '../../../assets/Skull.svg';
+import Skull from '../../../assets/Skull.svg'
 import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
-import { SeverityEnum } from '../../../stores/types';
-import { Check } from '@mui/icons-material';
 import './Complete.less';
 
 function Complete() {
     const navigate = useNavigate();
     const humidity = dataStore.getTentStats()?.humidity ?? 0;
     const sunshine = dataStore.getTentStats()?.sunshine ?? 0;
-    const groundStability = dataStore.getTentStats()?.groundStability ?? 0;
-    const severity = dataStore.getSeverity();
+    const wind = dataStore.getWind() ?? 0;
 
     return (
         <div className='Complete'>
@@ -37,62 +34,62 @@ function Complete() {
                         <Container className='banner'>
                             <Container className='container'>
                                 <Grid container spacing={1} className='stats'>
-                                    <Grid xs={12}>
-                                        Average stats of the chosen location:
+                                    <Grid xs={6} className='box'>
+                                        <Grid container className='stats-grid' spacing={1}>
+                                            <Grid xs={12} className='title'>
+                                                Weather Conditions:
+                                            </Grid>
+                                            <Grid xs={2}>
+                                                <Droplet />
+                                            </Grid>
+                                            <Grid xs={7} className='humidity'>Humidity</Grid>
+                                            <Grid xs={3}>{humidity}%</Grid>
+                                            <Grid xs={2}>
+                                                <Sun />
+                                            </Grid>
+                                            <Grid xs={7} className='sunshine'>Sunshine</Grid>
+                                            <Grid xs={3}>{sunshine}%</Grid>
+                                            <Grid xs={2}>
+                                                <Air />
+                                            </Grid>
+                                            <Grid xs={7} className='wind'>Wind</Grid>
+                                            <Grid xs={3}>{wind}%</Grid>
+                                        </Grid>
                                     </Grid>
-                                    <Grid xs={1}>
-                                        <Droplet />
-                                    </Grid>
-                                    <Grid xs={7} className='humidity'>Average Humidity</Grid>
-                                    <Grid xs={2}>{humidity}%</Grid>
-                                    <Grid xs={2} className='humidity'>
-                                        Ideal: 60%
-                                    </Grid>
-                                    <Grid xs={1}>
-                                        <Sun />
-                                    </Grid>
-                                    <Grid xs={7} className='sunshine'>Average Sunshine</Grid>
-                                    <Grid xs={2}>{sunshine}%</Grid>
-                                    <Grid xs={2} className='sunshine'>
-                                        Ideal: 75%
-                                    </Grid>
-                                    <Grid xs={1}>
-                                        <Ground />
-                                    </Grid>
-                                    <Grid xs={7} className='groundStability'>Average Ground Stability</Grid>
-                                    <Grid xs={2}>{groundStability}%</Grid>
-                                    <Grid xs={2} className='groundStability'>
-                                        Ideal: 95%
+                                    <Grid xs={6} className='box'>
+                                        <Grid container className='stats-grid' spacing={1}>
+                                            <Grid xs={12} className='title'>
+                                                Covers Used:
+                                            </Grid>
+                                            <Grid xs={10}>Total Covers:</Grid>
+                                            <Grid xs={2}>4</Grid>
+                                            <Grid xs={10}> - Covers Above The Tent:</Grid>
+                                            <Grid xs={2}>3</Grid>
+                                            <Grid xs={10}> - Covers Around The Tent:</Grid>
+                                            <Grid xs={2}>1</Grid>
+                                        </Grid>
                                     </Grid>
                                     <Grid xs={12}>
                                         <Divider />
                                     </Grid>
-                                    {
-                                        severity === SeverityEnum.Warning ? (
+                                    <Grid xs={12}>
                                         <Grid container spacing={1}>
+                                            <Grid xs={12} className='title'>
+                                                Recommendations:
+                                            </Grid>
                                             <Grid xs={1}>
                                                 <Skull />
                                             </Grid>
-                                            <Grid xs={11} className='warning'>
-                                                The chosen tent location is not recommended
+                                            <Grid xs={11}>
+                                                Very important recommendation
                                             </Grid>
                                         </Grid>
-                                        ) : severity === SeverityEnum.Normal ? (
-                                        <Grid container spacing={1}>
-                                            <Grid xs={1}>
-                                                <Check />
-                                            </Grid>
-                                            <Grid xs={11} className='normal'>
-                                                The chosen tent location is recommended
-                                            </Grid>
-                                        </Grid>
-                                        ) : null
-                                    }
+                                    </Grid>
                                     <Grid xs={12} className='button'>
                                         <Button
                                             variant='contained'
                                             color='primary'
-                                            className='button'
+                                            // className='button'
                                             style={{
                                                 width: '150px',
                                             }}

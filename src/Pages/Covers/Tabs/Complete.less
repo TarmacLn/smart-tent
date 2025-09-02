@@ -49,9 +49,20 @@ body {
                         display: flex;
                         flex-direction: row;
                         align-items: flex-start;
-                        justify-content: flex-start;
-                        padding: 40px;
+                        justify-content: space-between;
+                        padding: 30px;
                         font-size: x-large;
+
+                        .box {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .title{
+                            margin-bottom: 20px;
+                            font-weight: 580;
+                        }
 
                         .humidity{
                             color: rgb(120, 206, 235);
@@ -60,8 +71,8 @@ body {
                         .sunshine{
                             color: orange;
                         }
-                        .groundStability {
-                            color: brown;
+                        .wind {
+                            color: rgb(118, 118, 118);
                         }
 
                         .warning {
