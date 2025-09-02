@@ -2,8 +2,8 @@ import { makeAutoObservable } from 'mobx';
 
 class UIStore {
     private currentTab: number = 0;
-    private tentSuccess: boolean = false;
-    private stakeSuccess: boolean = false;
+    private success: boolean = false;
+    private successText: string = '';
     private tentReady: boolean = false;
     private stakeReady: boolean = false;
     private infoModal: boolean = false;
@@ -18,12 +18,12 @@ class UIStore {
         return this.currentTab;
     }
 
-    get TentSuccess() {
-        return this.tentSuccess;
+    get Success() {
+        return this.success;
     }
 
-    get StakeSuccess() {
-        return this.stakeSuccess;
+    get SuccessText() {
+        return this.successText;
     }
 
     get InfoModal() {
@@ -50,12 +50,12 @@ class UIStore {
         this.currentTab = currentTab;
     }
 
-    public setTentSuccess(tentSuccess: boolean): void {
-        this.tentSuccess = tentSuccess;
+    public setSuccess(success: boolean): void {
+        this.success = success;
     }
 
-    public setStakeSuccess(stakeSuccess: boolean): void {
-        this.stakeSuccess = stakeSuccess;
+    public setSuccessText(successText: string): void {
+        this.successText = successText;
     }
 
     public setInfoModal(infoModal: boolean): void {

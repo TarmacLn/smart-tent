@@ -201,8 +201,8 @@ function Stakes() {
                     )}
                 </Grid>,
             onClick: () => {
-                uiStore.setStakeSuccess(true);
-                uiStore.setStakeReady(true);
+                uiStore.setSuccess(true);
+                uiStore.setSuccessText('Tent Stakes set successfully!');
                 navigate('/menu');
             }
         }

@@ -41,11 +41,8 @@ function Menu() {
 
     useEffect(() => {
         uiStore.setCurrentTab(0);
-        if (uiStore.TentSuccess === true) {
-            setText('Tent Location set successfully!');
-            setOpen(true);
-        } else if (uiStore.StakeSuccess === true) {
-            setText('Tent Stakes set successfully!');
+        if (uiStore.Success === true) {
+            setText(uiStore.SuccessText);
             setOpen(true);
         }
     }, []);
@@ -67,16 +64,16 @@ function Menu() {
                     open={open}
                     autoHideDuration={4000}
                     onClose={() => {
-                        uiStore.setTentSuccess(false);
-                        uiStore.setStakeSuccess(false);
+                        uiStore.setSuccess(false);
+                        uiStore.setSuccessText('');
                         setOpen(false);
                     }}
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 >
                     <Alert
                         onClose={() => {
-                            uiStore.setTentSuccess(false);
-                            uiStore.setStakeSuccess(false);
+                            uiStore.setSuccess(false);
+                            uiStore.setSuccessText('');
                             setOpen(false);
                         }}
                         severity='success'
