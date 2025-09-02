@@ -32,6 +32,7 @@ function Main() {
             <CoverModal
                 isVisible={isVisible}
                 closeModal={() => setIsVisible(false)}
+                type='add'
             />
             <Header
                 title='Tent Covers'

@@ -1,4 +1,4 @@
-import { Box, Button, Divider, FormControl, FormControlLabel, FormLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import { Box, Button, ButtonGroup, Divider, FormControl, FormControlLabel, FormLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import './CoverModal.less';
@@ -6,10 +6,12 @@ import Shield from '../../assets/Covers.svg';
 
 function CoverModal({
     isVisible,
-    closeModal
+    closeModal,
+    type
 }: {
     isVisible: boolean;
     closeModal: () => void;
+    type: string;
 }) {
     return (
         <Modal
@@ -50,14 +52,35 @@ function CoverModal({
                             </FormControl>
                         </div>
                     </div>
-                    <div className="button">
-                        <Button
-                            variant="contained"
-                            onClick={closeModal}
-                        >
-                            Add cover
-                        </Button>
-                    </div>
+                    {type === 'edit' ? (
+                        <div className="buttons">
+                            <Button
+                                variant="contained"
+                                color="error"
+                                onClick={closeModal}
+                            >
+                                Delete cover
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={closeModal}
+                            >
+                                Save changes
+                            </Button>
+                        </div>
+                    ) :
+                        (
+                            <div className="buttons">
+                                <Button
+                                    variant="contained"
+                                    onClick={closeModal}
+                                >
+                                    Add cover
+                                </Button>
+                            </div>
+                        )
+                    }
                 </div>
             </Box>
         </Modal>

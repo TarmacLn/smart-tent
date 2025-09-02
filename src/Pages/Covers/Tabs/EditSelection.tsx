@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './EditSelection.less';
 import { Box, Button, Container, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Header from '../../../components/Header';
@@ -7,9 +7,11 @@ import CoverMap from '../../../components/CoverMap';
 import { useNavigate } from 'react-router-dom';
 import { uiStore } from '../../../stores';
 import { Height } from '@mui/icons-material';
+import CoverModal from '../../../components/CoverModal';
 
 function EditSelection() {
-
+    const [isVisible, setIsVisible] = useState(false);
+    
     function createData(
         name: string,
         type: string
@@ -32,6 +34,11 @@ function EditSelection() {
                 title='Edit Tent Covers'
                 onClickBack={() => uiStore.setCurrentTab(0)}
                 color='black'
+            />
+            <CoverModal
+                isVisible={isVisible}
+                closeModal={() => setIsVisible(false)}
+                type='edit'
             />
             <div className='content'>
                 <Grid container>
@@ -56,7 +63,7 @@ function EditSelection() {
                                                     </TableHead>
                                                     <TableBody>
                                                         {rows.map((row, idx) => (
-                                                            <TableRow key={idx} hover>
+                                                            <TableRow key={idx} onClick={() => setIsVisible(true)} hover>
                                                                 <TableCell>{row.name}</TableCell>
                                                                 <TableCell>{row.type}</TableCell>
                                                             </TableRow>
