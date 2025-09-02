@@ -30,12 +30,20 @@ export function Tab(
     }
 ) {
     const finishEnabled = id === 4 && loadingProgress === 4;
+    const navigate = useNavigate();
+    const onClickBack = () => {
+        if (id === 0) {
+            navigate('/menu');
+        } else {
+            uiStore.setCurrentTab(id - 1);
+        }
+    };
 
     return (
         <div className='Instructions'>
             <Header
                 title='Stake Instructions'
-                onClickBack={() => uiStore.setCurrentTab(0)}
+                onClickBack={onClickBack}
                 color='white'
             />
             <div className='main'>
