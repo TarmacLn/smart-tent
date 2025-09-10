@@ -43,12 +43,11 @@ export default function CoverMap() {
             <Container className="banner" sx={{ p: 0 }}>
                 <Box className="map-container">
                     <Box className="map" />
-                    <Box className="grid-overlay">
+                    <Box className="grid-overlay-cover">
                         {Array.from({ length: rows * cols }).map((_, index) => {
                             const sel = selectedCells.includes(index);
                             return (
                                 <Box key={index} className={sel ? 'selected' : ''} />
-
                             );
                         })}
                     </Box>
