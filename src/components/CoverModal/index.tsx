@@ -1,18 +1,80 @@
 import { Box, Button, ButtonGroup, Divider, FormControl, FormControlLabel, FormLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
-import React from "react";
+import React, { useEffect } from "react";
 import './CoverModal.less';
 import Shield from '../../assets/Covers.svg';
+import { CoverSizeEnum, CoverTypeEnum } from "../../stores/types";
+import { dataStore } from "../../stores";
 
 function CoverModal({
     isVisible,
     closeModal,
-    type
+    type,
+    id
 }: {
     isVisible: boolean;
     closeModal: () => void;
     type: string;
+    id?: number;
 }) {
+    const [coverName, setCoverName] = React.useState('');
+    const [coverType, setCoverType] = React.useState(CoverTypeEnum.OnTop);
+    const [coverSize, setCoverSize] = React.useState(CoverSizeEnum.Small);
+
+    useEffect(() => {
+        if (type === 'edit' && id !== undefined) {
+            const cover = dataStore.getCovers().find(c => c.id === id);
+            if (cover) {
+                setCoverName(cover.name);
+                setCoverType(cover.type);
+                setCoverSize(cover.size);
+            }
+        } else {
+            setCoverName('');
+            setCoverType(CoverTypeEnum.OnTop);
+            setCoverSize(CoverSizeEnum.Small);
+        }
+    }, [isVisible, type, id]);
+
+    const validateForm = () => {
+        return coverName.length > 0;
+    }
+
+    const createCover = () => {
+        if (!validateForm()) {
+            return;
+        }
+        const newCover = {
+            name: coverName,
+            type: coverType,
+            size: coverSize
+        };
+        dataStore.addCover(newCover);
+        closeModal();
+    }
+
+    const updateCover = () => {
+        if (!validateForm() || id === undefined) {
+            return;
+        }
+        const updatedCover = {
+            id,
+            name: coverName,
+            type: coverType,
+            size: coverSize
+        };
+        dataStore.updateCover(updatedCover);
+        closeModal();
+    }
+
+    const deleteCover = () => {
+        if (id === undefined) {
+            return;
+        }
+        dataStore.removeCover(id);
+        closeModal();
+    }
+
     return (
         <Modal
             open={isVisible}
@@ -25,7 +87,14 @@ function CoverModal({
                     <div className="content">
                         <div className="text">
                             Cover Name:
-                            <TextField sx={{ marginLeft: '8px' }} variant="standard" />
+                            <TextField
+                                sx={{ marginLeft: '8px' }}
+                                variant="standard"
+                                error={coverName.length === 0}
+                                value={coverName}
+                                onChange={(e) => setCoverName(e.target.value)}
+                                placeholder="Enter cover name"
+                            />
                         </div>
                         <div className="text">
                             Choose your cover's type:
@@ -33,9 +102,11 @@ function CoverModal({
                                 defaultValue="top"
                                 row
                                 sx={{ marginLeft: '8px' }}
+                                value={coverType}
+                                onChange={(e) => setCoverType(e.target.value as CoverTypeEnum)}
                             >
-                                <FormControlLabel value="top" control={<Radio />} label="On top of the tent" />
-                                <FormControlLabel value="other" control={<Radio />} label="Around the tent" />
+                                <FormControlLabel value={CoverTypeEnum.OnTop} control={<Radio />} label="On top of the tent" />
+                                <FormControlLabel value={CoverTypeEnum.Around} control={<Radio />} label="Around the tent" />
                             </RadioGroup>
                         </div>
                         <div className="text">
@@ -44,10 +115,12 @@ function CoverModal({
                                 <Select
                                     label="Size"
                                     sx={{ width: '120px' }}
+                                    value={coverSize}
+                                    onChange={(e) => setCoverSize(e.target.value as CoverSizeEnum)}
                                 >
-                                    <MenuItem value={10}>Small</MenuItem>
-                                    <MenuItem value={20}>Medium</MenuItem>
-                                    <MenuItem value={30}>Large</MenuItem>
+                                    <MenuItem value={CoverSizeEnum.Small}>Small</MenuItem>
+                                    <MenuItem value={CoverSizeEnum.Medium}>Medium</MenuItem>
+                                    <MenuItem value={CoverSizeEnum.Large}>Large</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>
@@ -57,14 +130,21 @@ function CoverModal({
                             <Button
                                 variant="contained"
                                 color="error"
-                                onClick={closeModal}
+                                onClick={deleteCover}
                             >
                                 Delete cover
                             </Button>
                             <Button
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
                                 onClick={closeModal}
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={updateCover}
                             >
                                 Save changes
                             </Button>
@@ -74,7 +154,14 @@ function CoverModal({
                             <div className="buttons">
                                 <Button
                                     variant="contained"
+                                    color="secondary"
                                     onClick={closeModal}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    onClick={createCover}
                                 >
                                     Add cover
                                 </Button>

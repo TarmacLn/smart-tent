@@ -12,7 +12,7 @@ import CoverMap from '../../../components/CoverMap';
 import { useNavigate } from 'react-router-dom';
 import TipModal from '../../../components/TipModal';
 import CoverModal from '../../../components/CoverModal';
-import Shield from '../../../assets/Covers.svg';
+import { CoverTypeEnum } from '../../../stores/types';
 
 function Main() {
     const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
@@ -22,6 +22,8 @@ function Main() {
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const onTopCovers = dataStore.getCovers().filter(c => c.type === CoverTypeEnum.OnTop);
+    const aroundCovers = dataStore.getCovers().filter(c => c.type === CoverTypeEnum.Around);
 
     return (
         <div className='Covers'>
@@ -64,13 +66,13 @@ function Main() {
                                                 <div>On top of the tent:</div>
                                             </Grid>
                                             <Grid xs={1} item>
-                                                <div>2</div>
+                                                <div>{onTopCovers.length}</div>
                                             </Grid>
                                             <Grid xs={11} item>
                                                 <div>Around the tent:</div>
                                             </Grid>
                                             <Grid xs={1} item>
-                                                <div>4</div>
+                                                <div>{aroundCovers.length}</div>
                                             </Grid>
                                         </Grid>
                                         <Grid xs={12} item className='buttons'>

@@ -63,18 +63,21 @@ export default function Map() {
             humidityRange = [70, 100];
             sunshineRange = [20, 50];
             groundRange = [30, 70];
+            dataStore.setWind(randomRange(40, 80));
             dataStore.setSeverity(SeverityEnum.Danger);
         } else if (severity === SeverityEnum.Warning) {
             // yellow cells
             humidityRange = [55, 85];
             sunshineRange = [40, 70];
             groundRange = [60, 90];
+            dataStore.setWind(randomRange(20, 60));
             dataStore.setSeverity(SeverityEnum.Warning);    
         } else {
             // normal
             humidityRange = [40, 70];
             sunshineRange = [60, 85];
             groundRange = [85, 100];
+            dataStore.setWind(randomRange(0, 40));
             dataStore.setSeverity(SeverityEnum.Normal);
         }
 
