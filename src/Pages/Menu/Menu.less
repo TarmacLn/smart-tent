@@ -26,6 +26,7 @@ body {
             font-family: 'Gaiatype', sans-serif; // Apply the custom font
             color: #000;
         }
+
         .container {
             background-image: url('../../assets/banner.png'); // Background image
             background-size: 100% 100%; // Ensures the background covers the entire area
@@ -45,11 +46,44 @@ body {
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                gap: 1rem; // Space between buttons
+                gap: 1rem;
+
+                .menu-item {
+                    position: relative;
+                    z-index: 0;
+                    --overlay-size: 70px;
+                }
+
+                .menu-item::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: var(--overlay-size);
+                    height: var(--overlay-size);
+                    display: block;
+                    background-image: url('../../assets/Selected.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    transform: translate(-50%, -50%) scale(1.18);
+                    opacity: 0;
+                    pointer-events: none; /* don't block clicks */
+                    transition: opacity 160ms ease-in-out, transform 160ms cubic-bezier(.2,.8,.2,1);
+                    transform-origin: center center;
+                    z-index: 2;
+                }
+
+                .menu-item:hover::after,
+                .menu-item:focus::after,
+                .menu-item.Mui-focusVisible::after {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
 
                 .imageLA {
-                    background-image: url('../../assets/no.png'); // Background image
-                    background-size: 100% 100%; // Ensures the background covers the entire area
+                    background-image: url('../../assets/no.png');
+                    background-size: 100% 100%;
                     background-position: center;
                     background-repeat: no-repeat;
                 }

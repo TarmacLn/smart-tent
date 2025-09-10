@@ -138,6 +138,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/setup')}
+                                        className='menu-item'
                                     >
                                         <Tent />
                                         <div className='imageLA' />
@@ -148,6 +149,7 @@ function Menu() {
                                         color='success'
                                         onClick={() => navigate('/stakes')}
                                         disabled={!uiStore.TentReady}
+                                        className='menu-item'
                                     >
                                         <Stake />
                                         <BadgeStyled
@@ -161,6 +163,7 @@ function Menu() {
                                         color='success'
                                         onClick={() => navigate('/covers')}
                                         disabled={disableMenu}
+                                        className='menu-item'
                                     >
                                         <Covers />
                                         <BadgeStyled
@@ -173,7 +176,8 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
+                                        className='menu-item'
                                     >
                                         <Light />
                                         <BadgeStyled
