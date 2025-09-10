@@ -11,6 +11,17 @@ const App: React.FC = () => {
         palette: {
             primary: {
                 main: lightBlue[600],
+                dark: lightBlue[800],
+                contrastText: '#fff',
+            },
+            secondary: {
+                main: '#ffffffff',
+                dark: '#c7eaffff',
+                contrastText: lightBlue[600],
+            },
+            error: {
+                main: '#a85e4a',
+                dark: '#7a3b27',
                 contrastText: '#fff',
             },
             mode: 'light',

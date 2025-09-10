@@ -21,6 +21,7 @@ import Tent from '../../assets/Tent.svg';
 import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
+import Lock from '../../assets/Lock.svg';
 import { uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
@@ -113,7 +114,7 @@ function Menu() {
                             <IconButton
                                 aria-label='right-button'
                                 color='secondary'
-                                // onClick={() => navigate('/right')}
+                            // onClick={() => navigate('/right')}
                             >
                                 <Exit />
                             </IconButton>
@@ -150,8 +151,7 @@ function Menu() {
                                     >
                                         <Stake />
                                         <BadgeStyled
-                                            badgeContent={''}
-                                            color='error'
+                                            badgeContent={<Lock />}
                                             invisible={uiStore.TentReady}
                                         />
                                     </IconButton>
@@ -160,13 +160,12 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
-                                        disabled={disableMenu}
+                                    // disabled={disableMenu}
                                     >
                                         <Covers />
                                         <BadgeStyled
-                                            badgeContent={''}
-                                            color='error'
-                                            invisible={!disableMenu}
+                                            badgeContent={<Lock />}
+                                            invisible={uiStore.TentReady}
                                         />
                                     </IconButton>
                                     <br />
@@ -178,9 +177,8 @@ function Menu() {
                                     >
                                         <Light />
                                         <BadgeStyled
-                                            badgeContent={''}
-                                            color='error'
-                                            invisible={!disableMenu}
+                                            badgeContent={<Lock />}
+                                            invisible={uiStore.TentReady}
                                         />
                                     </IconButton>
                                     <br />
