@@ -160,12 +160,12 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
-                                    // disabled={disableMenu}
+                                        disabled={disableMenu}
                                     >
                                         <Covers />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
-                                            invisible={uiStore.TentReady}
+                                            invisible={!disableMenu}
                                         />
                                     </IconButton>
                                     <br />
@@ -178,7 +178,7 @@ function Menu() {
                                         <Light />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
-                                            invisible={uiStore.TentReady}
+                                            invisible={!disableMenu}
                                         />
                                     </IconButton>
                                     <br />
