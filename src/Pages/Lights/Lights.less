@@ -1,0 +1,52 @@
+ .menu-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     flex: 1 1 auto;
+     gap: 20px;
+     background-size: cover;
+     margin-top: 100px;
+ }
+
+ .menu-box {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 80%;
+     max-width: 400px;
+     min-height: 100px;
+     padding: 16px 20px;
+     border-radius: 12px;
+     background: white;
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+     font-family: 'Gaiatype', sans-serif; // Apply the custom font
+     font-size: 25px;
+     cursor: pointer;
+     transition: transform 0.15s ease-in-out;
+
+     &:hover {
+         transform: scale(1.03);
+     }
+
+     svg{
+        margin-right: 5px;
+        
+     }
+     .icon {
+         display: flex;
+         align-items: center;
+         font-size: 16px;
+     }
+
+     .label {
+         flex: 1;
+         margin-left: 12px;
+         color: #333;
+     }
+
+     .arrow {
+         font-size: 18px;
+         color: #666;
+     }
+ }
