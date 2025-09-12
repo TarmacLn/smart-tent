@@ -22,10 +22,7 @@ export enum CoverSizeEnum {
 
 export enum LightModeEnum {
     Static = 'static',
-    SlowFade = 'slowFade',
-    FastFade = 'fastFade',
     Twinkle = 'twinkle',
-    InWaves = 'inWaves',
     Flashing = 'flashing',
 }
 

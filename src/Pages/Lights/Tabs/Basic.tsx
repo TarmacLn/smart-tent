@@ -4,6 +4,7 @@ import { dataStore, uiStore } from '../../../stores';
 import { Box, Button, Container, Divider, Slider, Switch, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
 import Light from '../../../assets/BasicLight.svg';
 import './Basic.less';
+import { data } from 'react-router-dom';
 
 export default function Basic() {
     const [light, setLight] = useState<'on' | 'off'>('off');
@@ -14,21 +15,19 @@ export default function Basic() {
     const [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
-        if (dataStore.getLightingMode() !== 'basic') {
-            dataStore.setLightingMode('basic');
-            dataStore.setLight('off');
-            dataStore.setTempMode('cold');
-            dataStore.setBrightness(100);
-            dataStore.setAutoMode(false);
-            dataStore.setNightMode(false);
+        if (dataStore.getLightingMode() === 'basic') {
+            setLight(dataStore.getLight());
+            setTempMode(dataStore.getTempMode());
+            setBrightness(dataStore.getBrightness());
+            setAutoMode(dataStore.getAutoMode());
+            setNightMode(dataStore.getNightMode());
+        } else {
+            setLight('off');
+            setTempMode('cold');
+            setBrightness(100);
+            setAutoMode(false);
+            setNightMode(false);
         }
-        setLight(dataStore.getLight());
-        setTempMode(dataStore.getTempMode());
-        setBrightness(dataStore.getBrightness());
-        setAutoMode(dataStore.getAutoMode());
-        setNightMode(dataStore.getNightMode());
-        setDisabled(dataStore.getAutoMode() || dataStore.getNightMode());
-        dataStore.setLightingMode('basic');
     }, []);
 
     useEffect(() => {
@@ -54,6 +53,7 @@ export default function Basic() {
         dataStore.setBrightness(brightness as number);
         dataStore.setAutoMode(autoMode);
         dataStore.setNightMode(nightMode);
+        dataStore.setLightingMode('basic');
         uiStore.setCurrentTab(0);
     };
 

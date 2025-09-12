@@ -5,6 +5,7 @@ import { Box, Button, Container, Divider, Grid, Popover, ToggleButton, ToggleBut
 import ColourIcon from '../../../assets/Colour.svg';
 import './Colour.less';
 import { LightModeEnum } from '../../../stores/types';
+import { data } from 'react-router-dom';
 
 export default function Colour() {
     const [colorMode, setColorMode] = useState<'single' | 'multiple'>('single');
@@ -12,10 +13,6 @@ export default function Colour() {
     const [colors, setColors] = useState<string[]>(
         Array(5).fill('#d0d0d0')
     );
-
-    useEffect(() => {
-        dataStore.setLightingMode('colour');
-    }, []);
 
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -37,6 +34,29 @@ export default function Colour() {
     };
 
     const previewColors = colorMode === 'single' ? [colors[0]] : colors;
+
+    useEffect(() => {
+        if (dataStore.getLightingMode() === 'colour') {
+            setColorMode(dataStore.getColourMode());
+            setLightMode(dataStore.getLightMode());
+            const storedColors = dataStore.getColours();
+            if (storedColors.length > 0) {
+                const next = [...colors];
+                for (let i = 0; i < Math.min(storedColors.length, next.length); i++) {
+                    next[i] = storedColors[i];
+                }
+                setColors(next);
+            }
+        }
+    }, []);
+
+    const handleSave = () => {
+        dataStore.setColourMode(colorMode);
+        dataStore.setLightMode(lightMode);
+        dataStore.setColours(previewColors);
+        dataStore.setLightingMode('colour');
+        uiStore.setCurrentTab(0);
+    };
 
     return (
         <div className='Colour'>
@@ -115,7 +135,7 @@ export default function Colour() {
                                                     </>
                                                 )}
                                             </Grid>
-                                            <Grid size={12} sx={{ height: '20px', marginTop: '20px' }} >
+                                            <Grid size={12} sx={{ height: '100%', marginTop: '20px' }} >
                                                 <Divider flexItem />
                                             </Grid>
 
@@ -187,9 +207,7 @@ export default function Colour() {
                                 style={{
                                     width: '150px',
                                 }}
-                                onClick={() => {
-                                    uiStore.setCurrentTab(0);
-                                }}
+                                onClick={() => handleSave()}
                             >
                                 Save
                             </Button>

@@ -1,4 +1,4 @@
-import { Cover, NewCover, SeverityEnum, Tent, TentLocation, TentStats, TentTypeEnum } from './types';
+import { Cover, LightModeEnum, NewCover, SeverityEnum, Tent, TentLocation, TentStats, TentTypeEnum } from './types';
 import { makeAutoObservable } from 'mobx';
 
 class DataStore {
@@ -25,6 +25,10 @@ class DataStore {
     private autoMode: boolean = false;
     private nightMode: boolean = false;
 
+    private colourMode: 'single' | 'multiple' = 'single';
+    private lightMode: LightModeEnum = LightModeEnum.Static;
+    private colours: string[] = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
+
     constructor() {
         this.tent = {
             size: 2,
@@ -50,6 +54,9 @@ class DataStore {
         this.brightness = 100;
         this.autoMode = false;
         this.nightMode = false;
+        this.colourMode = 'single';
+        this.lightMode = LightModeEnum.Static;
+        this.colours = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
         makeAutoObservable(this);
     }
 
@@ -133,7 +140,7 @@ class DataStore {
     public getLightingMode(): 'basic' | 'colour' | 'special' {
         return this.lightingMode;
     }
-    
+
     public setLightingMode(mode: 'basic' | 'colour' | 'special'): void {
         this.lightingMode = mode;
     }
@@ -176,6 +183,29 @@ class DataStore {
 
     public setNightMode(state: boolean): void {
         this.nightMode = state;
+    }
+
+    public getColourMode(): 'single' | 'multiple' {
+        return this.colourMode;
+    }
+
+    public setColourMode(mode: 'single' | 'multiple'): void {
+        this.colourMode = mode;
+    }
+
+    public getLightMode(): LightModeEnum {
+        return this.lightMode;
+    }
+
+    public setLightMode(mode: LightModeEnum): void {
+        this.lightMode = mode;
+    }
+    public getColours(): string[] {
+        return this.colours;
+    }
+
+    public setColours(colours: string[]): void {
+        this.colours = colours;
     }
 }
 
