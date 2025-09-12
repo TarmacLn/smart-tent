@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
-import { uiStore } from '../../../stores';
+import { dataStore, uiStore } from '../../../stores';
 import { Box, Button, Container, Divider, Grid, Slider, Switch, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import Light from '../../../assets/BasicLight.svg';
 import './Basic.less';
 
 export default function Basic() {
-    const [light, setLight] = useState<'on' | 'off'>('on');
+    const [light, setLight] = useState<'on' | 'off'>('off');
     const [tempMode, setTempMode] = useState<'cold' | 'warm'>('cold');
     const [brightness, setBrightness] = useState<number | number[]>(100);
     const [autoMode, setAutoMode] = useState(false);
     const [nightMode, setNightMode] = useState(false);
     const [disabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        if (dataStore.getLightingMode() !== 'basic') {
+            dataStore.setLightingMode('basic');
+            dataStore.setLight('off');
+            dataStore.setTempMode('cold');
+            dataStore.setBrightness(100);
+            dataStore.setAutoMode(false);
+            dataStore.setNightMode(false);
+        }
+        setLight(dataStore.getLight());
+        setTempMode(dataStore.getTempMode());
+        setBrightness(dataStore.getBrightness());
+        setAutoMode(dataStore.getAutoMode());
+        setNightMode(dataStore.getNightMode());
+        setDisabled(dataStore.getAutoMode() || dataStore.getNightMode());
+        dataStore.setLightingMode('basic');
+    }, []);
 
     useEffect(() => {
         if (autoMode || nightMode) {
@@ -29,6 +47,15 @@ export default function Basic() {
             setDisabled(false);
         }
     }, [autoMode, nightMode]);
+
+    const handleSave = () => {
+        dataStore.setLight(light);
+        dataStore.setTempMode(tempMode);
+        dataStore.setBrightness(brightness as number);
+        dataStore.setAutoMode(autoMode);
+        dataStore.setNightMode(nightMode);
+        uiStore.setCurrentTab(0);
+    };
 
     return (
         <div className='Basic'>
@@ -171,13 +198,24 @@ export default function Basic() {
                             <div className='footer'>
                                 <Button
                                     variant='contained'
-                                    color='primary'
+                                    color='secondary'
                                     style={{
                                         width: '150px',
+                                        marginRight: '20px',
                                     }}
                                     onClick={() => uiStore.setCurrentTab(0)}
                                 >
                                     Back
+                                </Button>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    style={{
+                                        width: '150px',
+                                    }}
+                                    onClick={() => handleSave()}
+                                >
+                                    Save
                                 </Button>
                             </div>
                         </Container>

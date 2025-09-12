@@ -22,19 +22,19 @@ function Menu() {
             <div className="menu-container">
                 <div className="menu-box" onClick={() => uiStore.setCurrentTab(1)}>
                     <div className="icon"><BasicLight /></div>
-                    <div className="label">Basic Lighting</div>
+                    <div className="label">Basic Lights</div>
                     <div className="arrow"><ArrowForwardIosIcon /></div>
                 </div>
 
                 <div className="menu-box" onClick={() => uiStore.setCurrentTab(2)}>
                     <div className="icon"><Colour /></div>
-                    <div className="label">Color Lab</div>
+                    <div className="label">Color Lights</div>
                     <div className="arrow"><ArrowForwardIosIcon /></div>
                 </div>
 
                 <div className="menu-box" onClick={() => uiStore.setCurrentTab(3)}>
                     <div className="icon"><Special /></div>
-                    <div className="label">Special Effects</div>
+                    <div className="label">Special Lights</div>
                     <div className="arrow"><ArrowForwardIosIcon /></div>
                 </div>
             </div>

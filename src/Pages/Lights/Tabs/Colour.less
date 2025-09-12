@@ -1,0 +1,55 @@
+body {
+    .Colour {
+        .main {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            max-width: 100%;
+            max-height: 100%;
+
+            .container {
+                background-color: white;
+                min-height: fit-content;
+                border-radius: 15px;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                font-size: larger;
+                flex: 1 1 auto;
+
+                .title {
+                    font-size: 32px;
+                    padding-bottom: 20px;
+                    font-family: 'Gaiatype', sans-serif;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    svg {
+                        margin-right: 10px;
+                    }
+                }
+
+                .Divider {
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .content {
+                    height: fit-content;
+                    padding-top: 20px;
+                }
+
+                .footer {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+                    align-items: end;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

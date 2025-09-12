@@ -2,15 +2,28 @@ import { Cover, NewCover, SeverityEnum, Tent, TentLocation, TentStats, TentTypeE
 import { makeAutoObservable } from 'mobx';
 
 class DataStore {
+    //Tent and Covers Data
     private tent: Tent | undefined = undefined;
     private tentLocation: TentLocation | undefined = undefined;
+
     private tentStats: TentStats | undefined = undefined;
     private wind: number = 70;
     private severity: SeverityEnum | undefined = undefined;
+
     private covers: Cover[] = [];
     private coverIdCounter: number = 0;
+
     private static dangerCells = [0, 1, 9, 10, 18, 19, 27, 28, 36, 37, 5, 6, 7];
     private static warningCells = [2, 11, 20, 29, 38, 45, 46, 47, 4, 8, 14, 15, 16];
+
+    //Lighting Data
+    private lightingMode: 'basic' | 'colour' | 'special' = 'basic';
+
+    private light: 'on' | 'off' = 'off';
+    private tempMode: 'cold' | 'warm' = 'cold';
+    private brightness: number = 100;
+    private autoMode: boolean = false;
+    private nightMode: boolean = false;
 
     constructor() {
         this.tent = {
@@ -30,9 +43,17 @@ class DataStore {
         this.wind = 70;
         this.severity = undefined;
         this.covers = [];
+        this.coverIdCounter = 0;
+        this.lightingMode = 'basic';
+        this.light = 'off';
+        this.tempMode = 'cold';
+        this.brightness = 100;
+        this.autoMode = false;
+        this.nightMode = false;
         makeAutoObservable(this);
     }
 
+    //Tent and Covers Getters and Setters
     public getTent(): Tent | undefined {
         return this.tent;
     }
@@ -106,6 +127,55 @@ class DataStore {
 
     public getWarningCells(): number[] {
         return DataStore.warningCells;
+    }
+
+    //Lighting Getters and Setters
+    public getLightingMode(): 'basic' | 'colour' | 'special' {
+        return this.lightingMode;
+    }
+    
+    public setLightingMode(mode: 'basic' | 'colour' | 'special'): void {
+        this.lightingMode = mode;
+    }
+
+    public getLight(): 'on' | 'off' {
+        return this.light;
+    }
+
+    public setLight(state: 'on' | 'off'): void {
+        this.light = state;
+    }
+
+    public getTempMode(): 'cold' | 'warm' {
+        return this.tempMode;
+    }
+
+    public setTempMode(mode: 'cold' | 'warm'): void {
+        this.tempMode = mode;
+    }
+
+    public getBrightness(): number {
+        return this.brightness;
+    }
+
+    public setBrightness(level: number): void {
+        this.brightness = level;
+    }
+
+    public getAutoMode(): boolean {
+        return this.autoMode;
+    }
+
+    public setAutoMode(state: boolean): void {
+        this.autoMode = state;
+    }
+
+    public getNightMode(): boolean {
+        return this.nightMode;
+    }
+
+    public setNightMode(state: boolean): void {
+        this.nightMode = state;
     }
 }
 
