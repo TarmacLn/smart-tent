@@ -71,7 +71,7 @@ export default function Map() {
             sunshineRange = [40, 70];
             groundRange = [60, 90];
             dataStore.setWind(randomRange(20, 60));
-            dataStore.setSeverity(SeverityEnum.Warning);    
+            dataStore.setSeverity(SeverityEnum.Warning);
         } else {
             // normal
             humidityRange = [40, 70];
@@ -131,25 +131,23 @@ export default function Map() {
     }, []);
 
     return (
-        <Grid xs={9} item>
-            <Container className="banner" sx={{ p: 0 }}>
-                <Box className="map-container">
-                    <Box className="map" />
-                    <Box className="grid-overlay">
-                        {Array.from({ length: rows * cols }).map((_, index) => {
-                            const sel = selectedCells.includes(index);
-                            const warning = warningCells.includes(index);
-                            const danger = dangerCells.includes(index);
-                            const classes = sel ? 'selected' : danger ? 'danger' : warning ? 'warning' : '';
-                            return (
-                                <Box key={index} onClick={() => handleCellClick(index)} className={classes} />
+        <Box className="banner" sx={{ p: 0 }}>
+            <Box className="map-container">
+                <Box className="map" />
+                <Box className="grid-overlay">
+                    {Array.from({ length: rows * cols }).map((_, index) => {
+                        const sel = selectedCells.includes(index);
+                        const warning = warningCells.includes(index);
+                        const danger = dangerCells.includes(index);
+                        const classes = sel ? 'selected' : danger ? 'danger' : warning ? 'warning' : '';
+                        return (
+                            <Box key={index} onClick={() => handleCellClick(index)} className={classes} />
 
-                            );
-                        })}
-                    </Box>
+                        );
+                    })}
                 </Box>
-            </Container>
-        </Grid>
+            </Box>
+        </Box>
 
     );
 }

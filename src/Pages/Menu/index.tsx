@@ -83,8 +83,8 @@ function Menu() {
                         {text}
                     </Alert>
                 </Snackbar>
-                <Grid container>
-                    <Grid xs={8} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={8} >
                         <Box display='flex' justifyContent='flex-start'>
                             <IconButton
                                 aria-label='left-button'
@@ -109,7 +109,7 @@ function Menu() {
                             </IconButton>
                         </Box>
                     </Grid>
-                    <Grid xs={4}>
+                    <Grid size={4}>
                         <Box display='flex' justifyContent='flex-end'>
                             <IconButton
                                 aria-label='right-button'
@@ -120,8 +120,8 @@ function Menu() {
                             </IconButton>
                         </Box>
                     </Grid>
-                    <Grid container>
-                        <Grid xs={12}>
+                    <Grid container flexGrow={1}>
+                        <Grid size={12}>
                             <Box
                                 display='flex'
                                 justifyContent='center'
@@ -130,7 +130,7 @@ function Menu() {
                                 Smart Tent
                             </Box>
                         </Grid>
-                        <Grid xs={12} item>
+                        <Grid size={12} >
                             <Container className='container' color='primary'>
                                 <div className='menu'>
                                     <br />

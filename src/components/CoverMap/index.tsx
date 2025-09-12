@@ -39,7 +39,7 @@ export default function CoverMap() {
     }, []);
 
     return (
-        <Grid xs={9} item>
+        <Grid size={9}>
             <Container className="banner" sx={{ p: 0 }}>
                 <Box className="map-container">
                     <Box className="map" />

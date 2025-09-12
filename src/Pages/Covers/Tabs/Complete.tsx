@@ -49,71 +49,70 @@ function Complete() {
                 color='black'
             />
             <div className='content'>
-                <Grid container>
-                    <Grid xs={12} item className='wrapper'>
+                <Grid container flexGrow={1}>
+                    <Grid size={12} className='wrapper'>
                         <Container className='banner'>
                             <Container className='container'>
-                                <Grid container spacing={1} className='stats'>
-                                    <Grid xs={6} className='box'>
+                                <Grid container flexGrow={1} spacing={1} className='stats'>
+                                    <Grid size={6} className='box'>
                                         <Grid container className='stats-grid' spacing={1}>
-                                            <Grid xs={12} className='title'>
+                                            <Grid size={12} className='title'>
                                                 Weather Conditions:
                                             </Grid>
-                                            <Grid xs={2}>
+                                            <Grid size={2}>
                                                 <Droplet />
                                             </Grid>
-                                            <Grid xs={7} className='humidity'>Humidity</Grid>
-                                            <Grid xs={3}>{humidity}%</Grid>
-                                            <Grid xs={2}>
+                                            <Grid size={7} className='humidity'>Humidity</Grid>
+                                            <Grid size={3}>{humidity}%</Grid>
+                                            <Grid size={2}>
                                                 <Sun />
                                             </Grid>
-                                            <Grid xs={7} className='sunshine'>Sunshine</Grid>
-                                            <Grid xs={3}>{sunshine}%</Grid>
-                                            <Grid xs={2}>
+                                            <Grid size={7} className='sunshine'>Sunshine</Grid>
+                                            <Grid size={3}>{sunshine}%</Grid>
+                                            <Grid size={2}>
                                                 <Air />
                                             </Grid>
-                                            <Grid xs={7} className='wind'>Wind</Grid>
-                                            <Grid xs={3}>{wind}%</Grid>
+                                            <Grid size={7} className='wind'>Wind</Grid>
+                                            <Grid size={3}>{wind}%</Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid xs={6} className='box'>
-                                        <Grid container className='stats-grid' spacing={1}>
-                                            <Grid xs={12} className='title'>
+                                    <Grid size={6} className='box'>
+                                        <Grid container flexGrow={1} className='stats-grid' spacing={1}>
+                                            <Grid size={12} className='title'>
                                                 Covers Used:
                                             </Grid>
-                                            <Grid xs={10}>Total Covers:</Grid>
-                                            <Grid xs={2}>{onTopCovers.length + aroundCovers.length}</Grid>
-                                            <Grid xs={10}> - Covers Above The Tent:</Grid>
-                                            <Grid xs={2}>{onTopCovers.length}</Grid>
-                                            <Grid xs={10}> - Covers Around The Tent:</Grid>
-                                            <Grid xs={2}>{aroundCovers.length}</Grid>
+                                            <Grid size={10}>Total Covers:</Grid>
+                                            <Grid size={2}>{onTopCovers.length + aroundCovers.length}</Grid>
+                                            <Grid size={10}> - Covers Above The Tent:</Grid>
+                                            <Grid size={2}>{onTopCovers.length}</Grid>
+                                            <Grid size={10}> - Covers Around The Tent:</Grid>
+                                            <Grid size={2}>{aroundCovers.length}</Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid xs={12}>
+                                    <Grid size={12}>
                                         <Divider />
                                     </Grid>
-                                    <Grid xs={12}>
-                                        <Grid container spacing={1}>
-                                            <Grid xs={12} className='title'>
+                                    <Grid size={12}>
+                                        <Grid container flexGrow={1} spacing={1}>
+                                            <Grid size={12} className='title'>
                                                 Recommendations:
                                             </Grid>
                                             {recommendation.map((rec, index) => (
                                                 <React.Fragment key={index}>
-                                                    <Grid xs={1}>
+                                                    <Grid size={1}>
                                                         <Skull />
                                                     </Grid>
-                                                    <Grid xs={11}>
+                                                    <Grid size={11}>
                                                         {rec}
                                                     </Grid>
                                                 </React.Fragment>
                                             ))}
                                         </Grid>
                                     </Grid>
-                                    <Grid xs={12} className='button'>
+                                    <Grid size={12} className='button'>
                                         <Button
                                             variant='contained'
                                             color='primary'
-                                            // className='button'
                                             style={{
                                                 width: '150px',
                                             }}

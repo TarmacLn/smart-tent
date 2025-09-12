@@ -29,13 +29,13 @@ function EditSelection() {
                 id={coverId}
             />
             <div className='content'>
-                <Grid container>
-                    <Grid md={7} xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={8} >
                         <CoverMap />
                     </Grid>
-                    <Grid md={5} xs={12} item>
-                        <Grid container className='right'>
-                            <Grid xs={12} item>
+                    <Grid size={4} >
+                        <Grid container flexGrow={1} className='right'>
+                            <Grid size={12} >
                                 <Container className='stats'>
                                     <div className='title'>
                                         Choose the cover you want to edit:

@@ -87,16 +87,16 @@ function TentDetails() {
                 color='white'
             />{' '}
             <div className='header'>
-                <Grid container>
-                    <Grid xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={12} >
                         <Container className='container' color='primary'>
                             <div className='title'>
                                 <Home /> Tent Details
                             </div>
                             <Divider />
                             <div className='content'>
-                                <Grid container>
-                                    <Grid xs={12} item>
+                                <Grid container flexGrow={1}>
+                                    <Grid size={12} >
                                         <Box className='box'>
                                             <br />
                                             Tent type:
@@ -131,9 +131,9 @@ function TentDetails() {
                                         </Box>
                                     </Grid>
                                 </Grid>
-                                <Divider orientation='vertical' flexItem/>
-                                <Grid container>
-                                    <Grid xs={12} item>
+                                <Divider orientation='vertical' flexItem />
+                                <Grid container flexGrow={1}>
+                                    <Grid size={12} >
                                         <Box className='box'>
                                             <br />
                                             Tent Size:
@@ -142,7 +142,6 @@ function TentDetails() {
                                                     value={size}
                                                     name="tentSize"
                                                     onChange={handleSizeChange}
-                                                    // row
                                                 >
                                                     <FormControlLabel value={2} control={<Radio />} label="Small (1 person)" />
                                                     <FormControlLabel value={3} control={<Radio />} label="Medium (2-3 persons)" />

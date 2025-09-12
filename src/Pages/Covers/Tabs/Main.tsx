@@ -42,40 +42,41 @@ function Main() {
                 color='black'
             />
             <div className='content'>
-                <Grid container>
-                    <Grid md={7} xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={8} >
                         <CoverMap />
                     </Grid>
-                    <Grid md={5} xs={12} item>
-                        <Grid container className='right'>
-                            <Grid xs={12} item>
+                    <Grid size={4} >
+                        <Grid container className='right' flexGrow={1}>
+                            <Grid size={12} >
                                 <Container className='stats'>
                                     <Grid
                                         container
                                         className='stats-grid'
                                         spacing={1}
+                                        flexGrow={1}
                                     >
-                                        <Grid xs={12} item className='title'>
+                                        <Grid size={12} className='title'>
                                             Covers:
                                         </Grid>
-                                        <Grid xs={12} item sx={{ mt: 1, mb: 1 }}>
+                                        <Grid size={12} sx={{ mt: 1, mb: 1 }}>
                                             <Divider />
                                         </Grid>
-                                        <Grid container spacing={2} xs={12} item className='cover-list'>
-                                            <Grid xs={11} item>
+                                        <Grid container spacing={2} size={12} className='cover-list'>
+                                            <Grid size={11} >
                                                 <div>On top of the tent:</div>
                                             </Grid>
-                                            <Grid xs={1} item>
+                                            <Grid size={1} >
                                                 <div>{onTopCovers.length}</div>
                                             </Grid>
-                                            <Grid xs={11} item>
+                                            <Grid size={11} >
                                                 <div>Around the tent:</div>
                                             </Grid>
-                                            <Grid xs={1} item>
+                                            <Grid size={1} >
                                                 <div>{aroundCovers.length}</div>
                                             </Grid>
                                         </Grid>
-                                        <Grid xs={12} item className='buttons'>
+                                        <Grid size={12} className='buttons'>
                                             <Button
                                                 variant='contained'
                                                 color='primary'
@@ -97,7 +98,7 @@ function Main() {
                                                 Edit cover
                                             </Button>
                                         </Grid>
-                                        <Grid xs={12} item className='buttons'>
+                                        <Grid size={12} className='buttons'>
                                             <Button
                                                 className='tip'
                                                 variant='outlined'
@@ -107,37 +108,37 @@ function Main() {
                                                 Open quick tips
                                             </Button>
                                         </Grid>
-                                        <Grid xs={12} item sx={{ mt: 1, mb: 1 }}>
+                                        <Grid size={12} sx={{ mt: 1, mb: 1 }}>
                                             <Divider />
                                         </Grid>
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Droplet />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Humidity</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{humidity}%</div>
                                         </Grid>
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Sun />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Sunshine</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{sunshine}%</div>
                                         </Grid>
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Air />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Wind</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{wind}%</div>
                                         </Grid>
-                                        <Grid xs={12} item className='button'>
+                                        <Grid size={12} className='button'>
                                             <Button
                                                 variant='contained'
                                                 color='primary'
