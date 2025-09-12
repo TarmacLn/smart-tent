@@ -20,6 +20,15 @@ export enum CoverSizeEnum {
     Large = 4, //4x5
 }
 
+export enum LightModeEnum {
+    Static = 'static',
+    SlowFade = 'slowFade',
+    FastFade = 'fastFade',
+    Twinkle = 'twinkle',
+    InWaves = 'inWaves',
+    Flashing = 'flashing',
+}
+
 export interface Tent {
     size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;
