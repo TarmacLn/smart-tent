@@ -26,6 +26,18 @@ export enum LightModeEnum {
     Flashing = 'flashing',
 }
 
+export enum SpecialThemeEnum {
+    RustlingLeaves = 'rustlingLeaves',
+    Lightning = 'lightning',
+    Forest = 'forest',
+    Party = 'party',
+    Birthday = 'birthday',
+    Disco = 'disco',
+    Sunrise = 'sunrise',
+    Sunset = 'sunset',
+    Dreamland = 'dreamland',
+}
+
 export interface Tent {
     size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;
@@ -54,4 +66,12 @@ export interface NewCover {
     name: string;
     type: CoverTypeEnum;
     size: CoverSizeEnum;
+}
+
+export interface Theme {
+    name: string;
+    description: string;
+    enum: SpecialThemeEnum;
+    colours: string[];
+    tab: number;
 }

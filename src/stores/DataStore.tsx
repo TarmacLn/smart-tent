@@ -1,4 +1,4 @@
-import { Cover, LightModeEnum, NewCover, SeverityEnum, Tent, TentLocation, TentStats, TentTypeEnum } from './types';
+import { Cover, LightModeEnum, NewCover, SeverityEnum, SpecialThemeEnum, Tent, TentLocation, TentStats, TentTypeEnum, Theme } from './types';
 import { makeAutoObservable } from 'mobx';
 
 class DataStore {
@@ -29,6 +29,73 @@ class DataStore {
     private lightMode: LightModeEnum = LightModeEnum.Static;
     private colours: string[] = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
 
+    private static themes: Theme[] = [
+        {
+            name: 'Rustling Leaves',
+            description: 'A calming theme that mimics the gentle rustling of leaves in a forest.',
+            enum: SpecialThemeEnum.RustlingLeaves,
+            colours: ['#A3C1AD', '#6B8E23', '#556B2F'],
+            tab: 0,
+        },
+        {
+            name: 'Lightning',
+            description: 'An electrifying theme that simulates the sudden flashes of lightning during a storm.',
+            enum: SpecialThemeEnum.Lightning,
+            colours: ['#FFFFFF', '#FFFF00', '#ADD8E6'],
+            tab: 0,
+        },
+        {
+            name: 'Forest',
+            description: 'A serene theme that captures the essence of a peaceful forest environment.',
+            enum: SpecialThemeEnum.Forest,
+            colours: ['#228B22', '#006400', '#8FBC8F'],
+            tab: 0,
+        },
+        {
+            name: 'Party',
+            description: 'A vibrant theme that brings the energy and excitement of a party to life.',
+            enum: SpecialThemeEnum.Party,
+            colours: ['#FF69B4', '#FFD700', '#00FFFF'],
+            tab: 1,
+        },
+        {
+            name: 'Birthday',
+            description: 'A cheerful theme that celebrates birthdays with bright and festive colors.',
+            enum: SpecialThemeEnum.Birthday,
+            colours: ['#FFB6C1', '#FFA500', '#FFFFE0'],
+            tab: 1,
+        },
+        {
+            name: 'Disco',
+            description: 'A groovy theme that captures the flashy and fun atmosphere of a disco dance floor.',
+            enum: SpecialThemeEnum.Disco,
+            colours: ['#FF00FF', '#00FF00', '#0000FF'],
+            tab: 1,
+        },
+        {
+            name: 'Sunrise',
+            description: 'A warm theme that reflects the beautiful colors of a sunrise.',
+            enum: SpecialThemeEnum.Sunrise,
+            colours: ['#FF4500', '#FFD700', '#FF69B4'],
+            tab: 2,
+        },
+        {
+            name: 'Sunset',
+            description: 'A soothing theme that captures the tranquil colors of a sunset.',
+            enum: SpecialThemeEnum.Sunset,
+            colours: ['#FF6347', '#FF8C00', '#FF1493'],
+            tab: 2,
+        },
+        {
+            name: 'Dreamland',
+            description: 'A mystical theme that evokes the enchanting ambiance of a dreamlike state.',
+            enum: SpecialThemeEnum.Dreamland,
+            colours: ['#8A2BE2', '#4B0082', '#7B68EE'],
+            tab: 2,
+        },
+    ];
+    private specialTheme: SpecialThemeEnum = DataStore.themes[0].enum;
+
     constructor() {
         this.tent = {
             size: 2,
@@ -57,6 +124,7 @@ class DataStore {
         this.colourMode = 'single';
         this.lightMode = LightModeEnum.Static;
         this.colours = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
+        this.specialTheme = DataStore.themes[0].enum;
         makeAutoObservable(this);
     }
 
@@ -206,6 +274,18 @@ class DataStore {
 
     public setColours(colours: string[]): void {
         this.colours = colours;
+    }
+
+    public getSpecialTheme(): SpecialThemeEnum {
+        return this.specialTheme;
+    }
+
+    public setSpecialTheme(theme: SpecialThemeEnum): void {
+        this.specialTheme = theme;
+    }
+
+    public getTheme(themeEnum: SpecialThemeEnum): Theme | undefined {
+        return DataStore.themes.find(theme => theme.enum === themeEnum);
     }
 }
 
