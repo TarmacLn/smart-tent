@@ -176,7 +176,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Light />

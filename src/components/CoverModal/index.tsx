@@ -82,7 +82,7 @@ function CoverModal({
         >
             <Box className="CoverModal">
                 <div className="wrapper">
-                    <div className="title"><Shield /> Add Cover</div>
+                    <div className="title"><Shield /> {type === 'edit' ? 'Edit Cover' : 'Add Cover'}</div>
                     <Divider sx={{ width: '100%' }} />
                     <div className="content">
                         <div className="text">

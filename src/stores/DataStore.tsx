@@ -94,7 +94,7 @@ class DataStore {
             tab: 2,
         },
     ];
-    private specialTheme: SpecialThemeEnum = undefined as unknown as SpecialThemeEnum;
+    private specialTheme: SpecialThemeEnum | undefined = undefined;
 
     constructor() {
         this.tent = {
@@ -276,11 +276,11 @@ class DataStore {
         this.colours = colours;
     }
 
-    public getSpecialTheme(): SpecialThemeEnum {
+    public getSpecialTheme(): SpecialThemeEnum | undefined {
         return this.specialTheme;
     }
 
-    public setSpecialTheme(theme: SpecialThemeEnum): void {
+    public setSpecialTheme(theme: SpecialThemeEnum | undefined): void {
         this.specialTheme = theme;
     }
 
