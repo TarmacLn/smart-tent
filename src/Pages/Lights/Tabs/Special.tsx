@@ -15,10 +15,11 @@ import Sunset from '../../../assets/Sunset.svg';
 import Dreamland from '../../../assets/Dreamland.svg';
 import { SpecialThemeEnum } from '../../../stores/types';
 import ThemePreview from '../../../components/ThemePreview';
+import { useNavigate } from 'react-router-dom';
 
 export default function Special() {
     const [value, setValue] = useState(0);
-    const [selectedTheme, setSelectedTheme] = useState<SpecialThemeEnum | undefined>(SpecialThemeEnum.RustlingLeaves);
+    const [selectedTheme, setSelectedTheme] = useState<SpecialThemeEnum | undefined>(undefined);
 
     useEffect(() => {
         const themeEnum = dataStore.getSpecialTheme();
@@ -41,11 +42,14 @@ export default function Special() {
     };
     const image = imageMap[selectedTheme as SpecialThemeEnum] ?? <div>No Theme Selected</div>;
 
+    const navigate = useNavigate();
+
     const handleSave = () => {
         if (selectedTheme) {
             dataStore.setSpecialTheme(selectedTheme);
             dataStore.setLightingMode('special');
             uiStore.setCurrentTab(0);
+            navigate('/menu');
         }
     };
 

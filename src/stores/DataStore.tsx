@@ -94,7 +94,7 @@ class DataStore {
             tab: 2,
         },
     ];
-    private specialTheme: SpecialThemeEnum = DataStore.themes[0].enum;
+    private specialTheme: SpecialThemeEnum = undefined as unknown as SpecialThemeEnum;
 
     constructor() {
         this.tent = {
@@ -124,7 +124,7 @@ class DataStore {
         this.colourMode = 'single';
         this.lightMode = LightModeEnum.Static;
         this.colours = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
-        this.specialTheme = DataStore.themes[0].enum;
+        this.specialTheme = undefined as unknown as SpecialThemeEnum;
         makeAutoObservable(this);
     }
 

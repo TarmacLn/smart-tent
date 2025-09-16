@@ -5,7 +5,7 @@ import { Box, Button, Container, Divider, Grid, Popover, ToggleButton, ToggleBut
 import ColourIcon from '../../../assets/Colour.svg';
 import './Colour.less';
 import { LightModeEnum } from '../../../stores/types';
-import { data } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 
 export default function Colour() {
     const [colorMode, setColorMode] = useState<'single' | 'multiple'>('single');
@@ -50,12 +50,14 @@ export default function Colour() {
         }
     }, []);
 
+    const navigate = useNavigate();
     const handleSave = () => {
         dataStore.setColourMode(colorMode);
         dataStore.setLightMode(lightMode);
         dataStore.setColours(previewColors);
         dataStore.setLightingMode('colour');
         uiStore.setCurrentTab(0);
+        navigate('/menu');
     };
 
     return (

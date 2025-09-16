@@ -4,7 +4,7 @@ import { dataStore, uiStore } from '../../../stores';
 import { Box, Button, Container, Divider, Slider, Switch, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
 import Light from '../../../assets/BasicLight.svg';
 import './Basic.less';
-import { data } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 
 export default function Basic() {
     const [light, setLight] = useState<'on' | 'off'>('off');
@@ -47,6 +47,7 @@ export default function Basic() {
         }
     }, [autoMode, nightMode]);
 
+    const navigate = useNavigate();
     const handleSave = () => {
         dataStore.setLight(light);
         dataStore.setTempMode(tempMode);
@@ -55,6 +56,7 @@ export default function Basic() {
         dataStore.setNightMode(nightMode);
         dataStore.setLightingMode('basic');
         uiStore.setCurrentTab(0);
+        navigate('/menu');
     };
 
     return (
