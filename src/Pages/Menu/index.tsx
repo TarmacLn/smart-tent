@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Menu.less';
 import {
     Alert,
+    Badge,
+    badgeClasses,
     Box,
-    Button,
     Container,
     Grid,
     IconButton,
-    Modal,
     Snackbar,
-    Typography,
+    styled,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Info from '../../assets/Info.svg';
@@ -21,23 +21,29 @@ import Tent from '../../assets/Tent.svg';
 import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
+import Lock from '../../assets/Lock.svg';
 import { uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
 import RefreshModal from '../../components/RefreshModal';
 
+const BadgeStyled = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
+  }
+`;
+
 function Menu() {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [text, setText] = useState('');
+    const disableMenu = !uiStore.TentReady || !uiStore.StakeReady;
 
     useEffect(() => {
         uiStore.setCurrentTab(0);
-        if (uiStore.TentSuccess === true) {
-            setText('Tent Location set successfully!');
-            setOpen(true);
-        } else if (uiStore.StakeSuccess === true) {
-            setText('Tent Stakes set successfully!');
+        if (uiStore.Success === true) {
+            setText(uiStore.SuccessText);
             setOpen(true);
         }
     }, []);
@@ -59,16 +65,16 @@ function Menu() {
                     open={open}
                     autoHideDuration={4000}
                     onClose={() => {
-                        uiStore.setTentSuccess(false);
-                        uiStore.setStakeSuccess(false);
+                        uiStore.setSuccess(false);
+                        uiStore.setSuccessText('');
                         setOpen(false);
                     }}
                     anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 >
                     <Alert
                         onClose={() => {
-                            uiStore.setTentSuccess(false);
-                            uiStore.setStakeSuccess(false);
+                            uiStore.setSuccess(false);
+                            uiStore.setSuccessText('');
                             setOpen(false);
                         }}
                         severity='success'
@@ -77,8 +83,8 @@ function Menu() {
                         {text}
                     </Alert>
                 </Snackbar>
-                <Grid container>
-                    <Grid xs={8} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={8} >
                         <Box display='flex' justifyContent='flex-start'>
                             <IconButton
                                 aria-label='left-button'
@@ -103,19 +109,19 @@ function Menu() {
                             </IconButton>
                         </Box>
                     </Grid>
-                    <Grid xs={4}>
+                    <Grid size={4}>
                         <Box display='flex' justifyContent='flex-end'>
                             <IconButton
                                 aria-label='right-button'
                                 color='secondary'
-                                // onClick={() => navigate('/right')}
+                            // onClick={() => navigate('/right')}
                             >
                                 <Exit />
                             </IconButton>
                         </Box>
                     </Grid>
-                    <Grid container>
-                        <Grid xs={12}>
+                    <Grid container flexGrow={1}>
+                        <Grid size={12}>
                             <Box
                                 display='flex'
                                 justifyContent='center'
@@ -124,7 +130,7 @@ function Menu() {
                                 Smart Tent
                             </Box>
                         </Grid>
-                        <Grid xs={12} item>
+                        <Grid size={12} >
                             <Container className='container' color='primary'>
                                 <div className='menu'>
                                     <br />
@@ -132,6 +138,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/setup')}
+                                        className='menu-item'
                                     >
                                         <Tent />
                                         <div className='imageLA' />
@@ -141,24 +148,42 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/stakes')}
+                                        disabled={!uiStore.TentReady}
+                                        className='menu-item'
                                     >
                                         <Stake />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={uiStore.TentReady}
+                                        />
                                     </IconButton>
                                     <br />
                                     <IconButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
+                                        disabled={disableMenu}
+                                        className='menu-item'
                                     >
                                         <Covers />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
                                     </IconButton>
                                     <br />
                                     <IconButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
+                                        disabled={disableMenu}
+                                        className='menu-item'
                                     >
                                         <Light />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
                                     </IconButton>
                                     <br />
                                 </div>

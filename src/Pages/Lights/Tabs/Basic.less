@@ -1,0 +1,154 @@
+body {
+    .Basic {
+        .main {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            max-width: 100%;
+            max-height: 100%;
+
+            .container {
+                background-color: white;
+                min-height: fit-content;
+                border-radius: 15px;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                font-size: larger;
+                flex: 1 1 auto;
+
+                .title {
+                    font-size: 32px;
+                    padding-bottom: 20px;
+                    font-family: 'Gaiatype', sans-serif;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    svg {
+                        margin-right: 10px;
+                    }
+                }
+
+                .Divider {
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .content {
+                    height: fit-content;
+                    padding-top: 20px;
+
+                    .label {
+                        text-align: left;
+                        font-weight: 600;
+                    }
+
+                    .left {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2;
+
+                        .slider {
+                            width: 175px;
+                        }
+
+                        .control {
+                            display: flex;
+                            justify-content: flex-end;
+                            padding-right: 8px;
+                        }
+
+                        .toggle {
+                            background-color: #f0f0f0;
+                            border-radius: 8px;
+                            height: 50px;
+
+                            .toggle-button {
+                                min-width: 90px;
+                            }
+
+                            .MuiToggleButton-root {
+                                color: #333;
+                                font-weight: bold;
+                            }
+
+                            .MuiToggleButton-root.Mui-selected[value="on"] {
+                                background-color: #00aaff;
+                                color: #fff;
+                            }
+
+                            .MuiToggleButton-root.Mui-selected[value="off"] {
+                                background-color: #6c757d;
+                                color: #fff;
+                            }
+
+                            .MuiToggleButton-root.Mui-selected[value="warm"] {
+                                background-color: #ff8c42;
+                                color: #111;
+                            }
+
+                            .MuiToggleButton-root.Mui-selected[value="cold"] {
+                                background-color: #00aaff;
+                                color: #fff;
+                            }
+
+                            .MuiToggleButton-root:disabled {
+                                opacity: 0.5;
+                                cursor: not-allowed;
+                            }
+                        }
+
+                        .light-preview {
+                            width: 175px;
+                            height: 175px;
+                            border-radius: 50%;
+                            border: 2px solid rgb(126, 126, 126);
+                            transition: background 220ms ease, box-shadow 220ms ease, opacity 180ms ease;
+                            display: block;
+                            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+                        }
+
+                        // OFF
+                        .light-preview.off {
+                            background: linear-gradient(180deg, #7f7f7f, #7f7f7f);
+                            box-shadow: none;
+                        }
+
+                        // ON + COLD
+                        .light-preview.on.cold {
+                            background: linear-gradient(180deg, #bfeeff, #00aaff);
+                            box-shadow: 0 8px 24px rgba(0, 170, 255, 0.18);
+                        }
+
+                        // ON + WARM
+                        .light-preview.on.warm {
+                            background: linear-gradient(180deg, #ffe7c6, #ff8c42);
+                            box-shadow: 0 8px 24px rgba(255, 140, 66, 0.16);
+                        }
+                    }
+
+                    .right {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 1rem;
+                        height: 100%;
+
+                        
+                    }
+                }
+
+                .footer {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+                    align-items: end;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+}

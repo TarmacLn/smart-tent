@@ -25,41 +25,41 @@ function TentLocation() {
                 color='black'
             />
             <div className='content'>
-                <Grid container>
-                    <Grid md={7} xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={8} >
                         <Map />
                     </Grid>
-                    <Grid md={5} xs={12} item>
-                        <Grid container className='right'>
-                            <Grid xs={6} item>
+                    <Grid size={4} >
+                        <Grid container className='right' flexGrow={1}>
+                            <Grid size={12} >
                                 <Container className='stats'>
-                                    <Grid container spacing={1} className='stats-grid'>
-                                        <Grid xs={12} item>
+                                    <Grid container spacing={1} className='stats-grid' flexGrow={1}>
+                                        <Grid size={12} >
                                             <div className='attention'>Attention!</div>
                                         </Grid>
-                                        <Grid xs={12} item>
+                                        <Grid size={12} >
                                             <Divider />
                                         </Grid>
-                                        <Grid xs={12} item>
+                                        <Grid size={12} >
                                             <div className='red'>Red Cells: Danger</div>
                                         </Grid>
-                                        <Grid xs={12} item>
+                                        <Grid size={12} >
                                             <div className='yellow'>Yellow Cells : Warning</div>
                                         </Grid>
-                                        <Grid xs={12} item>
+                                        <Grid size={12} >
                                             <Divider />
                                         </Grid>
                                         {
                                             severity === SeverityEnum.Danger ? (
-                                                <Grid xs={12} item>
+                                                <Grid size={12} >
                                                     <div className='red'>This area is dangerous!</div>
                                                 </Grid>
                                             ) : severity === SeverityEnum.Warning ? (
-                                                <Grid xs={12} item>
+                                                <Grid size={12} >
                                                     <div className='yellow'>This area is risky.</div>
                                                 </Grid>
                                             ) : severity === SeverityEnum.Normal ? (
-                                                <Grid xs={12} item>
+                                                <Grid size={12} >
                                                     <div className='green'>This area is safe.</div>
                                                 </Grid>
                                             ) : null
@@ -67,41 +67,42 @@ function TentLocation() {
                                     </Grid>
                                 </Container>
                             </Grid>
-                            <Grid xs={6} item>
+                            <Grid size={12} >
                                 <Container className='stats'>
                                     <Grid
                                         container
                                         className='stats-grid'
                                         spacing={1}
+                                        flexGrow={1}
                                     >
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Droplet />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Humidity</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{humidity}%</div>
                                         </Grid>
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Sun />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Sunshine</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{sunshine}%</div>
                                         </Grid>
-                                        <Grid xs={3} item>
+                                        <Grid size={3} >
                                             <Ground />
                                         </Grid>
-                                        <Grid xs={7} item>
+                                        <Grid size={7} >
                                             <div>Ground Stability</div>
                                         </Grid>
-                                        <Grid xs={2} item>
+                                        <Grid size={2} >
                                             <div>{groundStability}%</div>
                                         </Grid>
-                                        <Grid xs={12} item className='button'>
+                                        <Grid size={12}  className='button'>
                                             <Button
                                                 variant='contained'
                                                 color='primary'

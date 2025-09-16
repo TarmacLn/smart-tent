@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Grid, Container, Box } from '@mui/material';
 import './Map.less';
 import React from 'react';
-import { dataStore } from '../../stores';
+import { dataStore, uiStore } from '../../stores';
 import { SeverityEnum } from '../../stores/types';
 
 export default function Map() {
@@ -12,6 +12,14 @@ export default function Map() {
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
     const dangerCells = dataStore.getDangerCells();
     const warningCells = dataStore.getWarningCells();
+    const severity = dataStore.getSeverity();
+
+    useEffect(() => {
+        if (severity === SeverityEnum.Danger || severity === undefined) {
+            uiStore.setTentReady(false);
+            uiStore.setStakeReady(false);
+        }
+    }, [severity]);
 
     const getGroupFor = (index: number, size: number): number[] => {
         const r = Math.floor(index / cols);
@@ -55,18 +63,21 @@ export default function Map() {
             humidityRange = [70, 100];
             sunshineRange = [20, 50];
             groundRange = [30, 70];
+            dataStore.setWind(randomRange(40, 80));
             dataStore.setSeverity(SeverityEnum.Danger);
         } else if (severity === SeverityEnum.Warning) {
             // yellow cells
             humidityRange = [55, 85];
             sunshineRange = [40, 70];
             groundRange = [60, 90];
-            dataStore.setSeverity(SeverityEnum.Warning);    
+            dataStore.setWind(randomRange(20, 60));
+            dataStore.setSeverity(SeverityEnum.Warning);
         } else {
             // normal
             humidityRange = [40, 70];
             sunshineRange = [60, 85];
             groundRange = [85, 100];
+            dataStore.setWind(randomRange(0, 40));
             dataStore.setSeverity(SeverityEnum.Normal);
         }
 
@@ -120,25 +131,23 @@ export default function Map() {
     }, []);
 
     return (
-        <Grid xs={9} item>
-            <Container className="banner" sx={{ p: 0 }}>
-                <Box className="map-container">
-                    <Box className="map" />
-                    <Box className="grid-overlay">
-                        {Array.from({ length: rows * cols }).map((_, index) => {
-                            const sel = selectedCells.includes(index);
-                            const warning = warningCells.includes(index);
-                            const danger = dangerCells.includes(index);
-                            const classes = sel ? 'selected' : danger ? 'danger' : warning ? 'warning' : '';
-                            return (
-                                <Box key={index} onClick={() => handleCellClick(index)} className={classes} />
+        <Box className="banner" sx={{ p: 0 }}>
+            <Box className="map-container">
+                <Box className="map" />
+                <Box className="grid-overlay">
+                    {Array.from({ length: rows * cols }).map((_, index) => {
+                        const sel = selectedCells.includes(index);
+                        const warning = warningCells.includes(index);
+                        const danger = dangerCells.includes(index);
+                        const classes = sel ? 'selected' : danger ? 'danger' : warning ? 'warning' : '';
+                        return (
+                            <Box key={index} onClick={() => handleCellClick(index)} className={classes} />
 
-                            );
-                        })}
-                    </Box>
+                        );
+                    })}
                 </Box>
-            </Container>
-        </Grid>
+            </Box>
+        </Box>
 
     );
 }

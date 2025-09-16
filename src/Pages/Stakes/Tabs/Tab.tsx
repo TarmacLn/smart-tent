@@ -29,33 +29,40 @@ export function Tab(
         loadingProgress?: number;
     }
 ) {
-    const navigate = useNavigate();
     const finishEnabled = id === 4 && loadingProgress === 4;
+    const navigate = useNavigate();
+    const onClickBack = () => {
+        if (id === 0) {
+            navigate('/menu');
+        } else {
+            uiStore.setCurrentTab(id - 1);
+        }
+    };
 
     return (
         <div className='Instructions'>
             <Header
                 title='Stake Instructions'
-                onClickBack={() => uiStore.setCurrentTab(0)}
-                color='white'
+                onClickBack={onClickBack}
+                color='black'
             />
             <div className='main'>
-                <Grid container>
-                    <Grid xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={12} >
                         <Container className='container' color='primary'>
                             <div className='title'>
                                 <Stake /> Tent Stakes
                             </div>
                             <Divider />
                             <div className='content'>
-                                <Grid container>
-                                    <Grid xs={12} className='step'>
+                                <Grid container flexGrow={1}>
+                                    <Grid size={12} className='step'>
                                         {title}
                                     </Grid>
-                                    <Grid xs={6} className='instructions'>
+                                    <Grid size={6} className='instructions'>
                                         {instructions}
                                     </Grid>
-                                    <Grid xs={6} className={`image${id}`}></Grid>
+                                    <Grid size={6} className={`image${id}`}></Grid>
                                 </Grid>
                             </div>
                             <div className='footer'>

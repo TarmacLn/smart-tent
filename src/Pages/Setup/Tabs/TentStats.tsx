@@ -37,63 +37,63 @@ function TentStats() {
                 color='black'
             />
             <div className='content'>
-                <Grid container>
-                    <Grid xs={12} item>
+                <Grid container flexGrow={1}>
+                    <Grid size={12} >
                         <Container className='banner'>
                             <Container className='container'>
-                                <Grid container spacing={1} className='stats'>
-                                    <Grid xs={12}>
+                                <Grid container spacing={1} className='stats' flexGrow={1}>
+                                    <Grid size={12}>
                                         Average stats of the chosen location:
                                     </Grid>
-                                    <Grid xs={1}>
+                                    <Grid size={1}>
                                         <Droplet />
                                     </Grid>
-                                    <Grid xs={7} className='humidity'>Average Humidity</Grid>
-                                    <Grid xs={2}>{humidity}%</Grid>
-                                    <Grid xs={2} className='humidity'>
+                                    <Grid size={7} className='humidity'>Average Humidity</Grid>
+                                    <Grid size={2}>{humidity}%</Grid>
+                                    <Grid size={2} className='humidity'>
                                         Ideal: 60%
                                     </Grid>
-                                    <Grid xs={1}>
+                                    <Grid size={1}>
                                         <Sun />
                                     </Grid>
-                                    <Grid xs={7} className='sunshine'>Average Sunshine</Grid>
-                                    <Grid xs={2}>{sunshine}%</Grid>
-                                    <Grid xs={2} className='sunshine'>
+                                    <Grid size={7} className='sunshine'>Average Sunshine</Grid>
+                                    <Grid size={2}>{sunshine}%</Grid>
+                                    <Grid size={2} className='sunshine'>
                                         Ideal: 75%
                                     </Grid>
-                                    <Grid xs={1}>
+                                    <Grid size={1}>
                                         <Ground />
                                     </Grid>
-                                    <Grid xs={7} className='groundStability'>Average Ground Stability</Grid>
-                                    <Grid xs={2}>{groundStability}%</Grid>
-                                    <Grid xs={2} className='groundStability'>
+                                    <Grid size={7} className='groundStability'>Average Ground Stability</Grid>
+                                    <Grid size={2}>{groundStability}%</Grid>
+                                    <Grid size={2} className='groundStability'>
                                         Ideal: 95%
                                     </Grid>
-                                    <Grid xs={12}>
+                                    <Grid size={12}>
                                         <Divider />
                                     </Grid>
                                     {
                                         severity === SeverityEnum.Warning ? (
-                                        <Grid container spacing={1}>
-                                            <Grid xs={1}>
+                                        <Grid container spacing={1} flexGrow={1}>
+                                            <Grid size={1}>
                                                 <Skull />
                                             </Grid>
-                                            <Grid xs={11} className='warning'>
+                                            <Grid size={11} className='warning'>
                                                 The chosen tent location is not recommended
                                             </Grid>
                                         </Grid>
                                         ) : severity === SeverityEnum.Normal ? (
-                                        <Grid container spacing={1}>
-                                            <Grid xs={1}>
+                                        <Grid container spacing={1} flexGrow={1}>
+                                            <Grid size={1}>
                                                 <Check />
                                             </Grid>
-                                            <Grid xs={11} className='normal'>
+                                            <Grid size={11} className='normal'>
                                                 The chosen tent location is recommended
                                             </Grid>
                                         </Grid>
                                         ) : null
                                     }
-                                    <Grid xs={12} className='button'>
+                                    <Grid size={12} className='button'>
                                         <Button
                                             variant='contained'
                                             color='primary'
@@ -102,7 +102,9 @@ function TentStats() {
                                                 width: '150px',
                                             }}
                                             onClick={() => {
-                                                uiStore.setTentSuccess(true);
+                                                uiStore.setSuccess(true);
+                                                uiStore.setSuccessText('Tent Setup completed successfully!');
+                                                uiStore.setTentReady(true);
                                                 navigate('/menu');
                                             }}
                                         >

@@ -2,8 +2,10 @@ import { makeAutoObservable } from 'mobx';
 
 class UIStore {
     private currentTab: number = 0;
-    private tentSuccess: boolean = false;
-    private stakeSuccess: boolean = false;
+    private success: boolean = false;
+    private successText: string = '';
+    private tentReady: boolean = false;
+    private stakeReady: boolean = false;
     private infoModal: boolean = false;
     private refreshModal: boolean = false;
     private sound: boolean = true;
@@ -16,12 +18,12 @@ class UIStore {
         return this.currentTab;
     }
 
-    get TentSuccess() {
-        return this.tentSuccess;
+    get Success() {
+        return this.success;
     }
 
-    get StakeSuccess() {
-        return this.stakeSuccess;
+    get SuccessText() {
+        return this.successText;
     }
 
     get InfoModal() {
@@ -36,16 +38,24 @@ class UIStore {
         return this.sound;
     }
 
+    get TentReady() {
+        return this.tentReady;
+    }
+
+    get StakeReady() {
+        return this.stakeReady;
+    }
+
     public setCurrentTab(currentTab: number): void {
         this.currentTab = currentTab;
     }
 
-    public setTentSuccess(tentSuccess: boolean): void {
-        this.tentSuccess = tentSuccess;
+    public setSuccess(success: boolean): void {
+        this.success = success;
     }
 
-    public setStakeSuccess(stakeSuccess: boolean): void {
-        this.stakeSuccess = stakeSuccess;
+    public setSuccessText(successText: string): void {
+        this.successText = successText;
     }
 
     public setInfoModal(infoModal: boolean): void {
@@ -58,6 +68,14 @@ class UIStore {
 
     public setSound(sound: boolean): void {
         this.sound = sound;
+    }
+
+    public setTentReady(tentReady: boolean): void {
+        this.tentReady = tentReady;
+    }
+
+    public setStakeReady(stakeReady: boolean): void {
+        this.stakeReady = stakeReady;
     }
 }
 

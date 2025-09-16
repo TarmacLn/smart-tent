@@ -12,12 +12,12 @@ interface HeaderProps {
     color: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onClickBack, title , color}) => {
+const Header: React.FC<HeaderProps> = ({ onClickBack, title, color }) => {
     const navigate = useNavigate();
     return (
         <div className='Header'>
-            <Grid container>
-                <Grid xs={2} item>
+            <Grid flexGrow={1} container>
+                <Grid size={2} >
                     <Box display='flex' justifyContent='flex-start'>
                         <IconButton
                             aria-label='left-button'
@@ -28,10 +28,10 @@ const Header: React.FC<HeaderProps> = ({ onClickBack, title , color}) => {
                         </IconButton>
                     </Box>
                 </Grid>
-                <Grid xs={8} item className='title' color={color}>
+                <Grid size={8} className='title' color={color}>
                     <div>{title}</div>
                 </Grid>
-                <Grid xs={2}>
+                <Grid size={2}>
                     <Box display='flex' justifyContent='flex-end'>
                         <IconButton
                             aria-label='right-button'

@@ -1,0 +1,103 @@
+body {
+    .Complete {
+        .header {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+
+            .title {
+                font-size: 2rem; // Set the font size
+                padding-bottom: 1rem;
+                font-family: 'Gaiatype', sans-serif; // Apply the custom font
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 20px;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+
+            .wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .banner {
+                background-image: url('../../../assets/map.png');
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                min-height: 700px;
+                max-width: 1000px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .container {
+                    background-color: white;
+                    min-height: 500px;
+                    max-width: 800px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    padding-top: 10px;
+                    .stats {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        padding: 30px;
+                        font-size: x-large;
+
+                        .box {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .title{
+                            margin-bottom: 20px;
+                            font-weight: 580;
+                        }
+
+                        .humidity{
+                            color: rgb(120, 206, 235);
+                        }
+                        
+                        .sunshine{
+                            color: orange;
+                        }
+                        .wind {
+                            color: rgb(118, 118, 118);
+                        }
+
+                        .warning {
+                            color: orange;
+                        }
+
+                        .normal {
+                            color: green;
+                        }
+                        
+                        .button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: flex-end;
+                        }
+                    }
+                }
+            }
+
+            .button {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-end;
+            }
+        }
+    }
+}

@@ -6,10 +6,12 @@
     width: 550px;
     height: 550px;
     aspect-ratio: 4 / 3;
+    /* ensures correct aspect ratio */
 }
 
 .map {
     background-image: url('../../assets/mapGrid.png');
+    /* adjust path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -18,7 +20,7 @@
     border: 3px solid #000;
 }
 
-.grid-overlay {
+.grid-overlay-cover {
     position: absolute;
     top: 3px;
     left: 3px;
@@ -30,18 +32,6 @@
     z-index: 2;
 }
 
-.grid-overlay div {
-    cursor: pointer;
-}
-
-.grid-overlay div.selected {
+.grid-overlay-cover div.selected {
     background-color: rgba(0, 0, 255, 0.3);
-}
-
-.grid-overlay div.danger {
-    background-color: rgba(255, 0, 0, 0.323);
-}
-
-.grid-overlay div.warning {
-    background-color: rgba(255, 255, 0, 0.518);
 }
