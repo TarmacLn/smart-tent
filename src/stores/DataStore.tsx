@@ -284,7 +284,7 @@ class DataStore {
         this.specialTheme = theme;
     }
 
-    public getTheme(themeEnum: SpecialThemeEnum): Theme | undefined {
+    public getTheme(themeEnum: SpecialThemeEnum | undefined): Theme | undefined {
         return DataStore.themes.find(theme => theme.enum === themeEnum);
     }
 }
