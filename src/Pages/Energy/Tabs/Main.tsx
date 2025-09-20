@@ -7,6 +7,7 @@ import { Divider, Grid } from "@mui/material";
 import Sun from '../../../assets/Sun.svg';
 import Air from '../../../assets/Air.svg';
 import Arrow from '@mui/icons-material/ArrowForwardIos';
+import { uiStore } from "../../../stores";
 
 function Main() {
     const navigate = useNavigate();
@@ -58,7 +59,7 @@ function Main() {
                         <Grid size={12}>
                             <Divider flexItem sx={{ width: '100%' }} />
                         </Grid>
-                        <Grid size={12} className="menu-item">
+                        <Grid size={12} className="menu-item" onClick={() => { uiStore.setCurrentTab(1); }}>
                             <Grid container spacing={2}>
                                 <Grid size={1}>
                                     <Sun />
@@ -73,7 +74,7 @@ function Main() {
                             </Grid>
                         </Grid>
                         <Divider flexItem sx={{ width: '100%' }} />
-                        <Grid size={12} className="menu-item">
+                        <Grid size={12} className="menu-item" onClick={() => { uiStore.setCurrentTab(2); }}>
                             <Grid container spacing={2}>
                                 <Grid size={1}>
                                     <Air />
