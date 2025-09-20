@@ -22,7 +22,7 @@ import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
 import Lock from '../../assets/Lock.svg';
-import { uiStore } from '../../stores';
+import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
 import RefreshModal from '../../components/RefreshModal';
@@ -42,6 +42,7 @@ function Menu() {
 
     useEffect(() => {
         uiStore.setCurrentTab(0);
+        dataStore.clearBasket();
         if (uiStore.Success === true) {
             setText(uiStore.SuccessText);
             setOpen(true);

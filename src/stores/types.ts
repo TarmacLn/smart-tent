@@ -38,6 +38,12 @@ export enum SpecialThemeEnum {
     Dreamland = 'dreamland',
 }
 
+export enum MealEnum {
+    Breakfast = 'breakfast',
+    Lunch = 'lunch',
+    Dinner = 'dinner',
+}
+
 export interface Tent {
     size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;
@@ -74,4 +80,27 @@ export interface Theme {
     enum: SpecialThemeEnum;
     colours: string[];
     tab: number;
+}
+
+export interface Food {
+    name: string;
+    description: string;
+    price: number;
+    meals: MealEnum[];
+    vegetarian: boolean;
+}
+
+export interface FoodItem {
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+    notes: string;
+}
+
+export interface Order {
+    items: FoodItem[];
+    total: number;
+    paymentMethod: string;
+    deliveryTime: Date;
 }
