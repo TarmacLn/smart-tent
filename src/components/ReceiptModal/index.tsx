@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import './ReceiptModal.less';
 import { useNavigate } from "react-router-dom";
 import { dataStore } from "../../stores";
+import CheckIcon from '@mui/icons-material/Check';
 
 function ReceiptModal({
     isVisible,
@@ -15,7 +16,7 @@ function ReceiptModal({
     total: number;
 }) {
     const [confirmed, setConfirmed] = useState(false);
-    const [paymentMethod, setPaymentMethod] = useState<string>('card');
+    const [paymentMethod, setPaymentMethod] = useState<string>('Card');
     const navigate = useNavigate();
 
     const handleOrder = () => {
@@ -42,14 +43,30 @@ function ReceiptModal({
                         {!confirmed &&
                             <>
                                 <div className="title">Payment Method</div>
-                                <RadioGroup
-                                    value={paymentMethod}
-                                    onChange={(e) => setPaymentMethod(e.target.value)}
+                                <ButtonGroup
+                                    color="error"
+                                    fullWidth
+                                    orientation="vertical"
                                 >
-                                    <FormControlLabel value="Card" control={<Radio />} label="Card" />
-                                    <FormControlLabel value="Cash" control={<Radio />} label="Cash" />
-                                    <FormControlLabel value="Apple Pay" control={<Radio />} label="Apple Pay" />
-                                </RadioGroup>
+                                    <Button
+                                        startIcon={paymentMethod === 'Card' ? <CheckIcon fontSize="small" /> : undefined}
+                                        onClick={() => setPaymentMethod('Card')}
+                                    >
+                                        Card
+                                    </Button>
+                                    <Button
+                                        startIcon={paymentMethod === 'Cash' ? <CheckIcon fontSize="small" /> : undefined}
+                                        onClick={() => setPaymentMethod('Cash')}
+                                    >
+                                        Cash
+                                    </Button>
+                                    <Button
+                                        startIcon={paymentMethod === 'Apple Pay' ? <CheckIcon fontSize="small" /> : undefined}
+                                        onClick={() => setPaymentMethod('Apple Pay')}
+                                    >
+                                        Apple Pay
+                                    </Button>
+                                </ButtonGroup>
                                 <div className="total">Pay total of {total.toFixed(2)}€ with {paymentMethod}</div>
                                 <div className="button">
                                     <Button
@@ -86,7 +103,7 @@ function ReceiptModal({
                     </div>
                 </div>
             </Box>
-        </Modal>
+        </Modal >
     );
 }
 

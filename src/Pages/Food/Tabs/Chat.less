@@ -1,0 +1,79 @@
+.Chat {
+    height: 100%;
+    flex: 1 0;
+    .content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .chat {
+            width: 40%;
+            height: 600px;
+            background-color: #f9e2bd;
+            border-radius: 10px;
+            border: #423233 4px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+
+            .messages {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .message {
+                    background-color: #fff;
+                    padding: 10px 15px;
+                    border-radius: 20px;
+                    max-width: 70%;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    word-wrap: break-word;
+
+                    &.me {
+                        align-self: flex-end;
+                        background-color: #d1e7dd;
+                    }
+
+                    &.them {
+                        align-self: flex-start;
+                        background-color: #f8d7da;
+                    }
+                }
+            }
+
+            .input-area {
+                width: 100%;
+                background-color: #fff;
+                border-top: #423233 4px solid;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .message-input {
+                    width: 85%;
+                    padding: 10px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .footer {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        .button {
+            margin-top: 10px;
+        }
+    }
+}

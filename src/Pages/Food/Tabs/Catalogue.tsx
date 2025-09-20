@@ -225,7 +225,11 @@ export default function Catalogue() {
                     </div>
                 </div>
                 <div className="buttons">
-                    <Button variant="contained" color="info" >
+                    <Button
+                        variant="contained"
+                        color="info"
+                        onClick={() => uiStore.setCurrentTab(2)}
+                    >
                         <Team /> Message Us
                     </Button>
                     <div>
