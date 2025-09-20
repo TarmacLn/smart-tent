@@ -1,0 +1,52 @@
+.ReceiptModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    background-color: #f9e2bd;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    border: #423233 4px solid;
+    border-radius: 10px;
+    color: #3c3c3c;
+    font-size: larger;
+
+    .wrapper {
+        height: 100%;
+        width: 100%;
+    }
+
+    .content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        font-family: 'Gaiatype', sans-serif;
+        
+        
+
+        .title {
+            font-size: 26px;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .time {
+            font-size: 22px;
+            color: green;
+            -webkit-text-stroke: #3c3c3c 0.5px;
+        }
+    }
+}

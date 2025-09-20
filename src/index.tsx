@@ -12,6 +12,7 @@ import Stakes from './Pages/Stakes';
 import Covers from './Pages/Covers';
 import Lights from './Pages/Lights';
 import Menu from './Pages/Menu';
+import Food from './Pages/Food';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             {
                 path: '/lights',
                 element: <Lights />,
+            },
+            {
+                path: '/food',
+                element: <Food />,
             },
 
         ]

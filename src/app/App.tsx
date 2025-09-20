@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import './App.less';
 import { Outlet } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { lightBlue } from '@mui/material/colors';
+import { lightBlue, grey } from '@mui/material/colors';
 
 const App: React.FC = () => {
 
@@ -22,6 +22,11 @@ const App: React.FC = () => {
             error: {
                 main: '#a85e4a',
                 dark: '#7a3b27',
+                contrastText: '#fff',
+            },
+            info: {
+                main: grey[400],
+                dark: grey[500],
                 contrastText: '#fff',
             },
             mode: 'light',

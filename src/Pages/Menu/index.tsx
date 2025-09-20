@@ -22,7 +22,7 @@ import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
 import Lock from '../../assets/Lock.svg';
-import { uiStore } from '../../stores';
+import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
 import RefreshModal from '../../components/RefreshModal';
@@ -42,6 +42,7 @@ function Menu() {
 
     useEffect(() => {
         uiStore.setCurrentTab(0);
+        dataStore.clearBasket();
         if (uiStore.Success === true) {
             setText(uiStore.SuccessText);
             setOpen(true);
@@ -180,6 +181,20 @@ function Menu() {
                                         className='menu-item'
                                     >
                                         <Light />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/food')}
+                                        // disabled={disableMenu}
+                                        className='menu-item'
+                                    >
+                                        <img src="https://img.icons8.com/ios-filled/50/000000/meal.png" alt="Food" />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}

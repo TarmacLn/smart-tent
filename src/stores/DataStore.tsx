@@ -1,4 +1,4 @@
-import { Cover, LightModeEnum, NewCover, SeverityEnum, SpecialThemeEnum, Tent, TentLocation, TentStats, TentTypeEnum, Theme } from './types';
+import { Cover, Food, FoodItem, LightModeEnum, NewCover, Order, SeverityEnum, SpecialThemeEnum, Tent, TentLocation, TentStats, TentTypeEnum, Theme } from './types';
 import { makeAutoObservable } from 'mobx';
 
 class DataStore {
@@ -96,6 +96,10 @@ class DataStore {
     ];
     private specialTheme: SpecialThemeEnum | undefined = undefined;
 
+    private foodIdCounter: number = 0;
+    private basket: FoodItem[] = [];
+    private orders: Order[] = [];
+
     constructor() {
         this.tent = {
             size: 2,
@@ -125,6 +129,8 @@ class DataStore {
         this.lightMode = LightModeEnum.Static;
         this.colours = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
         this.specialTheme = undefined as unknown as SpecialThemeEnum;
+        this.basket = [];
+        this.orders = [];
         makeAutoObservable(this);
     }
 
@@ -287,6 +293,54 @@ class DataStore {
     public getTheme(themeEnum: SpecialThemeEnum | undefined): Theme | undefined {
         return DataStore.themes.find(theme => theme.enum === themeEnum);
     }
+
+    public getBasket(): FoodItem[] {
+        return this.basket;
+    }
+
+    public addToBasket(food: Food, notes: string): void {
+        this.foodIdCounter += 1;
+        const foodExists = this.basket.find((item) => item.name === food.name && item.notes === notes);
+        if (foodExists) {
+            foodExists.quantity += 1;
+            this.basket = this.basket.map((item) => item.id === foodExists.id ? foodExists : item);
+            return;
+        }
+
+        const foodItem: FoodItem = {
+            id: this.foodIdCounter,
+            name: food.name,
+            price: food.price, 
+            quantity: 1,
+            notes
+        };
+        this.basket.push(foodItem);
+    }
+
+    public removeFromBasket(id: number): void {
+        const item = this.basket.find((item) => item.id === id);
+        if (item) {
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+                this.basket = this.basket.map((i) => i.id === item.id ? item : i);
+            } else {
+                this.basket = this.basket.filter((i) => i.id !== id);
+            }
+        }
+    }
+
+    public clearBasket(): void {
+        this.basket = [];
+    }
+
+    public getOrders(): Order[] {
+        return this.orders;
+    }
+
+    public addOrder(order: Order): void {
+        this.orders.push(order);
+    }
+
 }
 
 export default DataStore;
