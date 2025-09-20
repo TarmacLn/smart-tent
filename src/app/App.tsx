@@ -25,8 +25,8 @@ const App: React.FC = () => {
                 contrastText: '#fff',
             },
             info: {
-                main: grey[700],
-                dark: grey[800],
+                main: grey[400],
+                dark: grey[500],
                 contrastText: '#fff',
             },
             mode: 'light',

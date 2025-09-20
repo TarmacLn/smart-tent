@@ -4,12 +4,12 @@ import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { Button, Divider, Grid, IconButton, Popover, FormGroup, FormControlLabel, Checkbox, Slider, Box, Typography, Tooltip } from "@mui/material";
 import Basket from '../../assets/Basket.svg';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Left from '../../assets/Left.svg';
+import Right from '../../assets/Right.svg';
+import Team from '../../assets/Team.svg';
 
 export default function Food() {
     const navigate = useNavigate();
-    // pagination state
     const [page, setPage] = useState<number>(0);
     const itemsPerPage = 6; // 2 columns of up to 3 items each
 
@@ -18,73 +18,85 @@ export default function Food() {
             name: "Grilled Chicken Salad",
             description: "Fresh greens topped with grilled chicken, cherry tomatoes, cucumbers, and a light vinaigrette.",
             price: "$12.99",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: false,
         },
         {
             name: "Veggie Wrap",
             description: "A whole wheat wrap filled with hummus, avocado, lettuce, tomato, cucumber, and shredded carrots.",
             price: "$10.99",
-            meals: ['breakfast', 'lunch']
+            meals: ['breakfast', 'lunch'],
+            vegetarian: true
         },
         {
             name: "Beef Stir-Fry",
             description: "Tender beef strips stir-fried with bell peppers, broccoli, and snap peas in a savory soy sauce.",
             price: "$14.99",
-            meals: ['dinner']
+            meals: ['dinner'],
+            vegetarian: false
         },
         {
             name: "Margherita Pizza",
             description: "Classic pizza topped with fresh mozzarella, tomatoes, basil, and a drizzle of olive oil.",
             price: "$11.99",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: true
         },
         {
             name: "Pasta Primavera",
             description: "Penne pasta tossed with seasonal vegetables in a light garlic and olive oil sauce.",
             price: "$13.99",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: true
         },
         {
             name: "Chicken Tacos",
             description: "Soft corn tortillas filled with seasoned grilled chicken, lettuce, cheese, and salsa.",
             price: "$9.99",
-            meals: ['breakfast', 'lunch']
+            meals: ['breakfast', 'lunch'],
+            vegetarian: false
         },
         {
             name: "Veggie Omelette",
             description: "Fluffy omelette filled with spinach, mushrooms, bell peppers, and cheese.",
             price: "$8.99",
-            meals: ['breakfast']
+            meals: ['breakfast'],
+            vegetarian: true
         },
         {
             name: "Caesar Salad",
             description: "Crisp romaine lettuce tossed with Caesar dressing, croutons, and Parmesan cheese.",
             price: "$10.49",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: true
         },
         {
             name: "BBQ Pulled Pork Sandwich",
             description: "Slow-cooked pulled pork in BBQ sauce served on a toasted bun with coleslaw.",
             price: "$12.49",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: false
         },
         {
             name: "Quinoa Salad",
             description: "A healthy mix of quinoa, black beans, corn, avocado, and a lime-cilantro dressing.",
             price: "$11.49",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: true
         },
         {
             name: "French Toast",
             description: "Thick slices of bread soaked in a cinnamon-vanilla batter, grilled to perfection and topped with syrup.",
             price: "$9.49",
-            meals: ['breakfast']
+            meals: ['breakfast'],
+            vegetarian: true
         },
         {
             name: "Veggie Burger",
             description: "A delicious plant-based burger served with lettuce, tomato, and a side of sweet potato fries.",
             price: "$13.49",
-            meals: ['lunch', 'dinner']
+            meals: ['lunch', 'dinner'],
+            vegetarian: true
         },
     ];
 
@@ -105,36 +117,29 @@ export default function Food() {
     const openFiltersMenu = (e: React.MouseEvent<HTMLElement>) => setFiltersAnchor(e.currentTarget);
     const closeFiltersMenu = () => setFiltersAnchor(null);
 
-    // apply filters (simple examples: vegetarian matches "veggie" in name)
     const filteredItems = useMemo(() => {
         return foodItems.filter((it) => {
-            if (filters.vegetarian && !/veggie/i.test(it.name)) return false;
+            if (filters.vegetarian && !it.vegetarian) return false;
             if (filters.underPrice) {
                 const priceNum = parseFloat(String(it.price).replace(/[^0-9.]/g, '')) || 0;
                 if (priceNum > filters.maxPrice) return false;
             }
-            // meal type filter: include item if any of its meals are selected
             const mealSelected = Object.entries(filters.meals).some(([meal, selected]) => selected && it.meals.includes(meal));
             if (!mealSelected) return false;
             return true;
         });
     }, [foodItems, filters]);
 
-    // reset page when filters change
     useEffect(() => {
         setPage(0);
     }, [filters]);
 
-    // clamp page if filtered items shrink
     const totalPages = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
     useEffect(() => {
         if (page > totalPages - 1) setPage(totalPages - 1);
     }, [page, totalPages]);
 
-    // create paged view
     const pagedItems = filteredItems.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
-
-    // split into two columns (up to 3 per column in this layout)
     const leftItems = pagedItems.slice(0, Math.min(3, pagedItems.length));
     const rightItems = pagedItems.slice(leftItems.length, leftItems.length + 3);
 
@@ -198,7 +203,7 @@ export default function Food() {
                 </div>
                 <div className="buttons">
                     <Button variant="contained" color="info" >
-                        Message Us
+                        <Team /> Message Us
                     </Button>
                     <div>
                         <Tooltip title="Previous page">
@@ -207,14 +212,13 @@ export default function Food() {
                                     size="small"
                                     onClick={() => setPage(p => Math.max(0, p - 1))}
                                     disabled={page <= 0}
-                                    aria-label="previous page"
                                 >
-                                    <ArrowBackIosNewIcon fontSize="small" />
+                                    <Left />
                                 </IconButton>
                             </span>
                         </Tooltip>
 
-                        <Button variant="contained" color="secondary" onClick={openFiltersMenu} sx={{ mx: 1 }}>
+                        <Button variant="contained" color="error" onClick={openFiltersMenu} sx={{ mx: 1 }}>
                             Filters
                         </Button>
 
@@ -224,9 +228,8 @@ export default function Food() {
                                     size="small"
                                     onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
                                     disabled={page >= totalPages - 1}
-                                    aria-label="next page"
                                 >
-                                    <ArrowForwardIosIcon fontSize="small" />
+                                    <Right />
                                 </IconButton>
                             </span>
                         </Tooltip>
@@ -238,21 +241,10 @@ export default function Food() {
                             anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                             transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                         >
-                            <Box sx={{ p: 2, width: 300 }}>
-                                <Typography variant="subtitle1" gutterBottom>Filters</Typography>
-                                <FormGroup>
-                                    <FormControlLabel
-                                        control={<Checkbox checked={filters.vegetarian} onChange={() => setFilters(f => ({ ...f, vegetarian: !f.vegetarian }))} />}
-                                        label="Vegetarian only"
-                                    />
-                                    <FormControlLabel
-                                        control={<Checkbox checked={filters.underPrice} onChange={() => setFilters(f => ({ ...f, underPrice: !f.underPrice }))} />}
-                                        label={`Under $${filters.maxPrice}`}
-                                    />
-                                </FormGroup>
-
+                            <Box className="filters">
+                                <div className="title">Filters</div>
                                 <Box sx={{ mt: 1 }}>
-                                    <Typography variant="caption">Meal types</Typography>
+                                    <div className="subtitle">Meal types</div>
                                     <FormGroup row>
                                         <FormControlLabel
                                             control={<Checkbox checked={filters.meals.breakfast} onChange={() => setFilters(f => ({ ...f, meals: { ...f.meals, breakfast: !f.meals.breakfast } }))} />}
@@ -266,11 +258,15 @@ export default function Food() {
                                             control={<Checkbox checked={filters.meals.dinner} onChange={() => setFilters(f => ({ ...f, meals: { ...f.meals, dinner: !f.meals.dinner } }))} />}
                                             label="Dinner"
                                         />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={filters.vegetarian} onChange={() => setFilters(f => ({ ...f, vegetarian: !f.vegetarian }))} />}
+                                            label="Vegetarian only"
+                                        />
                                     </FormGroup>
                                 </Box>
 
                                 <Box sx={{ mt: 1 }}>
-                                    <Typography variant="caption">Max price</Typography>
+                                    <div className="subtitle">Max price</div>
                                     <Slider
                                         value={filters.maxPrice}
                                         min={5}
@@ -278,6 +274,10 @@ export default function Food() {
                                         step={1}
                                         onChange={(_, v) => setFilters(f => ({ ...f, maxPrice: Array.isArray(v) ? v[0] : v }))}
                                         valueLabelDisplay="auto"
+                                    />
+                                    <FormControlLabel
+                                        control={<Checkbox checked={filters.underPrice} onChange={() => setFilters(f => ({ ...f, underPrice: !f.underPrice }))} />}
+                                        label={`Under $${filters.maxPrice}`}
                                     />
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
