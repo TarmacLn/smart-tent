@@ -304,7 +304,7 @@ export default function Catalogue() {
                                     />
                                     <FormControlLabel
                                         control={<Checkbox checked={filters.underPrice} onChange={() => setFilters(f => ({ ...f, underPrice: !f.underPrice }))} />}
-                                        label={`Under $${filters.maxPrice}`}
+                                        label={`Under ${filters.maxPrice}€`}
                                     />
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>

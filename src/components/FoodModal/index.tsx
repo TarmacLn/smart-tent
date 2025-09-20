@@ -20,7 +20,6 @@ function FoodModal({
 
     const addFood = () => {
         dataStore.addToBasket(food, notes);
-        console.log(dataStore.getBasket());
         closeModal();
     }
 
