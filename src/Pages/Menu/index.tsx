@@ -201,6 +201,20 @@ function Menu() {
                                         />
                                     </IconButton>
                                     <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/energy')}
+                                        // disabled={disableMenu}
+                                        className='menu-item'
+                                    >
+                                        <img src="https://img.icons8.com/ios-filled/50/000000/solar-panel.png" alt="Energy" />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
+                                    </IconButton>
+                                    <br />
                                 </div>
                             </Container>
                         </Grid>
