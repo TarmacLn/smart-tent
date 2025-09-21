@@ -14,6 +14,8 @@ import Lights from './Pages/Lights';
 import Menu from './Pages/Menu';
 import Food from './Pages/Food';
 import Energy from './Pages/Energy';
+import Weather from './Pages/Weather';
+import Map from './Pages/Map';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -57,7 +59,14 @@ const router = createBrowserRouter([
                 path: '/energy',
                 element: <Energy />,
             },
-
+            {
+                path: '/weather',
+                element: <Weather />,
+            },
+            {
+                path: '/map',
+                element: <Map />,
+            }
         ]
     },
 ]);

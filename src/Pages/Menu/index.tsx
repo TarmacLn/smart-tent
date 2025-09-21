@@ -21,6 +21,11 @@ import Tent from '../../assets/Tent.svg';
 import Stake from '../../assets/Stake.svg';
 import Covers from '../../assets/Covers.svg';
 import Light from '../../assets/Light.svg';
+import Food from '../../assets/Food.svg';
+import Energy from '../../assets/Energy.svg';
+import Weather from '../../assets/Weather.svg';
+import Map from '../../assets/Map.svg';
+
 import Lock from '../../assets/Lock.svg';
 import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
@@ -194,7 +199,7 @@ function Menu() {
                                         // disabled={disableMenu}
                                         className='menu-item'
                                     >
-                                        <img src="https://img.icons8.com/ios-filled/50/000000/meal.png" alt="Food" />
+                                        <Food />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
@@ -208,7 +213,35 @@ function Menu() {
                                         // disabled={disableMenu}
                                         className='menu-item'
                                     >
-                                        <img src="https://img.icons8.com/ios-filled/50/000000/solar-panel.png" alt="Energy" />
+                                        <Energy />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/weather')}
+                                        // disabled={disableMenu}
+                                        className='menu-item'
+                                    >
+                                        <Weather />
+                                        <BadgeStyled
+                                            badgeContent={<Lock />}
+                                            invisible={!disableMenu}
+                                        />
+                                    </IconButton>
+                                    <br />
+                                    <IconButton
+                                        aria-label='delete'
+                                        color='success'
+                                        onClick={() => navigate('/map')}
+                                        // disabled={disableMenu}
+                                        className='menu-item'
+                                    >
+                                        <Map />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
