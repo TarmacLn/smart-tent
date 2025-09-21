@@ -104,3 +104,18 @@ export interface Order {
     paymentMethod: string;
     deliveryTime: Date;
 }
+
+export interface TimeWeather {
+    time: string;
+    temperature: number; //Celsius
+    condition: string;
+}
+
+export interface DayWeather {
+    day: string;
+    high: number;
+    low: number;
+    condition: string;
+    humidity: number;
+    colour: string;
+}

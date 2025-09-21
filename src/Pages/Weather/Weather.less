@@ -1,0 +1,223 @@
+.Weather {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+
+
+        .grid {
+            width: 80%;
+            height: 80%;
+            padding: 20px;
+            margin-top: 20px;
+
+            .title {
+                font-family: 'Gaiatype', sans-serif;
+                font-size: 24px;
+                margin-bottom: 20px;
+
+                &.alert {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 0;
+                    margin-top: 0;
+                }
+                svg {
+                    margin-right: 5px;
+                }
+            }
+
+            .box {
+                background-color: aliceblue;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .image {
+                width: 180px;
+                height: 180px;
+                background-color: lightgray;
+            }
+
+            .stats {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: flex-start;
+                gap: 10px;
+                font-family: 'Gaiatype', sans-serif;
+                color: white;
+                font-size: 22px;
+                text-shadow: 0 0 5px rgb(61, 61, 61);
+
+
+                .temp {
+                    font-size: 40px;
+                    font-weight: bold;
+                }
+            }
+
+            .forecast {
+                width: 100%;
+                border-radius: 10px;
+
+                &.today {
+                    height: 100px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    overflow-x: auto;
+                    gap: 40px;
+
+                    .time-weather {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 5px;
+
+                        .time {
+                            font-size: 16px;
+                        }
+
+                        .image {
+                            width: 50px;
+                            height: 50px;
+                            background-color: lightgray;
+                        }
+
+                        .temp {
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                &.week {
+                    height: 350px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    gap: 10px;
+                    overflow-y: auto;
+                    margin-top: 10px;
+
+
+                    .day-weather {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 90%;
+                        padding: 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgba(240, 248, 255, 0.8);
+                        }
+
+                        .day {
+                            font-size: 18px;
+                            font-weight: bold;
+                            width: 10%;
+                        }
+
+                        .image {
+                            width: 40px;
+                            height: 40px;
+                            background-color: lightgray;
+                        }
+
+                        .temps {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 10px;
+
+                            .temp-slider {
+                                cursor: default;
+                            }
+
+                            .temp-slider .MuiSlider-thumb {
+                                display: none;
+                                width: 0;
+                                height: 0;
+                                pointer-events: none;
+                            }
+
+                            .temp-slider .MuiSlider-thumb.Mui-focusVisible,
+                            .temp-slider .MuiSlider-thumb:hover,
+                            .temp-slider .MuiSlider-thumb:active {
+                                display: none;
+                            }
+
+                            .temp-slider .MuiSlider-rail {
+                                opacity: 0.3;
+                            }
+
+                            .MuiSlider-root {
+                                width: 150px;
+                            }
+
+                            .MuiSlider-thumb {
+                                background-color: transparent;
+                                border: transparent;
+                            }
+
+                            .high,
+                            .low {
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .humidity {
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                            font-size: 16px;
+                            color: #1989bc;
+                            font-weight: bold;
+
+                            svg {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .alert {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+                font-size: 20px;
+                padding: 20px;
+
+                .alert-title {
+                    font-weight: bold;
+
+                }
+
+                .alert-recommend {
+                    font-style: italic;
+                }
+            }
+        }
+
+
+    }
+}
