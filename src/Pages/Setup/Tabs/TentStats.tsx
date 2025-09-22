@@ -45,7 +45,7 @@ function TentStats() {
                                     <Grid size={12}>
                                         Average stats of the chosen location:
                                     </Grid>
-                                    <Grid size={1}>
+                                    <Grid size={1} className='icon'>
                                         <Droplet />
                                     </Grid>
                                     <Grid size={7} className='humidity'>Average Humidity</Grid>
@@ -53,7 +53,7 @@ function TentStats() {
                                     <Grid size={2} className='humidity'>
                                         Ideal: 60%
                                     </Grid>
-                                    <Grid size={1}>
+                                    <Grid size={1} className='icon'>
                                         <Sun />
                                     </Grid>
                                     <Grid size={7} className='sunshine'>Average Sunshine</Grid>
@@ -61,7 +61,7 @@ function TentStats() {
                                     <Grid size={2} className='sunshine'>
                                         Ideal: 75%
                                     </Grid>
-                                    <Grid size={1}>
+                                    <Grid size={1} className='icon'>
                                         <Ground />
                                     </Grid>
                                     <Grid size={7} className='groundStability'>Average Ground Stability</Grid>

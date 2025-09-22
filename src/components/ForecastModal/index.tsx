@@ -2,7 +2,8 @@ import { Box, Button, Divider, Modal } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import './ForecastModal.less';
-import { DayWeather, Food, TimeWeather } from "../../stores/types";
+import { DayWeather, Food, TimeWeather, WeatherEnum } from "../../stores/types";
+import HandleWeatherIcon from "../../Pages/Weather/HandleWeatherIcon";
 
 function ForecastModal({
     isVisible,
@@ -15,16 +16,21 @@ function ForecastModal({
 }) {
 
     const weatherToday: TimeWeather[] = [
-        { time: 'Now', temperature: 20, condition: 'sunny' },
-        { time: '1 PM', temperature: 22, condition: 'sunny' },
-        { time: '2 PM', temperature: 23, condition: 'sunny' },
-        { time: '3 PM', temperature: 21, condition: 'cloudy' },
-        { time: '4 PM', temperature: 19, condition: 'sunny' },
-        { time: '5 PM', temperature: 18, condition: 'cloudy' },
-        { time: '6 PM', temperature: 17, condition: 'cloudy' },
-        { time: '7 PM', temperature: 16, condition: 'cloudy' },
-        { time: '8 PM', temperature: 15, condition: 'cloudy' },
-        { time: '9 PM', temperature: 14, condition: 'cloudy' },
+        { time: 'Now', temperature: 20, weather: WeatherEnum.Sunny },
+        { time: '11:00', temperature: 22, weather: WeatherEnum.Sunny },
+        { time: '12:00', temperature: 24, weather: WeatherEnum.Sunny },
+        { time: '13:00', temperature: 25, weather: WeatherEnum.Sunny },
+        { time: '14:00', temperature: 24, weather: WeatherEnum.Sunny },
+        { time: '15:00', temperature: 23, weather: WeatherEnum.SunWithClouds },
+        { time: '16:00', temperature: 22, weather: WeatherEnum.SunWithClouds },
+        { time: '17:00', temperature: 21, weather: WeatherEnum.Cloudy },
+        { time: '18:00', temperature: 20, weather: WeatherEnum.Rain },
+        { time: '19:00', temperature: 19, weather: WeatherEnum.Rain },
+        { time: '20:00', temperature: 18, weather: WeatherEnum.Storm },
+        { time: '21:00', temperature: 17, weather: WeatherEnum.CloudyNight },
+        { time: '22:00', temperature: 16, weather: WeatherEnum.CloudyNight },
+        { time: '23:00', temperature: 15, weather: WeatherEnum.ClearNight },
+        { time: '00:00', temperature: 15, weather: WeatherEnum.ClearNight },
     ];
     
     return (
@@ -41,7 +47,9 @@ function ForecastModal({
                             {weatherToday.map((weather, index) => (
                                 <div key={index} className="time-weather" >
                                     <div className="time" >{weather.time}</div>
-                                    <div className={`image ${weather.condition}`} />
+                                    <div className="image" >
+                                        <HandleWeatherIcon weather={weather.weather} />
+                                    </div>
                                     <div className="temp" >{weather.temperature}°C</div>
                                 </div>
                             ))}

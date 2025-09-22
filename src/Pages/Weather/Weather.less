@@ -43,10 +43,13 @@
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
-            .image {
+            .image-main {
                 width: 180px;
                 height: 180px;
-                background-color: lightgray;
+                background-image: url('../../assets/Sunny.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
             }
 
             .stats {
@@ -62,7 +65,7 @@
 
 
                 .temp {
-                    font-size: 40px;
+                    font-size: 38px;
                     font-weight: bold;
                 }
             }
@@ -93,7 +96,9 @@
                         .image {
                             width: 50px;
                             height: 50px;
-                            background-color: lightgray;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
 
                         .temp {
@@ -137,7 +142,9 @@
                         .image {
                             width: 40px;
                             height: 40px;
-                            background-color: lightgray;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
 
                         .temps {

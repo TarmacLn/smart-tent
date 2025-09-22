@@ -32,11 +32,8 @@ export default function Panels() {
             <div className="content" >
                 <div className="banner">
                     <Grid container spacing={2}>
-                        <Grid size={1}>
-                            <Sun />
-                        </Grid>
-                        <Grid size={11} className="banner-title">
-                            <div className="title">Solar Panels</div>
+                        <Grid size={12} className="banner-title">
+                            <div className="title"><Sun /> Solar Panels</div>
                             <div className="description">Manage and monitor your solar panel system to optimize energy generation and storage.</div>
                         </Grid>
                         <Divider flexItem sx={{ width: '100%', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }} />
