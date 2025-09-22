@@ -133,7 +133,7 @@ function Menu() {
                                 justifyContent='center'
                                 className='title'
                             >
-                                Smart Tent
+                                <div className='logo' />
                             </Box>
                         </Grid>
                         <Grid size={12} >
