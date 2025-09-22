@@ -33,11 +33,8 @@ export default function Panels() {
             <div className="content" >
                 <div className="banner">
                     <Grid container spacing={2}>
-                        <Grid size={1}>
-                            <Air />
-                        </Grid>
-                        <Grid size={11} className="banner-title">
-                            <div className="title">Air Conditioning</div>
+                        <Grid size={12} className="banner-title">
+                            <div className="title"><Air /> Air Conditioning</div>
                             <div className="description">Manage and monitor your air conditioning system to optimize energy generation and storage.</div>
                         </Grid>
                         <Divider flexItem sx={{ width: '100%', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }} />

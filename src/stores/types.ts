@@ -44,6 +44,16 @@ export enum MealEnum {
     Dinner = 'dinner',
 }
 
+export enum WeatherEnum {
+    Sunny = 'sunny',
+    SunWithClouds = 'sunWithClouds',
+    Cloudy = 'cloudy',
+    Rain = 'rain',
+    Storm = 'storm',
+    ClearNight = 'clearNight',
+    CloudyNight = 'cloudyNight',
+}
+
 export interface Tent {
     size: number; //size can be 2(small), 3(medium), 4(large)
     stakes: number;
@@ -103,4 +113,19 @@ export interface Order {
     total: number;
     paymentMethod: string;
     deliveryTime: Date;
+}
+
+export interface TimeWeather {
+    time: string;
+    temperature: number; //Celsius
+    weather: WeatherEnum;
+}
+
+export interface DayWeather {
+    day: string;
+    high: number;
+    low: number;
+    weather: WeatherEnum;
+    humidity: number;
+    colour: string;
 }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { uiStore } from "../../../stores";
 import Header from "../../../components/Header";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import BasicLight from '../../../assets/BasicLight.svg';
+import BasicLight from '../../../assets/Light.svg';
 import Colour from '../../../assets/Colour.svg';
 import Special from '../../../assets/Special.svg';
 import './Menu.less';

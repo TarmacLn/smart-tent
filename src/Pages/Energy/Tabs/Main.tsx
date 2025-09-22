@@ -61,11 +61,8 @@ function Main() {
                         </Grid>
                         <Grid size={12} className="menu-item" onClick={() => { uiStore.setCurrentTab(1); }}>
                             <Grid container spacing={2}>
-                                <Grid size={1}>
-                                    <Sun />
-                                </Grid>
-                                <Grid size={9}>
-                                    <div className="title">Solar Panels</div>
+                                <Grid size={10}>
+                                    <div className="title"><Sun /> Solar Panels</div>
                                     <div className="description">Solar panels energy accumulation, energy consumption, device energy management, power saving mode</div>
                                 </Grid>
                                 <Grid size={2} className="arrow">
@@ -76,11 +73,8 @@ function Main() {
                         <Divider flexItem sx={{ width: '100%' }} />
                         <Grid size={12} className="menu-item" onClick={() => { uiStore.setCurrentTab(2); }}>
                             <Grid container spacing={2}>
-                                <Grid size={1}>
-                                    <Air />
-                                </Grid>
-                                <Grid size={9}>
-                                    <div className="title">Air Conditioning</div>
+                                <Grid size={10}>
+                                    <div className="title"><Air /> Air Conditioning</div>
                                     <div className="description">Air conditioning energy consumption, temperature settings, power saving mode</div>
                                 </Grid>
                                 <Grid size={2} className="arrow">

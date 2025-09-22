@@ -16,7 +16,7 @@ import {
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TentTypeEnum } from '../../../stores/types';
-import Home from '../../../assets/Home.svg';
+import Tent from '../../../assets/Tent.svg';
 import './TentDetails.less';
 import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
@@ -91,7 +91,7 @@ function TentDetails() {
                     <Grid size={12} >
                         <Container className='container' color='primary'>
                             <div className='title'>
-                                <Home /> Tent Details
+                                <Tent /> Tent Details
                             </div>
                             <Divider />
                             <div className='content'>

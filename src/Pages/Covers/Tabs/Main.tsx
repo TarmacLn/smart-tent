@@ -111,7 +111,7 @@ function Main() {
                                         <Grid size={12} sx={{ mt: 1, mb: 1 }}>
                                             <Divider />
                                         </Grid>
-                                        <Grid size={3} >
+                                        <Grid size={3} className='icon' >
                                             <Droplet />
                                         </Grid>
                                         <Grid size={7} >
@@ -120,7 +120,7 @@ function Main() {
                                         <Grid size={2} >
                                             <div>{humidity}%</div>
                                         </Grid>
-                                        <Grid size={3} >
+                                        <Grid size={3} className='icon' >
                                             <Sun />
                                         </Grid>
                                         <Grid size={7} >
@@ -129,7 +129,7 @@ function Main() {
                                         <Grid size={2} >
                                             <div>{sunshine}%</div>
                                         </Grid>
-                                        <Grid size={3} >
+                                        <Grid size={3} className='icon' >
                                             <Air />
                                         </Grid>
                                         <Grid size={7} >

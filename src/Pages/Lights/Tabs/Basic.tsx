@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
 import { dataStore, uiStore } from '../../../stores';
 import { Box, Button, Container, Divider, Slider, Switch, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
-import Light from '../../../assets/BasicLight.svg';
+import Light from '../../../assets/Light.svg';
 import './Basic.less';
 import { data, useNavigate } from 'react-router-dom';
 

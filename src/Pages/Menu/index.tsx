@@ -133,7 +133,7 @@ function Menu() {
                                 justifyContent='center'
                                 className='title'
                             >
-                                Smart Tent
+                                <div className='logo' />
                             </Box>
                         </Grid>
                         <Grid size={12} >
@@ -196,7 +196,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/food')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Food />
@@ -210,7 +210,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/energy')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Energy />
@@ -224,7 +224,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/weather')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Weather />
@@ -238,7 +238,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/map')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Map />

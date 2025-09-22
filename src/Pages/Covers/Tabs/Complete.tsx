@@ -59,17 +59,17 @@ function Complete() {
                                             <Grid size={12} className='title'>
                                                 Weather Conditions:
                                             </Grid>
-                                            <Grid size={2}>
+                                            <Grid size={2} className='icon'>
                                                 <Droplet />
                                             </Grid>
                                             <Grid size={7} className='humidity'>Humidity</Grid>
                                             <Grid size={3}>{humidity}%</Grid>
-                                            <Grid size={2}>
+                                            <Grid size={2} className='icon'>
                                                 <Sun />
                                             </Grid>
                                             <Grid size={7} className='sunshine'>Sunshine</Grid>
                                             <Grid size={3}>{sunshine}%</Grid>
-                                            <Grid size={2}>
+                                            <Grid size={2} className='icon'>
                                                 <Air />
                                             </Grid>
                                             <Grid size={7} className='wind'>Wind</Grid>
