@@ -4,13 +4,12 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import './Main.less';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Home from '../../../assets/Home.svg';
 import Music from '../../../assets/Music.svg';
 import Warning from '../../../assets/Warning.svg';
-import Car from '../../../assets/Car.svg';
 import Flower from '../../../assets/Flower.svg';
 
 import { uiStore } from '../../../stores';
+import { Button } from '@mui/material';
 
 function Main() {
     const navigate = useNavigate();
@@ -39,15 +38,18 @@ function Main() {
                         <div className='menu-item-label'>Campsite Events</div>
                         <div className='menu-item-arrow'><ArrowForwardIosIcon fontSize='large' /> </div>
                     </div>
-                    <div className='menu-item' onClick={() => uiStore.setCurrentTab(3)}>
-                        <div className='menu-item-icon'><Warning /></div>
-                        <div className='menu-item-label'>Weather Alert</div>
-                        <div className='menu-item-arrow'><ArrowForwardIosIcon fontSize='large' /> </div>
-                    </div>
-                    <div className='menu-item' onClick={() => uiStore.setCurrentTab(4)}>
-                        <div className='menu-item-icon'><Car /></div>
-                        <div className='menu-item-label'>View Shelters</div>
-                        <div className='menu-item-arrow'><ArrowForwardIosIcon fontSize='large' /> </div>
+                    <div className='warning'>
+                        <div className='warning-title'><Warning /> Weather Alert</div>
+                        <div className='warning-description'>Winds are expected to reach speeds of 60 km/h by 2:00 PM on Wednesday 30 September. Please take necessary precautions to secure loose objects and avoid outdoor activities.</div>
+                        <div className="warning-description" >Recommended: Stay indoors, secure loose objects, and avoid outdoor activities during peak wind hours. Go to any of the available shelters if you feel unsafe.</div>
+                        <div className='buttons'>
+                            <Button variant='outlined' color='primary' size='small'>
+                                More info
+                            </Button>
+                            <Button variant='contained' color='primary' size='small'>
+                                View Shelters
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
