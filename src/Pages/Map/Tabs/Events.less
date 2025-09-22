@@ -1,0 +1,150 @@
+.Events {
+    width: 100%;
+    height: 100%;
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .box {
+            width: 80%;
+            height: 80%;
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            border-radius: 10px;
+            padding: 20px;
+
+            .title {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                gap: 10px;
+                font-family: 'Gaiatype', sans-serif;
+                font-size: 32px;
+                margin-bottom: 20px;
+
+                svg {
+                    margin-right: 10px;
+                }
+            }
+
+            .subtitle {
+                font-size: 18px;
+                margin-bottom: 10px;
+                color: #555;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .events-list {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                margin-top: 20px;
+
+                .event-item {
+                    background-image: url('../../../assets/EventBanner.png');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    border-radius: 10px;
+                    min-width: 300px;
+                    height: 400px;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .event-content {
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 40px;
+
+                        .event-title {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+
+
+                            .event-icon {
+                                background-color: aliceblue;
+                                border-radius: 20px;
+                                border: 1px solid black;
+                                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+                                width: 40px;
+                                height: 40px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+                            .event-category {
+                                margin-top: 20px;
+                                font-size: 26px;
+                                font-family: 'Gaiatype', sans-serif;
+                                font-weight: bold;
+                            }
+                        }
+
+                        .event-details {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 10px;
+                            font-size: 18px;
+                            font-family: 'Gaiatype', sans-serif;
+                            height: 50%;
+                            margin-top: 20px;
+
+                            // .event-name {
+                            //     font-weight: bold;
+                            // }
+
+                            // .event-time,
+                            // .event-location {
+                            //     font-size: 14px;
+                            // }
+
+                            .event-text {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 10px;
+                                margin-top: 20px;
+                            }
+
+                            .buttons {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 10px;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+
+            .footer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+
+            }
+        }
+    }
+}

@@ -129,3 +129,23 @@ export interface DayWeather {
     humidity: number;
     colour: string;
 }
+
+export interface Event {
+    id: number;
+    name: string;
+    date: string;
+    time: string;
+    location: string;
+    category: string;
+    description: string;
+    price?: number;
+}
+
+export interface Sight {
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    location: string;
+    distance: string;
+}

@@ -238,7 +238,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/map')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
                                     >
                                         <Map />
