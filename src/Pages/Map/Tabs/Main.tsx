@@ -46,7 +46,12 @@ function Main() {
                             <Button variant='outlined' color='primary' size='small'>
                                 More info
                             </Button>
-                            <Button variant='contained' color='primary' size='small'>
+                            <Button 
+                            variant='contained' 
+                            color='primary' 
+                            size='small'
+                            onClick={() => uiStore.setCurrentTab(3)}
+                            >
                                 View Shelters
                             </Button>
                         </div>
