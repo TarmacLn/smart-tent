@@ -3,12 +3,24 @@ import { Grid, Container, Box } from '@mui/material';
 import './CoverMap.less';
 import React from 'react';
 import { dataStore } from '../../stores';
+import AFrameMap from '../../assets/AFrameMap.png';
+import DomeMap from '../../assets/DomeMap.png';
+import { TentTypeEnum } from '../../stores/types';
 
 export default function CoverMap() {
     const rows = 9;
     const cols = 9;
     const size = dataStore.getTent?.()?.size ?? 2;
     const [selectedCells, setSelectedCells] = useState<number[]>([]);
+
+    // calculate tent starting position
+    const getBounding = (cells: number[]) => {
+        if (!cells || cells.length === 0) return null;
+        const min = Math.min(...cells);
+        const r = Math.floor(min / cols);
+        const c = min % cols;
+        return { row: r, col: c };
+    };
 
     const getGroupFor = (index: number, size: number): number[] => {
         const r = Math.floor(index / cols);
@@ -38,6 +50,17 @@ export default function CoverMap() {
         }
     }, []);
 
+    const bounding = getBounding(selectedCells);
+    const cellW = 100 / cols;
+    const cellH = 100 / rows;
+    const boxStyle = bounding ? {
+        left: `${bounding.col * cellW}%`,
+        top: `${bounding.row * cellH}%`,
+        width: `${size * cellW}%`,
+        height: `${size * cellH}%`,
+        backgroundImage: dataStore.getTent()?.type === TentTypeEnum.AFrame ? `url(${AFrameMap})` : `url(${DomeMap})`,
+    } : undefined;
+
     return (
         <Grid size={9}>
             <Container className="banner" sx={{ p: 0 }}>
@@ -47,9 +70,12 @@ export default function CoverMap() {
                         {Array.from({ length: rows * cols }).map((_, index) => {
                             const sel = selectedCells.includes(index);
                             return (
-                                <Box key={index} className={sel ? 'selected' : ''} />
+                                <Box key={index} />
                             );
                         })}
+                        {bounding && (
+                            <Box className="selected-box" style={boxStyle} />
+                        )}
                     </Box>
                 </Box>
             </Container>
