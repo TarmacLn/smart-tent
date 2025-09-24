@@ -1,6 +1,6 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
 import React from 'react';
-import { uiStore } from '../../stores';
+import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 
 function InfoModal() {
@@ -47,7 +47,11 @@ function InfoModal() {
                     >
                         <Button
                             variant='contained'
-                            onClick={() => uiStore.setRefreshModal(false)}
+                            onClick={() => {
+                                dataStore.refreshData()
+                                uiStore.setRefreshModal(false)
+                            }}
+                            color='error'
                             style={{ backgroundColor: 'black', color: 'white' }}
                         >
                             Yes
