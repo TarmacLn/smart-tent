@@ -85,7 +85,7 @@ export default function Events() {
                 setSelectedEvents(prev => [...prev, eventId]);
             }
         });
-    }, []);
+    }, [selectedEvents]);
 
     return (
         <div className='Events'>
