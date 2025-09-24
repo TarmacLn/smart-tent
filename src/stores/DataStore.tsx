@@ -100,6 +100,8 @@ class DataStore {
     private basket: FoodItem[] = [];
     private orders: Order[] = [];
 
+    private events: number[] = [];
+
     constructor() {
         this.tent = {
             size: 2,
@@ -131,7 +133,31 @@ class DataStore {
         this.specialTheme = undefined as unknown as SpecialThemeEnum;
         this.basket = [];
         this.orders = [];
+        this.events = [];
         makeAutoObservable(this);
+    }
+
+    public refreshData(): void {
+        this.tent = undefined;
+        this.tentLocation = undefined;
+        this.tentStats = undefined;
+        this.wind = 70;
+        this.severity = undefined;
+        this.covers = [];
+        this.coverIdCounter = 0;
+        this.lightingMode = 'basic';
+        this.light = 'off';
+        this.tempMode = 'cold';
+        this.brightness = 100;
+        this.autoMode = false;
+        this.nightMode = false;
+        this.colourMode = 'single';
+        this.lightMode = LightModeEnum.Static;
+        this.colours = ['#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0', '#d0d0d0'];
+        this.specialTheme = undefined as unknown as SpecialThemeEnum;
+        this.basket = [];
+        this.orders = [];
+        this.events = [];
     }
 
     //Tent and Covers Getters and Setters
@@ -339,6 +365,16 @@ class DataStore {
 
     public addOrder(order: Order): void {
         this.orders.push(order);
+    }
+
+    public addEvent(eventId: number): void {
+        if (!this.events.includes(eventId)) {
+            this.events.push(eventId);
+        }
+    }
+
+    public getEvents(): number[] {
+        return this.events;
     }
 
 }

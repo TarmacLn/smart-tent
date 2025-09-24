@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
-import { uiStore } from '../../../stores';
+import { dataStore, uiStore } from '../../../stores';
 import { Button, Divider } from '@mui/material';
 import './Events.less';
 import Music from '../../../assets/Music.svg';
@@ -9,6 +9,7 @@ import { Brush, Hiking, Restaurant, Spa, Star } from '@mui/icons-material';
 import MusicNote from '@mui/icons-material/MusicNote';
 
 export default function Events() {
+    const [selectedEvents, setSelectedEvents] = useState<number[]>([]);
 
     const events: Event[] = [
         {
@@ -69,6 +70,23 @@ export default function Events() {
         },
     ];
 
+    const handleSelectEvent = (eventId: number) => {
+        if (selectedEvents.includes(eventId)) {
+            setSelectedEvents(selectedEvents.filter(id => id !== eventId));
+        } else {
+            setSelectedEvents([...selectedEvents, eventId]);
+            dataStore.addEvent(eventId);
+        }
+    };
+
+    useEffect(() => {
+        dataStore.getEvents().forEach(eventId => {
+            if (!selectedEvents.includes(eventId)) {
+                setSelectedEvents(prev => [...prev, eventId]);
+            }
+        });
+    }, []);
+
     return (
         <div className='Events'>
             <Header
@@ -108,8 +126,14 @@ export default function Events() {
                                             <Button variant='outlined' color='primary' size='small'>
                                                 More info
                                             </Button>
-                                            <Button variant='contained' color='primary' size='small'>
-                                                Join
+                                            <Button
+                                                variant='contained'
+                                                color='primary'
+                                                size='small'
+                                                onClick={() => handleSelectEvent(event.id)}
+                                                disabled={selectedEvents.includes(event.id)}
+                                            >
+                                                {selectedEvents.includes(event.id) ? 'Joined' : 'Join'}
                                             </Button>
                                         </div>
                                     </div>
