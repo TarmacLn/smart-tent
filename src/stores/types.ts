@@ -136,6 +136,13 @@ export interface DayWeather {
     colour: string;
 }
 
+export interface Device {
+    name: string;
+    id: number;
+    performance: number;
+    active?: boolean;
+}
+
 export interface Event {
     id: number;
     name: string;

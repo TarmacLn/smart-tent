@@ -62,7 +62,39 @@
 
                     .toggle-button {
                         width: 150px;
+
+                        &.Mui-selected {
+                            background-color: #039be5;
+                            color: white;
+
+                            &:hover {
+                                background-color: #0288d1;
+                            }
+
+                            &:disabled {
+                                background-color: #b0bec5;
+                                color: white;
+                            }
+
+                            &.warm {
+                                background-color: #ff8a65;
+
+                                &:hover {
+                                    background-color: #ff7043;
+                                }
+                            }
+
+                            &.off {
+                                background-color: #e0e0e0;
+                                color: #a0a0a0;
+
+                                &:hover {
+                                    background-color: #e0e0e0;
+                                }
+                            }
+                        }
                     }
+
                 }
 
                 .fan-setting {
@@ -85,17 +117,18 @@
                     .temp-button {
                         width: 30px;
                         height: 30px;
-                        background-color: #e0e0e0;
+                        background-color: #ffffff;
                         cursor: pointer;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        border: 2px solid #000000;
+                        border: 2px solid #039be5;
+                        color: #039be5;
                         border-radius: 5px;
                         font-weight: bold;
 
                         &:hover {
-                            background-color: #c7c7c7;
+                            background-color: #f1f1f1;
                         }
 
                         &.disabled {
@@ -139,6 +172,13 @@
                         }
                     }
                 }
+            }
+
+            .button {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                height: 100%;
             }
 
         }

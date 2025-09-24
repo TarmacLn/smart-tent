@@ -1,26 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import './Panels.less';
 import Header from "../../../components/Header";
 import { uiStore } from "../../../stores";
 import { Button, Checkbox, Divider, Grid, Paper, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Sun from '../../../assets/Sun.svg';
+import { Device } from "../../../stores/types";
 
 export default function Panels() {
+    const [powerSaveMode, setPowerSaveMode] = useState(false);
+    const [ultraEnergySaveMode, setUltraEnergySaveMode] = useState(false);
 
-    const devices = [
-        { name: 'Kettle', id: 1 },
-        { name: 'Toaster', id: 2 },
-        { name: 'Microwave', id: 3 },
-        { name: 'Fridge', id: 4 },
-        { name: 'Laptop', id: 5 },
-        { name: 'Phone Charger', id: 6 },
-        { name: 'Lights', id: 7 },
-        { name: 'Heater', id: 8 },
-        { name: 'Fan', id: 9 },
-        { name: 'TV', id: 10 },
-        { name: 'Speaker', id: 11 },
-        { name: 'Camera', id: 12 },
+    const devices: Device[] = [
+        { id: 1, name: 'Mini-Fridge', performance: 85, active: true },
+        { id: 2, name: 'Water Heater', performance: 60, active: false },
+        { id: 3, name: 'Air Conditioner', performance: 45, active: true },
+        { id: 4, name: 'Heater', performance: 30, active: false },
+        { id: 5, name: 'Lighting System', performance: 90, active: true },
+        { id: 6, name: 'Charging Station', performance: 75, active: true },
     ];
+
+    const getPerformanceClass = (performance: number) => {
+        if (performance >= 80) return 'high';
+        if (performance >= 50) return 'medium';
+        return 'low';
+    }
 
     return (
         <div className="Panels">
@@ -49,16 +52,20 @@ export default function Panels() {
                                     <Table stickyHeader size="small">
                                         <TableHead>
                                             <TableRow>
-                                                <TableCell sx={{ width: '85%' }}>Device List</TableCell>
-                                                <TableCell></TableCell>
+                                                <TableCell sx={{ width: '60%' }}>Device List</TableCell>
+                                                <TableCell sx={{ width: '25%' }}>Performance</TableCell>
+                                                <TableCell />
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {devices.map((device) => (
                                                 <TableRow key={device.id} hover>
                                                     <TableCell>{device.name}</TableCell>
+                                                    <TableCell className="performance-container">
+                                                        <div className={`performance ${getPerformanceClass(device.performance)}`}>{device.performance}%</div>
+                                                    </TableCell>
                                                     <TableCell>
-                                                        <Checkbox />
+                                                        <Checkbox checked={device.active} />
                                                     </TableCell>
                                                 </TableRow>
                                             ))}
@@ -77,7 +84,16 @@ export default function Panels() {
                                     <div className="switch-description">Reduces background activity to save power. Automatically enabled when the solar power is low</div>
                                 </div>
                                 <div className="switch-control">
-                                    <Switch color="success" />
+                                    <Switch
+                                        color="success"
+                                        checked={powerSaveMode}
+                                        onChange={(e) => {
+                                            setPowerSaveMode(e.target.checked);
+                                            if (e.target.checked) {
+                                                setUltraEnergySaveMode(false);
+                                            }
+                                        }}
+                                    />
                                 </div>
                             </div>
                             <div className="switch">
@@ -86,17 +102,28 @@ export default function Panels() {
                                     <div className="switch-description">Minimizes the energy usage of the tent to the minimum and saves it for emergency use.</div>
                                 </div>
                                 <div className="switch-control">
-                                    <Switch color="success" />
+                                    <Switch
+                                        color="success"
+                                        checked={ultraEnergySaveMode}
+                                        onChange={(e) => {
+                                            setUltraEnergySaveMode(e.target.checked);
+                                            if (e.target.checked) {
+                                                setPowerSaveMode(false);
+                                            }
+                                        }}
+                                    />
                                 </div>
                             </div>
+                            <div className="recommendation">
+                                <div className="recommendation-title">Recommendation:</div>
+                                <div className="recommendation-text">Based on current solar energy levels, it is recommended to enable Power Save Mode to optimize energy consumption.</div>
+                            </div>
                             <div className="button">
-                                <Button variant="contained" color="primary" disabled>
+                                <Button variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)}>
                                     Apply Changes
                                 </Button>
                             </div>
                         </Grid>
-
-
                     </Grid>
                 </div>
             </div>
