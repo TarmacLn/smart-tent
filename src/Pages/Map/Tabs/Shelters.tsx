@@ -3,7 +3,7 @@ import Header from '../../../components/Header';
 import './Shelters.less';
 import { uiStore } from '../../../stores';
 import { Button, Divider } from '@mui/material';
-import Car from '../../../assets/Car.svg';
+import Shelter from '../../../assets/Shelter.svg';
 
 export default function Shelters() {
 
@@ -16,7 +16,7 @@ export default function Shelters() {
             />
             <div className='content'>
                 <div className='box'>
-                    <div className='title'><Car /> Nearby Shelters</div>
+                    <div className='title'><Shelter /> Nearby Shelters</div>
                     <div className='subtitle'>Please evacuate to one of the nearest shelters immediately if you are in danger.</div>
                     <Divider sx={{ width: '100%' }} />
                     <div className='shelters-list'>
