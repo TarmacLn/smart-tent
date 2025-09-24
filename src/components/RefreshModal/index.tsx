@@ -14,6 +14,7 @@ function InfoModal() {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        borderRadius: '20px',
     };
 
     return (
@@ -29,6 +30,7 @@ function InfoModal() {
                         fontWeight={'bold'}
                         textAlign={'center'}
                         gutterBottom
+                        fontFamily={"'Gaiatype', sans-serif"}
                     >
                         Refresh
                     </Typography>
@@ -43,26 +45,24 @@ function InfoModal() {
                     <br />
                     <div
                         className='buttons'
-                        style={{ display: 'flex', justifyContent: 'center' }}
+                        style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}
                     >
+                        <Button
+                            variant='contained'
+                            color='error'
+                            onClick={() => uiStore.setRefreshModal(false)}
+                        >
+                            No
+                        </Button>
                         <Button
                             variant='contained'
                             onClick={() => {
                                 dataStore.refreshData()
                                 uiStore.setRefreshModal(false)
                             }}
-                            color='error'
-                            style={{ backgroundColor: 'black', color: 'white' }}
+                            color='primary'
                         >
                             Yes
-                        </Button>
-                        <Button
-                            variant='contained'
-                            color='secondary'
-                            onClick={() => uiStore.setRefreshModal(false)}
-                            style={{ backgroundColor: 'white', color: 'black' }}
-                        >
-                            No
                         </Button>
                     </div>
                 </div>
