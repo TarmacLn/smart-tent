@@ -5,7 +5,7 @@ import {
     Divider,
     Grid,
 } from '@mui/material';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
@@ -19,7 +19,9 @@ export function Tab(
         title,
         instructions,
         onClick,
-        loadingProgress
+        loadingProgress,
+        depth,
+        angle
     }: {
 
         id: number;
@@ -27,9 +29,27 @@ export function Tab(
         instructions: React.ReactNode;
         onClick: () => void;
         loadingProgress?: number;
+        depth?: number;
+        angle?: number;
     }
 ) {
-    const finishEnabled = id === 4 && loadingProgress === 4;
+    const MAX_SINK_PX = 120;
+    const sink = Math.round(((depth ?? 50) / 100) * MAX_SINK_PX);
+    const stakeRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const el = stakeRef.current;
+        if (!el) return;
+        let raf = 0;
+        const deg = (angle ?? 90) - 90;
+        raf = requestAnimationFrame(() => {
+            // translate then rotate; transform-origin is set in CSS to bottom center
+            el.style.transform = `translate3d(0, ${sink}px, 0) rotate(${deg}deg)`;
+        });
+        return () => cancelAnimationFrame(raf);
+    }, [sink, angle]);
+
+    const finishEnabled = id === 5 && loadingProgress === 4;
     const navigate = useNavigate();
     const onClickBack = () => {
         if (id === 0) {
@@ -55,14 +75,22 @@ export function Tab(
                             </div>
                             <Divider />
                             <div className='content'>
-                                <Grid container flexGrow={1}>
-                                    <Grid size={12} className='step'>
-                                        {title}
-                                    </Grid>
+                                <div className='step'>
+                                    {title}
+                                </div>
+                                <Grid container flexGrow={1} spacing={4}>
                                     <Grid size={6} className='instructions'>
                                         {instructions}
                                     </Grid>
-                                    <Grid size={6} className={`image${id}`}></Grid>
+                                    <Grid size={6}>
+                                        <div className={`image${id}`}>
+                                            {id === 4 && (
+                                                <div className="stake-overlay" aria-hidden>
+                                                    <div className='stake' ref={stakeRef} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Grid>
                                 </Grid>
                             </div>
                             <div className='footer'>
@@ -73,9 +101,9 @@ export function Tab(
                                         width: '150px',
                                     }}
                                     onClick={() => onClick()}
-                                    disabled={finishEnabled === false && id === 4}
+                                    disabled={finishEnabled === false && id === 5}
                                 >
-                                    {id === 4 ? 'Finish' : 'Next'}
+                                    {id === 5 ? 'Finish' : 'Next'}
                                 </Button>
                             </div>
                         </Container>

@@ -1,4 +1,4 @@
-import { Cover, Food, FoodItem, LightModeEnum, NewCover, Order, SeverityEnum, SpecialThemeEnum, Tent, TentLocation, TentStats, TentTypeEnum, Theme } from './types';
+import { Cover, Food, FoodItem, LightModeEnum, NewCover, Order, SeverityEnum, SpecialThemeEnum, StakeConfiguration, Tent, TentLocation, TentStats, TentTypeEnum, Theme } from './types';
 import { makeAutoObservable } from 'mobx';
 
 class DataStore {
@@ -10,6 +10,7 @@ class DataStore {
     private wind: number = 70;
     private severity: SeverityEnum | undefined = undefined;
 
+    private stakeConfigurations: StakeConfiguration[] = [];
     private covers: Cover[] = [];
     private coverIdCounter: number = 0;
 
@@ -117,6 +118,7 @@ class DataStore {
             sunshine: 0,
             groundStability: 0,
         };
+        this.stakeConfigurations = [];
         this.wind = 70;
         this.severity = undefined;
         this.covers = [];
@@ -183,6 +185,14 @@ class DataStore {
 
     public setTentStats(tentStats: TentStats): void {
         this.tentStats = tentStats;
+    }
+
+    public getStakeConfigurations(): StakeConfiguration[] {
+        return this.stakeConfigurations;
+    }
+
+    public setStakeConfigurations(configurations: StakeConfiguration[]): void {
+        this.stakeConfigurations = configurations;
     }
 
     public setWind(wind: number): void {
@@ -336,7 +346,7 @@ class DataStore {
         const foodItem: FoodItem = {
             id: this.foodIdCounter,
             name: food.name,
-            price: food.price, 
+            price: food.price,
             quantity: 1,
             notes
         };

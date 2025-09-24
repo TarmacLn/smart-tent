@@ -71,6 +71,12 @@ export interface TentStats {
     groundStability: number;
 }
 
+export interface StakeConfiguration {
+    id: number;
+    depth: number;
+    angle: number;
+}
+
 export interface Cover {
     id: number;
     name: string;

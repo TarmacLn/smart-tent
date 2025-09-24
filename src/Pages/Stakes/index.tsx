@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import { Tab } from './Tabs/Tab';
-import { Grid } from '@mui/material';
+import { Button, Grid, Slider } from '@mui/material';
 import { Check } from '@mui/icons-material';
 import ShieldTick from '../../assets/ShieldTick.svg';
 import { useNavigate } from 'react-router-dom';
@@ -10,10 +10,49 @@ import { TentTypeEnum } from '../../stores/types';
 import Loader from '../../assets/Loader.svg';
 
 function Stakes() {
-    const [currentTab, setCurrentTab] = React.useState(uiStore.CurrentTab);
+    const [currentTab, setCurrentTab] = useState(uiStore.CurrentTab);
     const navigate = useNavigate();
-    const [loadingProgress, setLoadingProgress] = React.useState(0); // 0..4
+    const [loadingProgress, setLoadingProgress] = useState(0);
     const timerRef = useRef<number | null>(null);
+
+    const [depth, setDepth] = useState<number>(50);
+    const [angle, setAngle] = useState<number>(90);
+
+    const stakes : number = dataStore.getTent()?.stakes || 4;
+    const stakesArray = Array.from({ length: stakes }, (_, i) => i + 1);
+    const [selectedStake, setSelectedStake] = useState<number>(1);
+    const [stakeSaved, setStakeSaved] = useState<boolean>(false);
+
+    useEffect(() => {
+        const initialConfigs = Array.from({ length: stakes }, (_, i) => ({
+            id: i + 1,
+            depth: 50,
+            angle: 90
+        }));
+        dataStore.setStakeConfigurations(initialConfigs);
+    }, []);
+
+    useEffect(() => {
+        setStakeSaved(false);
+    }, [selectedStake]);
+
+    useEffect(() => {
+        const configs = dataStore.getStakeConfigurations();
+        const config = configs.find(c => c.id === selectedStake);
+        if (config) {
+            setDepth(config.depth);
+            setAngle(config.angle);
+        }
+    }, [selectedStake]);
+
+    const handleSaveConfiguration = (id: number) => {
+        const currentConfigs = dataStore.getStakeConfigurations();
+        const updatedConfigs = currentConfigs.map(config =>
+            config.id === id ? { ...config, depth, angle } : config
+        );
+        dataStore.setStakeConfigurations(updatedConfigs);
+        setStakeSaved(true);
+    }
 
     const tabContent = [
         {
@@ -168,7 +207,68 @@ function Stakes() {
         },
         {
             id: 4,
-            title: '4. Checking:',
+            title: '4. Stake configuration:',
+            instructions:
+                <Grid container flexGrow={1} spacing={1}>
+                    <Grid size={1}>
+                        <Check />
+                    </Grid>
+                    <Grid size={11}>
+                        Configure your stakes:
+                    </Grid>
+                    <Grid size={12}>
+                        <div className='stake-list'>
+                            {stakesArray.map((stakeNum) => (
+                                <div
+                                    key={stakeNum}
+                                    className={`stake-item ${selectedStake === stakeNum ? 'selected' : ''}`}
+                                    onClick={() => setSelectedStake(stakeNum)}
+                                >
+                                    <div className='stake-number'>Stake {stakeNum}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </Grid>
+                    <Grid size={12}>
+                        Depth:
+                        <Slider
+                            value={depth}
+                            onChange={(_, v) => setDepth(v as number)}
+                            min={0}
+                            max={100}
+                            aria-label="Stake depth"
+                            valueLabelDisplay="auto"
+                        />
+                    </Grid>
+                    <Grid size={12}>
+                        Angle:
+                        <Slider
+                            value={angle}
+                            onChange={(_, v) => setAngle(v as number)}
+                            min={60}
+                            max={120}
+                            aria-label="Stake angle"
+                            valueLabelDisplay="auto"
+                        />
+                    </Grid>
+                    <Grid size={12} className='save-button'>
+                        <Button
+                            variant='outlined'
+                            color={stakeSaved ? 'success' : 'primary'}
+                            onClick={() => {
+                                setStakeSaved(true);
+                                handleSaveConfiguration(selectedStake);
+                            }}
+                        >
+                            {stakeSaved ? 'Saved' : 'Save Configuration'}
+                        </Button>
+                    </Grid>
+                </Grid>,
+            onClick: () => uiStore.setCurrentTab(5)
+        },
+        {
+            id: 5,
+            title: '5. Checking:',
             instructions:
                 <Grid container flexGrow={1} spacing={1}>
                     {[
@@ -220,8 +320,8 @@ function Stakes() {
             clearTimeout(timerRef.current);
             timerRef.current = null;
         }
-        // start only when tab 4 is active
-        if (currentTab === 4) {
+        // start only when tab 5 is active
+        if (currentTab === 5) {
             setLoadingProgress(0);
             const runStep = (step: number) => {
                 const delay = 300 + Math.random() * 900; // random 300-1200ms
@@ -250,7 +350,15 @@ function Stakes() {
 
     return (
         <div className='Setup'>
-            <Tab id={currentTab} title={tabContent[currentTab].title} instructions={tabContent[currentTab].instructions} onClick={tabContent[currentTab].onClick} loadingProgress={loadingProgress} />
+            <Tab
+                id={currentTab}
+                title={tabContent[currentTab].title}
+                instructions={tabContent[currentTab].instructions}
+                onClick={tabContent[currentTab].onClick}
+                loadingProgress={loadingProgress}
+                depth={depth}
+                angle={angle}
+            />
         </div>
     );
 }

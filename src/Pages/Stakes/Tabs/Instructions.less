@@ -51,6 +51,43 @@ body {
                         .number {
                             font-weight: bold;
                         }
+
+                        .stake-list {
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            border: 2px solid black;
+                            border-radius: 10px;
+                            height: 200px;
+                            margin-right: 20px;
+                            width: 100%;
+                            overflow-y: auto;
+
+                            .stake-item {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                gap: 10px;
+                                padding: 10px;
+                                cursor: pointer;
+                                
+                                .stake-number {
+                                    font-weight: bold;
+                                }
+
+                                &.selected {
+                                    background-color: #d0f0d0;
+                                }
+
+                            }
+
+                            .stake-item:hover {
+                                background-color: #f0f0f0;
+
+                                &.selected {
+                                    background-color: #d0f0d0;
+                                }
+                            }
+                        }
                     }
 
                     .complete {
@@ -93,9 +130,54 @@ body {
 
                     .image4 {
                         height: 350px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-image: url('../../../assets/Ground.png');
+                        background-size: 100% 100%;
+                        background-position: center;
+                        position: relative;
+
+                        .stake-overlay {
+                            position: absolute;
+                            left: 50%;
+                            bottom: 14%;
+                            transform: translateX(-50%);
+                            pointer-events: none;
+                            opacity: 0.95;
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: center;
+                        }
+
+                        .stake {
+                            width: 140px;
+                            height: 350px;
+                            background-image: url('../../../assets/Stake.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: bottom center;
+                            align-self: flex-end;
+
+                            /* smooth, GPU-accelerated motion */
+                            transition: transform 260ms cubic-bezier(.2,.8,.2,1);
+                            will-change: transform;
+                            backface-visibility: hidden;
+                            transform: translate3d(0, 0, 0);
+                            transform-origin: 50% 100%;
+                        }
+                    }
+
+                    .image5 {
+                        height: 350px;
                         background-image: url('../../../assets/instructions4.png'); // Background image
                         background-size: 100% 100%; // Ensures the background covers the entire area
                         background-position: center;
+                    }
+
+                    .save-button {
+                        display: flex;
+                        justify-content: center;
                     }
                 }
 
