@@ -88,7 +88,7 @@ function CoverModal({
                         <div className="text">
                             Cover Name:
                             <TextField
-                                sx={{ marginLeft: '8px' }}
+                                sx={{ marginLeft: '8px', width: '175px' }}
                                 variant="standard"
                                 error={coverName.length === 0}
                                 value={coverName}
@@ -100,8 +100,7 @@ function CoverModal({
                             Choose your cover's type:
                             <RadioGroup
                                 defaultValue="top"
-                                row
-                                sx={{ marginLeft: '8px' }}
+                                sx={{ marginLeft: '2px' }}
                                 value={coverType}
                                 onChange={(e) => setCoverType(e.target.value as CoverTypeEnum)}
                             >
@@ -111,10 +110,10 @@ function CoverModal({
                         </div>
                         <div className="text">
                             Choose the size of your cover:
-                            <FormControl variant="standard" sx={{ marginLeft: '8px', width: '120px' }}>
+                            <FormControl variant="standard" sx={{ marginLeft: '8px', width: '175px' }}>
                                 <Select
                                     label="Size"
-                                    sx={{ width: '120px' }}
+                                    sx={{ width: '175px' }}
                                     value={coverSize}
                                     onChange={(e) => setCoverSize(e.target.value as CoverSizeEnum)}
                                 >
