@@ -189,7 +189,7 @@ export default function Panels() {
                         </Grid>
                     </Grid>
                     <div className="button">
-                        <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Click">
+                        <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Complete">
                             Apply Changes
                         </SoundButton>
                     </div>

@@ -121,7 +121,7 @@ function Complete() {
                                                 uiStore.setSuccessText('Tent Covers updated successfully!');
                                                 navigate('/menu');
                                             }}
-                                            sound='Click'
+                                            sound='Complete'
                                         >
                                             Complete
                                         </SoundButton>

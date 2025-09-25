@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { Button, ButtonProps } from "@mui/material";
 import { Howl } from "howler";
 
-import ClickWav from "../../assets/sounds/Click.wav";
-import BackWav from "../../assets/sounds/Back.wav";
+import Click from "../../assets/sounds/Click.mp3";
+import Back from "../../assets/sounds/Back.mp3";
+import Complete from "../../assets/sounds/Complete.mp3";
 import { uiStore } from "../../stores";
 
-type SoundKey = "Click" | "Back";
+type SoundKey = "Click" | "Back" | "Complete";
 type SoundButtonProps = ButtonProps & {
   sound?: SoundKey | string;
   allowOverlap?: boolean;
@@ -15,8 +16,9 @@ type SoundButtonProps = ButtonProps & {
 };
 
 const SOUND_MAP: Record<SoundKey, string> = {
-  Click: ClickWav,
-  Back: BackWav,
+  Click: Click,
+  Back: Back,
+  Complete: Complete,
 };
 
 export default function SoundButton({

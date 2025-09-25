@@ -172,7 +172,7 @@ export default function Special() {
                                 }}
                                 onClick={() => handleSave()}
                                 disabled={!selectedTheme}
-                                sound='Click'
+                                sound='Complete'
                             >
                                 Save
                             </SoundButton>

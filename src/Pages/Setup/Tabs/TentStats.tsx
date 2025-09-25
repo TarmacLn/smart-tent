@@ -108,7 +108,7 @@ function TentStats() {
                                                 uiStore.setTentReady(true);
                                                 navigate('/menu');
                                             }}
-                                            sound='Click'
+                                            sound='Complete'
                                         >
                                             Complete
                                         </SoundButton>

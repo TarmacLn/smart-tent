@@ -120,7 +120,7 @@ export default function Panels() {
                                 <div className="recommendation-text">Based on current solar energy levels, it is recommended to enable Power Save Mode to optimize energy consumption.</div>
                             </div>
                             <div className="button">
-                                <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Click">
+                                <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Complete">
                                     Apply Changes
                                 </SoundButton>
                             </div>

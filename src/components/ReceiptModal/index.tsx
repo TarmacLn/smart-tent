@@ -96,7 +96,7 @@ function ReceiptModal({
                                         color="primary"
                                         fullWidth
                                         onClick={handleOrder}
-                                        sound='Click'
+                                        sound='Complete'
                                     >
                                         Back to Menu
                                     </SoundButton>

@@ -217,7 +217,7 @@ export default function Basic() {
                                     width: '150px',
                                 }}
                                 onClick={() => handleSave()}
-                                sound='Click'
+                                sound='Complete'
                             >
                                 Save
                             </SoundButton>
