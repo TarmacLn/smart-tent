@@ -2,6 +2,7 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import React from 'react';
 import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
+import SoundButton from '../SoundButton';
 
 function InfoModal() {
     const modalStyle = {
@@ -47,23 +48,25 @@ function InfoModal() {
                         className='buttons'
                         style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}
                     >
-                        <Button
+                        <SoundButton
                             variant='contained'
                             color='error'
                             onClick={() => uiStore.setRefreshModal(false)}
+                            sound='Back'
                         >
                             No
-                        </Button>
-                        <Button
+                        </SoundButton>
+                        <SoundButton
                             variant='contained'
                             onClick={() => {
                                 dataStore.refreshData()
                                 uiStore.setRefreshModal(false)
                             }}
                             color='primary'
+                            sound='Click'
                         >
                             Yes
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </Box>

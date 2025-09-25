@@ -4,6 +4,7 @@ import Header from "../../../components/Header";
 import { uiStore } from "../../../stores";
 import { Button, Divider, Grid, Radio, RadioGroup, Slider, Switch, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import Air from '../../../assets/Air.svg';
+import SoundButton from "../../../components/SoundButton";
 
 export default function Panels() {
 
@@ -188,9 +189,9 @@ export default function Panels() {
                         </Grid>
                     </Grid>
                     <div className="button">
-                        <Button variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)}>
+                        <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Click">
                             Apply Changes
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </div>

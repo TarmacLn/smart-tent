@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './EditSelection.less';
-import { Box, Button, Container, Divider, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Container, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
 import CoverMap from '../../../components/CoverMap';
-import { data, useNavigate } from 'react-router-dom';
 import { dataStore, uiStore } from '../../../stores';
-import { Height } from '@mui/icons-material';
 import CoverModal from '../../../components/CoverModal';
 import { CoverSizeEnum } from '../../../stores/types';
+import SoundButton from '../../../components/SoundButton';
 
 function EditSelection() {
     const [isVisible, setIsVisible] = useState(false);
@@ -70,13 +69,14 @@ function EditSelection() {
                                         </TableContainer>
                                     </div>
                                     <div className='button'>
-                                        <Button
+                                        <SoundButton
                                             variant="contained"
                                             color="primary"
                                             onClick={() => uiStore.setCurrentTab(0)}
+                                            sound='Click'
                                         >
                                             Back to menu
-                                        </Button>
+                                        </SoundButton>
                                     </div>
                                 </Container>
                             </Grid>

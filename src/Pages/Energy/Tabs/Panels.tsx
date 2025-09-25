@@ -5,6 +5,7 @@ import { uiStore } from "../../../stores";
 import { Button, Checkbox, Divider, Grid, Paper, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Sun from '../../../assets/Sun.svg';
 import { Device } from "../../../stores/types";
+import SoundButton from "../../../components/SoundButton";
 
 export default function Panels() {
     const [powerSaveMode, setPowerSaveMode] = useState(false);
@@ -119,9 +120,9 @@ export default function Panels() {
                                 <div className="recommendation-text">Based on current solar energy levels, it is recommended to enable Power Save Mode to optimize energy consumption.</div>
                             </div>
                             <div className="button">
-                                <Button variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)}>
+                                <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Click">
                                     Apply Changes
-                                </Button>
+                                </SoundButton>
                             </div>
                         </Grid>
                     </Grid>

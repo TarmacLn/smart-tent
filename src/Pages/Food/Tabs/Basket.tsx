@@ -5,6 +5,7 @@ import { Button, Divider, Grid } from "@mui/material";
 import './Basket.less';
 import { observer } from "mobx-react-lite";
 import ReceiptModal from "../../../components/ReceiptModal";
+import SoundButton from "../../../components/SoundButton";
 
 function Basket() {
 
@@ -81,14 +82,15 @@ function Basket() {
                                         <div className="info-contact">Tel: 00000088899</div>
                                     </div>
                                     <div className="receipt-button">
-                                        <Button
+                                        <SoundButton
                                             variant="contained"
                                             color="primary"
                                             disabled={basketItems.length === 0}
                                             onClick={() => setIsVisible(true)}
+                                            sound="Click"
                                         >
                                             Proceed to payment
-                                        </Button>
+                                        </SoundButton>
                                     </div>
                                 </div>
                             </div>

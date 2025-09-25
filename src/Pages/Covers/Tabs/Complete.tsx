@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {
-    Button,
     Container,
     Divider,
     Grid,
@@ -15,6 +14,7 @@ import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
 import './Complete.less';
 import { CoverTypeEnum } from '../../../stores/types';
+import SoundButton from '../../../components/SoundButton';
 
 function Complete() {
     const navigate = useNavigate();
@@ -110,7 +110,7 @@ function Complete() {
                                         </Grid>
                                     </Grid>
                                     <Grid size={12} className='button'>
-                                        <Button
+                                        <SoundButton
                                             variant='contained'
                                             color='primary'
                                             style={{
@@ -121,9 +121,10 @@ function Complete() {
                                                 uiStore.setSuccessText('Tent Covers updated successfully!');
                                                 navigate('/menu');
                                             }}
+                                            sound='Click'
                                         >
                                             Complete
-                                        </Button>
+                                        </SoundButton>
                                     </Grid>
                                 </Grid>
                             </Container>

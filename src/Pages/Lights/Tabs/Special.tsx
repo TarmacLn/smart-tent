@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Container, Divider, Grid, Tab, Tabs } from '@mui/material';
+import { Box, Container, Divider, Grid, Tab, Tabs } from '@mui/material';
 import './Special.less';
 import Header from '../../../components/Header';
 import { dataStore, uiStore } from '../../../stores';
@@ -16,6 +16,7 @@ import Dreamland from '../../../assets/Dreamland.svg';
 import { SpecialThemeEnum } from '../../../stores/types';
 import ThemePreview from '../../../components/ThemePreview';
 import { useNavigate } from 'react-router-dom';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Special() {
     const [value, setValue] = useState(0);
@@ -151,7 +152,7 @@ export default function Special() {
                             </Grid>
                         </div>
                         <div className='footer'>
-                            <Button
+                            <SoundButton
                                 variant='contained'
                                 color='secondary'
                                 style={{
@@ -159,10 +160,11 @@ export default function Special() {
                                     marginRight: '20px',
                                 }}
                                 onClick={() => uiStore.setCurrentTab(0)}
+                                sound='Back'
                             >
                                 Back
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant='contained'
                                 color='primary'
                                 style={{
@@ -170,9 +172,10 @@ export default function Special() {
                                 }}
                                 onClick={() => handleSave()}
                                 disabled={!selectedTheme}
+                                sound='Click'
                             >
                                 Save
-                            </Button>
+                            </SoundButton>
                         </div>
                     </Container>
                 </Grid >

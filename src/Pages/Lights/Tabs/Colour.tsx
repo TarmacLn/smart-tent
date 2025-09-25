@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
 import { dataStore, uiStore } from '../../../stores';
-import { Box, Button, Container, Divider, Grid, Popover, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Box, Container, Divider, Grid, Popover, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import ColourIcon from '../../../assets/Colour.svg';
 import './Colour.less';
 import { LightModeEnum } from '../../../stores/types';
-import { data, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Colour() {
     const [colorMode, setColorMode] = useState<'single' | 'multiple'>('single');
@@ -192,7 +193,7 @@ export default function Colour() {
                             </Grid>
                         </div>
                         <div className='footer'>
-                            <Button
+                            <SoundButton
                                 variant='contained'
                                 color='secondary'
                                 style={{
@@ -200,19 +201,21 @@ export default function Colour() {
                                     marginRight: '20px',
                                 }}
                                 onClick={() => uiStore.setCurrentTab(0)}
+                                sound='Back'
                             >
                                 Back
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant='contained'
                                 color='primary'
                                 style={{
                                     width: '150px',
                                 }}
                                 onClick={() => handleSave()}
+                                sound='Click'
                             >
                                 Save
-                            </Button>
+                            </SoundButton>
                         </div>
                     </Container>
                 </Grid >

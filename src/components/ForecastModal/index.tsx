@@ -1,9 +1,10 @@
-import { Box, Button, Divider, Modal } from "@mui/material";
+import { Box, Divider, Modal } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import './ForecastModal.less';
-import { DayWeather, Food, TimeWeather, WeatherEnum } from "../../stores/types";
+import { DayWeather, TimeWeather, WeatherEnum } from "../../stores/types";
 import HandleWeatherIcon from "../../Pages/Weather/HandleWeatherIcon";
+import SoundButton from "../SoundButton";
 
 function ForecastModal({
     isVisible,
@@ -55,7 +56,7 @@ function ForecastModal({
                             ))}
                         </div>
                         <div className="button">
-                            <Button variant="contained" color="error" onClick={closeModal}>Close</Button>
+                            <SoundButton variant="contained" color="error" onClick={closeModal} sound='Back'>Close</SoundButton>
                         </div>
                     </div>
                 </div>

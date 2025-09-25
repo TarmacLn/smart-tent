@@ -7,7 +7,6 @@ import {
     Box,
     Container,
     Grid,
-    IconButton,
     Snackbar,
     styled,
 } from '@mui/material';
@@ -31,6 +30,7 @@ import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
 import InfoModal from '../../components/InfoModal';
 import RefreshModal from '../../components/RefreshModal';
+import SoundButton from '../../components/SoundButton';
 
 const BadgeStyled = styled(Badge)`
   & .${badgeClasses.badge} {
@@ -92,38 +92,42 @@ function Menu() {
                 <Grid container flexGrow={1}>
                     <Grid size={8} >
                         <Box display='flex' justifyContent='flex-start'>
-                            <IconButton
+                            <SoundButton
                                 aria-label='left-button'
                                 color='primary'
                                 onClick={() => uiStore.setInfoModal(true)}
+                                sound='Click'
                             >
                                 <Info />
-                            </IconButton>
-                            <IconButton
+                            </SoundButton>
+                            <SoundButton
                                 aria-label='left-button'
                                 color='primary'
                                 onClick={() => uiStore.setSound(!uiStore.Sound)}
+                                sound='Click'
                             >
                                 {uiStore.Sound ? <Speaker /> : <SpeakerMute />}
-                            </IconButton>
-                            <IconButton
+                            </SoundButton>
+                            <SoundButton
                                 aria-label='left-button'
                                 color='primary'
                                 onClick={() => uiStore.setRefreshModal(true)}
+                                sound='Click'
                             >
                                 <Refresh />
-                            </IconButton>
+                            </SoundButton>
                         </Box>
                     </Grid>
                     <Grid size={4}>
                         <Box display='flex' justifyContent='flex-end'>
-                            <IconButton
+                            <SoundButton
                                 aria-label='right-button'
                                 color='secondary'
+                                sound='Back'
                             // onClick={() => navigate('/right')}
                             >
                                 <Exit />
-                            </IconButton>
+                            </SoundButton>
                         </Box>
                     </Grid>
                     <Grid container flexGrow={1}>
@@ -140,113 +144,121 @@ function Menu() {
                             <Container className='container' color='primary'>
                                 <div className='menu'>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/setup')}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Tent />
                                         <div className='imageLA' />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/stakes')}
-                                        disabled={!uiStore.TentReady}
+                                        // disabled={!uiStore.TentReady}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Stake />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={uiStore.TentReady}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Covers />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Light />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/food')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Food />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/energy')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Energy />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/weather')}
-                                        disabled={disableMenu}
+                                        // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Weather />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
-                                    <IconButton
+                                    <SoundButton
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/map')}
                                         // disabled={disableMenu}
                                         className='menu-item'
+                                        sound='Click'
                                     >
                                         <Map />
                                         <BadgeStyled
                                             badgeContent={<Lock />}
                                             invisible={!disableMenu}
                                         />
-                                    </IconButton>
+                                    </SoundButton>
                                     <br />
                                 </div>
                             </Container>

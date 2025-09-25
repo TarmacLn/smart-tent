@@ -10,6 +10,7 @@ import Team from '../../../assets/Team.svg';
 import { MealEnum } from "../../../stores/types";
 import FoodModal from "../../../components/FoodModal";
 import { uiStore } from "../../../stores";
+import SoundButton from "../../../components/SoundButton";
 
 const foodItems = [
     {
@@ -225,13 +226,14 @@ export default function Catalogue() {
                     </div>
                 </div>
                 <div className="buttons">
-                    <Button
+                    <SoundButton
                         variant="contained"
                         color="info"
                         onClick={() => uiStore.setCurrentTab(2)}
+                        sound="Click"
                     >
                         <Team /> Message Us
-                    </Button>
+                    </SoundButton>
                     <div>
                         <Tooltip title="Previous page">
                             <span>
@@ -314,9 +316,9 @@ export default function Catalogue() {
                             </Box>
                         </Popover>
                     </div>
-                    <Button variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(1)}>
+                    <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(1)} sound="Click">
                         Go to Basket
-                    </Button>
+                    </SoundButton>
                 </div>
             </div>
 

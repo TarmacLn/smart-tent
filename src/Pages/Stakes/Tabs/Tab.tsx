@@ -11,6 +11,7 @@ import { uiStore } from '../../../stores';
 import Header from '../../../components/Header';
 import './Instructions.less';
 import Stake from '../../../assets/Stake.svg';
+import SoundButton from '../../../components/SoundButton';
 
 //Tab base
 export function Tab(
@@ -94,7 +95,7 @@ export function Tab(
                                 </Grid>
                             </div>
                             <div className='footer'>
-                                <Button
+                                <SoundButton
                                     variant='contained'
                                     color='primary'
                                     style={{
@@ -102,9 +103,11 @@ export function Tab(
                                     }}
                                     onClick={() => onClick()}
                                     disabled={finishEnabled === false && id === 5}
+                                    sound='Click'
+                                    volume={0.3}
                                 >
                                     {id === 5 ? 'Finish' : 'Next'}
-                                </Button>
+                                </SoundButton>
                             </div>
                         </Container>
                     </Grid>

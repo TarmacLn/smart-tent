@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import './AlertModal.less';
-import { Box, Button, Divider, Modal } from "@mui/material";
+import { Box, Divider, Modal } from "@mui/material";
 import Warning from '../../assets/Warning.svg';
+import SoundButton from "../SoundButton";
 
 function AlertModal({
     isVisible,
@@ -27,13 +28,14 @@ function AlertModal({
                         <div className="description">The peak wind period is expected to last for approximately 3 hours. Please stay safe and take care of yourself and others around you.</div>
                     </div>
                     <div className="button">
-                        <Button
+                        <SoundButton
                             variant="contained"
                             color="error"
                             onClick={closeModal}
+                            sound='Back'
                         >
                             Close
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </Box>

@@ -1,10 +1,11 @@
-import { Box, Button, ButtonGroup, Divider, FormControl, FormControlLabel, FormLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import { Box, Divider, FormControl, FormControlLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import './CoverModal.less';
 import Shield from '../../assets/Covers.svg';
 import { CoverSizeEnum, CoverTypeEnum } from "../../stores/types";
 import { dataStore } from "../../stores";
+import SoundButton from "../SoundButton";
 
 function CoverModal({
     isVisible,
@@ -126,44 +127,49 @@ function CoverModal({
                     </div>
                     {type === 'edit' ? (
                         <div className="buttons">
-                            <Button
+                            <SoundButton
                                 variant="contained"
                                 color="error"
                                 onClick={deleteCover}
+                                sound='Back'
                             >
                                 Delete cover
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant="contained"
                                 color="secondary"
                                 onClick={closeModal}
+                                sound='Back'
                             >
                                 Cancel
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant="contained"
                                 color="primary"
                                 onClick={updateCover}
+                                sound='Click'
                             >
                                 Save changes
-                            </Button>
+                            </SoundButton>
                         </div>
                     ) :
                         (
                             <div className="buttons">
-                                <Button
+                                <SoundButton
                                     variant="contained"
                                     color="secondary"
                                     onClick={closeModal}
+                                    sound='Back'
                                 >
                                     Cancel
-                                </Button>
-                                <Button
+                                </SoundButton>
+                                <SoundButton
                                     variant="contained"
                                     onClick={createCover}
+                                    sound='Click'
                                 >
                                     Add cover
-                                </Button>
+                                </SoundButton>
                             </div>
                         )
                     }

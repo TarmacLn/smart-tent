@@ -9,6 +9,7 @@ import Header from '../../../components/Header';
 import Map from '../../../components/Map';
 import { observer } from 'mobx-react-lite';
 import { SeverityEnum } from '../../../stores/types';
+import SoundButton from '../../../components/SoundButton';
 
 function TentLocation() {
     const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
@@ -103,7 +104,7 @@ function TentLocation() {
                                             <div>{groundStability}%</div>
                                         </Grid>
                                         <Grid size={12}  className='button'>
-                                            <Button
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 style={{
@@ -111,9 +112,10 @@ function TentLocation() {
                                                 }}
                                                 onClick={() => uiStore.setCurrentTab(2)}
                                                 disabled={severity === SeverityEnum.Danger || severity === undefined}
+                                                sound='Click'
                                             >
                                                 Continue
-                                            </Button>
+                                            </SoundButton>
                                         </Grid>
                                     </Grid>
                                 </Container>

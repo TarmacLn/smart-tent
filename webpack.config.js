@@ -49,6 +49,14 @@ module.exports = (env, argv) => {
                 },
 
                 {
+                    test: /\.(wav|mp3|ogg|flac)$/i,
+                    type: 'asset/resource',
+                    generator: {
+                        filename: 'static/media/[name].[hash][ext]'
+                    }
+                },
+
+                {
                     test: /\.css$/,
                     use: ['style-loader', 'css-loader']
                 },

@@ -21,6 +21,7 @@ import Header from '../../../components/Header';
 import { observer } from 'mobx-react-lite';
 import { SeverityEnum } from '../../../stores/types';
 import { Check } from '@mui/icons-material';
+import SoundButton from '../../../components/SoundButton';
 
 function TentStats() {
     const navigate = useNavigate();
@@ -94,7 +95,7 @@ function TentStats() {
                                         ) : null
                                     }
                                     <Grid size={12} className='button'>
-                                        <Button
+                                        <SoundButton
                                             variant='contained'
                                             color='primary'
                                             className='button'
@@ -107,9 +108,10 @@ function TentStats() {
                                                 uiStore.setTentReady(true);
                                                 navigate('/menu');
                                             }}
+                                            sound='Click'
                                         >
                                             Complete
-                                        </Button>
+                                        </SoundButton>
                                     </Grid>
                                 </Grid>
                             </Container>

@@ -1,8 +1,9 @@
-import { Box, Button, Divider, Modal } from "@mui/material";
+import { Box, Divider, Modal } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import './TipModal.less';
 import { Check } from "@mui/icons-material";
+import SoundButton from "../SoundButton";
 
 function TipModal({
     isVisible,
@@ -40,13 +41,14 @@ function TipModal({
                         <Check /> Secure the covers in place using the supportive pegs
                     </div>
                 </div>
-                <Button
+                <SoundButton
                     variant="contained"
                     color="primary"
                     onClick={closeModal}
+                    sound='Click'
                 >
                     Got it!
-                </Button>
+                </SoundButton>
             </Box>
         </Modal>
     );

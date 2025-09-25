@@ -5,6 +5,7 @@ import Header from "../../../components/Header";
 import { uiStore } from "../../../stores";
 import { Button, IconButton, TextField } from "@mui/material";
 import Send from '@mui/icons-material/Send';
+import SoundButton from "../../../components/SoundButton";
 
 function Chat() {
 
@@ -72,13 +73,14 @@ function Chat() {
                 </div>
             </div>
             <div className="footer">
-                <Button
+                <SoundButton
                     variant="contained"
                     color="primary"
                     onClick={() => uiStore.setCurrentTab(0)}
+                    sound="Back"
                 >
                     Back to food menu
-                </Button>
+                </SoundButton>
             </div>
         </div>
     );

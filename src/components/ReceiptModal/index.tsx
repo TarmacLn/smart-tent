@@ -5,6 +5,7 @@ import './ReceiptModal.less';
 import { useNavigate } from "react-router-dom";
 import { dataStore } from "../../stores";
 import CheckIcon from '@mui/icons-material/Check';
+import SoundButton from "../SoundButton";
 
 function ReceiptModal({
     isVisible,
@@ -69,16 +70,17 @@ function ReceiptModal({
                                 </ButtonGroup>
                                 <div className="total">Pay total of {total.toFixed(2)}€ with {paymentMethod}</div>
                                 <div className="button">
-                                    <Button
+                                    <SoundButton
                                         variant="contained"
                                         color="primary"
                                         fullWidth
                                         onClick={() => {
                                             setConfirmed(true);
                                         }}
+                                        sound='Click'
                                     >
                                         Confirm Payment
-                                    </Button>
+                                    </SoundButton>
                                 </div>
                             </>
                         }
@@ -89,14 +91,15 @@ function ReceiptModal({
                                 <div className="message">Your food will be delivered to you at approximately:</div>
                                 <div className="time">25'-30'</div>
                                 <div className="button">
-                                    <Button
+                                    <SoundButton
                                         variant="contained"
                                         color="primary"
                                         fullWidth
                                         onClick={handleOrder}
+                                        sound='Click'
                                     >
                                         Back to Menu
-                                    </Button>
+                                    </SoundButton>
                                 </div>
                             </>
                         }
