@@ -9,6 +9,7 @@ class UIStore {
     private infoModal: boolean = false;
     private refreshModal: boolean = false;
     private sound: boolean = true;
+    private darkMode: boolean = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -76,6 +77,14 @@ class UIStore {
 
     public setStakeReady(stakeReady: boolean): void {
         this.stakeReady = stakeReady;
+    }
+
+    public setDarkMode(darkMode: boolean): void {
+        this.darkMode = darkMode;
+    }
+
+    get DarkMode() {
+        return this.darkMode;
     }
 }
 

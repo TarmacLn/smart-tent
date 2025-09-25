@@ -5,6 +5,7 @@ import Home from '../../assets/Home.svg';
 import Back from '../../assets/Back.svg';
 import './Header.less';
 import SoundButton from '../SoundButton';
+import { uiStore } from '../../stores';
 
 interface HeaderProps {
     onClickBack: () => void;
@@ -14,6 +15,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onClickBack, title, color }) => {
     const navigate = useNavigate();
+    const colorMode = uiStore.DarkMode ? 'white' : color;
+
     return (
         <div className='Header'>
             <Grid flexGrow={1} container>
@@ -29,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ onClickBack, title, color }) => {
                         </SoundButton>
                     </Box>
                 </Grid>
-                <Grid size={8} className='title' color={color}>
+                <Grid size={8} className='title' color={colorMode}>
                     <div>{title}</div>
                 </Grid>
                 <Grid size={2}>

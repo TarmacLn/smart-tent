@@ -4,6 +4,7 @@ import './App.less';
 import { Outlet } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import { lightBlue, grey } from '@mui/material/colors';
+import { uiStore } from '../stores';
 
 const App: React.FC = () => {
 
@@ -44,7 +45,7 @@ const App: React.FC = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <div className="app">
+            <div className={`app ${uiStore.DarkMode ? 'dark' : ''}`}>
                 <Outlet />
             </div>
         </ThemeProvider>

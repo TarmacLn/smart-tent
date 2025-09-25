@@ -24,6 +24,8 @@ import Food from '../../assets/Food.svg';
 import Energy from '../../assets/Energy.svg';
 import Weather from '../../assets/Weather.svg';
 import Map from '../../assets/Map.svg';
+import Moon from '../../assets/Moon.svg';
+import Sun from '../../assets/Sun.svg';
 
 import Lock from '../../assets/Lock.svg';
 import { dataStore, uiStore } from '../../stores';
@@ -116,6 +118,14 @@ function Menu() {
                             >
                                 <Refresh />
                             </SoundButton>
+                            <SoundButton
+                                aria-label='left-button'
+                                color='primary'
+                                onClick={() => { uiStore.setDarkMode(!uiStore.DarkMode); }}
+                                sound='Click'
+                            >
+                                {uiStore.DarkMode ? <Sun /> : <Moon />}
+                            </SoundButton>
                         </Box>
                     </Grid>
                     <Grid size={4}>
@@ -124,7 +134,6 @@ function Menu() {
                                 aria-label='right-button'
                                 color='secondary'
                                 sound='Back'
-                            // onClick={() => navigate('/right')}
                             >
                                 <Exit />
                             </SoundButton>
