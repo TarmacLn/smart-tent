@@ -5,6 +5,7 @@ import { Button, Divider } from '@mui/material';
 import './Sights.less';
 import Flower from '../../../assets/Flower.svg';
 import { Sight } from '../../../stores/types';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Sights() {
 
@@ -82,9 +83,9 @@ export default function Sights() {
                         )}
                     </div>
                     <div className='footer'>
-                        <Button variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)}>
+                        <SoundButton variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)} sound='Back'>
                             Back to Map
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ import Tent from '../../../assets/Tent.svg';
 import './TentDetails.less';
 import { dataStore, uiStore } from '../../../stores';
 import Header from '../../../components/Header';
+import SoundButton from '../../../components/SoundButton';
 
 //Tab no1
 function TentDetails() {
@@ -175,7 +176,7 @@ function TentDetails() {
                                 </Grid>
                             </div>
                             <div className='footer'>
-                                <Button
+                                <SoundButton
                                     variant='contained'
                                     color='primary'
                                     style={{
@@ -184,9 +185,10 @@ function TentDetails() {
                                     onClick={() => {
                                         uiStore.setCurrentTab(1);
                                     }}
+                                    sound='Click'
                                 >
                                     Continue
-                                </Button>
+                                </SoundButton>
                             </div>
                         </Container>
                     </Grid>

@@ -13,3 +13,7 @@ declare module '*.svg' {
 
     export default src;
 }
+
+declare module '*.wav';
+declare module '*.mp3';
+

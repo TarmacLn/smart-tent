@@ -1,9 +1,10 @@
-import { Box, Grid, IconButton } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Home from '../../assets/Home.svg';
 import Back from '../../assets/Back.svg';
 import './Header.less';
+import SoundButton from '../SoundButton';
 import { uiStore } from '../../stores';
 
 interface HeaderProps {
@@ -14,34 +15,38 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onClickBack, title, color }) => {
     const navigate = useNavigate();
+    const colorMode = uiStore.DarkMode ? 'white' : color;
+
     return (
         <div className='Header'>
             <Grid flexGrow={1} container>
                 <Grid size={2} >
                     <Box display='flex' justifyContent='flex-start'>
-                        <IconButton
+                        <SoundButton
                             aria-label='left-button'
                             color='primary'
                             onClick={onClickBack}
+                            sound='Back'
                         >
                             <Back />
-                        </IconButton>
+                        </SoundButton>
                     </Box>
                 </Grid>
-                <Grid size={8} className='title' color={color}>
+                <Grid size={8} className='title' color={colorMode}>
                     <div>{title}</div>
                 </Grid>
                 <Grid size={2}>
                     <Box display='flex' justifyContent='flex-end'>
-                        <IconButton
+                        <SoundButton
                             aria-label='right-button'
                             color='secondary'
                             onClick={() => {
                                 navigate('/menu');
                             }}
+                            sound='Click'
                         >
                             <Home />
-                        </IconButton>
+                        </SoundButton>
                     </Box>
                 </Grid>
             </Grid>

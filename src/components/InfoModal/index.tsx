@@ -1,7 +1,8 @@
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Divider, Modal, Typography } from '@mui/material';
 import React from 'react';
 import { uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
+import { BorderAll } from '@mui/icons-material';
 
 function InfoModal() {
     const modalStyle = {
@@ -14,6 +15,7 @@ function InfoModal() {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        borderRadius: '20px',
     };
 
     return (
@@ -29,10 +31,12 @@ function InfoModal() {
                         fontWeight={'bold'}
                         textAlign={'center'}
                         gutterBottom
+                        fontFamily={"'Gaiatype', sans-serif"}
                     >
                         Info
                     </Typography>
                 </div>
+                <Divider sx={{ width: '100%', marginBottom: '20px' }} />
                 <div className='content'>
                     <Typography textAlign={'center'}>
                         This is an app created for the university course
@@ -44,16 +48,19 @@ function InfoModal() {
                         <Typography fontWeight={'bold'}>
                             Andrianou Ioanna and Danai Charzaka.
                         </Typography>
-                        <Typography>
+                        <Typography marginTop={'10px'}>
                             In the context of the course, we were asked to
                             create an app that would help the user to set up a
-                            tent.
+                            tent in a hypothetical smart tent scenario.
                         </Typography>
-                        <Typography>
-                            The given app is currently not at it's completed
-                            version but will be updated in the future.
+                        <Typography marginTop={'10px'}>
+                            For more info read the README file in the GitHub
+                            repository.
                         </Typography>
-                        <Typography fontWeight={'bold'}>
+                        <a href='https://github.com/TarmacLn/smart-tent' target='_blank' rel='noopener noreferrer'>
+                            Smart Tent Repository
+                        </a>
+                        <Typography fontWeight={'bold'} marginTop={'20px'}>
                             Computer Science, University of Piraeus 2024-2025.
                         </Typography>
                     </Typography>

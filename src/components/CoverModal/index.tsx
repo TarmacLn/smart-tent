@@ -1,10 +1,11 @@
-import { Box, Button, ButtonGroup, Divider, FormControl, FormControlLabel, FormLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import { Box, Divider, FormControl, FormControlLabel, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 import './CoverModal.less';
 import Shield from '../../assets/Covers.svg';
 import { CoverSizeEnum, CoverTypeEnum } from "../../stores/types";
 import { dataStore } from "../../stores";
+import SoundButton from "../SoundButton";
 
 function CoverModal({
     isVisible,
@@ -88,7 +89,7 @@ function CoverModal({
                         <div className="text">
                             Cover Name:
                             <TextField
-                                sx={{ marginLeft: '8px' }}
+                                sx={{ marginLeft: '8px', width: '175px' }}
                                 variant="standard"
                                 error={coverName.length === 0}
                                 value={coverName}
@@ -100,8 +101,7 @@ function CoverModal({
                             Choose your cover's type:
                             <RadioGroup
                                 defaultValue="top"
-                                row
-                                sx={{ marginLeft: '8px' }}
+                                sx={{ marginLeft: '2px' }}
                                 value={coverType}
                                 onChange={(e) => setCoverType(e.target.value as CoverTypeEnum)}
                             >
@@ -111,10 +111,10 @@ function CoverModal({
                         </div>
                         <div className="text">
                             Choose the size of your cover:
-                            <FormControl variant="standard" sx={{ marginLeft: '8px', width: '120px' }}>
+                            <FormControl variant="standard" sx={{ marginLeft: '8px', width: '175px' }}>
                                 <Select
                                     label="Size"
-                                    sx={{ width: '120px' }}
+                                    sx={{ width: '175px' }}
                                     value={coverSize}
                                     onChange={(e) => setCoverSize(e.target.value as CoverSizeEnum)}
                                 >
@@ -127,44 +127,49 @@ function CoverModal({
                     </div>
                     {type === 'edit' ? (
                         <div className="buttons">
-                            <Button
+                            <SoundButton
                                 variant="contained"
                                 color="error"
                                 onClick={deleteCover}
+                                sound='Back'
                             >
                                 Delete cover
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant="contained"
                                 color="secondary"
                                 onClick={closeModal}
+                                sound='Back'
                             >
                                 Cancel
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant="contained"
                                 color="primary"
                                 onClick={updateCover}
+                                sound='Click'
                             >
                                 Save changes
-                            </Button>
+                            </SoundButton>
                         </div>
                     ) :
                         (
                             <div className="buttons">
-                                <Button
+                                <SoundButton
                                     variant="contained"
                                     color="secondary"
                                     onClick={closeModal}
+                                    sound='Back'
                                 >
                                     Cancel
-                                </Button>
-                                <Button
+                                </SoundButton>
+                                <SoundButton
                                     variant="contained"
                                     onClick={createCover}
+                                    sound='Click'
                                 >
                                     Add cover
-                                </Button>
+                                </SoundButton>
                             </div>
                         )
                     }

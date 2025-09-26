@@ -5,6 +5,8 @@ import { Button, Divider, Grid } from "@mui/material";
 import './Basket.less';
 import { observer } from "mobx-react-lite";
 import ReceiptModal from "../../../components/ReceiptModal";
+import SoundButton from "../../../components/SoundButton";
+import FoodImage from "../../../components/FoodImage";
 
 function Basket() {
 
@@ -37,7 +39,7 @@ function Basket() {
                                         <div key={index} className="book-item">
                                             <Grid container spacing={2}>
                                                 <Grid size={5}>
-                                                    <div className="item-image" />
+                                                    <FoodImage type="small" name={item.name} />
                                                 </Grid>
                                                 <Grid size={7} className="item-content">
                                                     <div className="item-name">{item.name} x{item.quantity}</div>
@@ -81,14 +83,15 @@ function Basket() {
                                         <div className="info-contact">Tel: 00000088899</div>
                                     </div>
                                     <div className="receipt-button">
-                                        <Button
+                                        <SoundButton
                                             variant="contained"
                                             color="primary"
                                             disabled={basketItems.length === 0}
                                             onClick={() => setIsVisible(true)}
+                                            sound="Click"
                                         >
                                             Proceed to payment
-                                        </Button>
+                                        </SoundButton>
                                     </div>
                                 </div>
                             </div>

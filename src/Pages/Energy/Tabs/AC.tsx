@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import './AC.less';
 import Header from "../../../components/Header";
 import { uiStore } from "../../../stores";
-import { Divider, Grid, Radio, RadioGroup, Slider, Switch, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { Button, Divider, Grid, Radio, RadioGroup, Slider, Switch, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import Air from '../../../assets/Air.svg';
+import SoundButton from "../../../components/SoundButton";
 
 export default function Panels() {
 
@@ -58,7 +59,7 @@ export default function Panels() {
                                     className='toggle'
                                 >
                                     <ToggleButton className='toggle-button' value="on" aria-label="on">On</ToggleButton>
-                                    <ToggleButton className='toggle-button' value="off" aria-label="off">Off</ToggleButton>
+                                    <ToggleButton className='toggle-button off' value="off" aria-label="off">Off</ToggleButton>
                                 </ToggleButtonGroup>
                                 <ToggleButtonGroup
                                     value={tempMode}
@@ -71,7 +72,7 @@ export default function Panels() {
                                     disabled={disabled}
                                 >
                                     <ToggleButton className='toggle-button' value="cold" aria-label="cold">Cold</ToggleButton>
-                                    <ToggleButton className='toggle-button' value="warm" aria-label="warm">Warm</ToggleButton>
+                                    <ToggleButton className='toggle-button warm' value="warm" aria-label="warm">Warm</ToggleButton>
                                 </ToggleButtonGroup>
                             </div>
                             <div className="fans">
@@ -139,7 +140,7 @@ export default function Panels() {
                                     <div className="temp-display">{temp}°C</div>
                                     <div
                                         className={`temp-button ${disabled ? 'disabled' : ''}`}
-                                        onClick={() => 
+                                        onClick={() =>
                                             !disabled && setTemp(t => Math.min(30, t + 1))
                                         }
                                     >
@@ -187,6 +188,11 @@ export default function Panels() {
                             </div>
                         </Grid>
                     </Grid>
+                    <div className="button">
+                        <SoundButton variant="contained" color="primary" onClick={() => uiStore.setCurrentTab(0)} sound="Complete">
+                            Apply Changes
+                        </SoundButton>
+                    </div>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ function Main() {
                         </Grid>
                         <Grid size={12}>
                             <Grid container spacing={2}>
-                                <Grid size={5} className="box-chart">
+                                <Grid size={6} className="box-chart">
                                     Solar Power:
                                     <div className="chart" >
                                         <div className="chart-image" />
@@ -39,10 +39,7 @@ function Main() {
                                         </div>
                                     </div>
                                 </Grid>
-                                <Grid size={2} className="divider">
-                                    <Divider orientation="vertical" flexItem sx={{ height: '100%' }} />
-                                </Grid>
-                                <Grid size={5} className="box-chart">
+                                <Grid size={6} className="box-chart">
                                     Total Performance:
                                     <div className="chart">
                                         <div className="chart-image" />

@@ -42,6 +42,9 @@ export enum MealEnum {
     Breakfast = 'breakfast',
     Lunch = 'lunch',
     Dinner = 'dinner',
+    Dessert = 'dessert',
+    Snack = 'snack',
+    Drink = 'drink',
 }
 
 export enum WeatherEnum {
@@ -69,6 +72,12 @@ export interface TentStats {
     humidity: number;
     sunshine: number;
     groundStability: number;
+}
+
+export interface StakeConfiguration {
+    id: number;
+    depth: number;
+    angle: number;
 }
 
 export interface Cover {
@@ -128,6 +137,13 @@ export interface DayWeather {
     weather: WeatherEnum;
     humidity: number;
     colour: string;
+}
+
+export interface Device {
+    name: string;
+    id: number;
+    performance: number;
+    active?: boolean;
 }
 
 export interface Event {

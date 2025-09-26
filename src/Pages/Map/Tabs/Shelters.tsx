@@ -4,6 +4,7 @@ import './Shelters.less';
 import { uiStore } from '../../../stores';
 import { Button, Divider } from '@mui/material';
 import Shelter from '../../../assets/Shelter.svg';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Shelters() {
 
@@ -66,9 +67,9 @@ export default function Shelters() {
                         </div>
                     </div>
                     <div className='footer'>
-                        <Button variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)}>
+                        <SoundButton variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)} sound='Back'>
                             Back to Map
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </div>

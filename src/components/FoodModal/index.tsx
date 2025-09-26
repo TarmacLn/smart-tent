@@ -1,10 +1,12 @@
-import { Box, Button, ButtonGroup, Divider, FormControl, FormControlLabel, FormLabel, Grid, MenuItem, Modal, Radio, RadioGroup, Select, TextField } from "@mui/material";
+import { Box, Button, Grid, Modal, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import './FoodModal.less';
 import { Food } from "../../stores/types";
 import Basket from '../../assets/Basket.svg';
 import { dataStore } from "../../stores";
+import SoundButton from "../SoundButton";
+import FoodImage from "../FoodImage";
 
 function FoodModal({
     isVisible,
@@ -34,7 +36,7 @@ function FoodModal({
                         <div className="food-item">
                             <Grid container spacing={5} sx={{ height: '100%' }}>
                                 <Grid size={5}>
-                                    <div className="item-image" />
+                                    <FoodImage type="big" name={food.name} />
                                 </Grid>
                                 <Grid size={7} className="item-content">
                                     <div className="item">
@@ -56,13 +58,14 @@ function FoodModal({
                                         />
                                     </div>
                                     <div className='item-button'>
-                                        <Button
+                                        <SoundButton
                                             variant="contained"
                                             color="error"
                                             onClick={addFood}
+                                            sound='Click'
                                         >
                                             Add to Basket <Basket />
-                                        </Button>
+                                        </SoundButton>
                                     </div>
                                 </Grid>
                             </Grid>

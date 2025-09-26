@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header';
 import { dataStore, uiStore } from '../../../stores';
-import { Box, Button, Container, Divider, Slider, Switch, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
+import { Box, Container, Divider, Slider, Switch, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
 import Light from '../../../assets/Light.svg';
 import './Basic.less';
-import { data, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Basic() {
     const [light, setLight] = useState<'on' | 'off'>('off');
@@ -197,7 +198,7 @@ export default function Basic() {
                             </Grid>
                         </div>
                         <div className='footer'>
-                            <Button
+                            <SoundButton
                                 variant='contained'
                                 color='secondary'
                                 style={{
@@ -205,19 +206,21 @@ export default function Basic() {
                                     marginRight: '20px',
                                 }}
                                 onClick={() => uiStore.setCurrentTab(0)}
+                                sound='Back'
                             >
                                 Back
-                            </Button>
-                            <Button
+                            </SoundButton>
+                            <SoundButton
                                 variant='contained'
                                 color='primary'
                                 style={{
                                     width: '150px',
                                 }}
                                 onClick={() => handleSave()}
+                                sound='Complete'
                             >
                                 Save
-                            </Button>
+                            </SoundButton>
                         </div>
                     </Container>
                 </Grid>

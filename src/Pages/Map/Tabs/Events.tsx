@@ -7,6 +7,7 @@ import Music from '../../../assets/Music.svg';
 import { Event } from '../../../stores/types';
 import { Brush, Hiking, Restaurant, Spa, Star } from '@mui/icons-material';
 import MusicNote from '@mui/icons-material/MusicNote';
+import SoundButton from '../../../components/SoundButton';
 
 export default function Events() {
     const [selectedEvents, setSelectedEvents] = useState<number[]>([]);
@@ -126,15 +127,16 @@ export default function Events() {
                                             <Button variant='outlined' color='primary' size='small'>
                                                 More info
                                             </Button>
-                                            <Button
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 size='small'
                                                 onClick={() => handleSelectEvent(event.id)}
                                                 disabled={selectedEvents.includes(event.id)}
+                                                sound='Complete'
                                             >
                                                 {selectedEvents.includes(event.id) ? 'Joined' : 'Join'}
-                                            </Button>
+                                            </SoundButton>
                                         </div>
                                     </div>
 
@@ -143,9 +145,9 @@ export default function Events() {
                         )}
                     </div>
                     <div className='footer'>
-                        <Button variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)}>
+                        <SoundButton variant='contained' color='error' size='medium' onClick={() => uiStore.setCurrentTab(0)} sound='Back'>
                             Back to Map
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </div>

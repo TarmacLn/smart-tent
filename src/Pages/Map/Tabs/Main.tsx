@@ -9,8 +9,9 @@ import Warning from '../../../assets/Warning.svg';
 import Flower from '../../../assets/Flower.svg';
 
 import { uiStore } from '../../../stores';
-import { Alert, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import AlertModal from '../../../components/AlertModal';
+import SoundButton from '../../../components/SoundButton';
 
 function Main() {
     const navigate = useNavigate();
@@ -57,14 +58,15 @@ function Main() {
                             >
                                 More info
                             </Button>
-                            <Button 
+                            <SoundButton 
                             variant='contained' 
                             color='primary' 
                             size='small'
                             onClick={() => uiStore.setCurrentTab(3)}
+                            sound='Click'
                             >
                                 View Shelters
-                            </Button>
+                            </SoundButton>
                         </div>
                     </div>
                 </div>

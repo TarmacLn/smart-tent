@@ -2,6 +2,7 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import React from 'react';
 import { dataStore, uiStore } from '../../stores';
 import { observer } from 'mobx-react-lite';
+import SoundButton from '../SoundButton';
 
 function InfoModal() {
     const modalStyle = {
@@ -14,6 +15,7 @@ function InfoModal() {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        borderRadius: '20px',
     };
 
     return (
@@ -29,6 +31,7 @@ function InfoModal() {
                         fontWeight={'bold'}
                         textAlign={'center'}
                         gutterBottom
+                        fontFamily={"'Gaiatype', sans-serif"}
                     >
                         Refresh
                     </Typography>
@@ -43,27 +46,27 @@ function InfoModal() {
                     <br />
                     <div
                         className='buttons'
-                        style={{ display: 'flex', justifyContent: 'center' }}
+                        style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}
                     >
-                        <Button
+                        <SoundButton
+                            variant='contained'
+                            color='error'
+                            onClick={() => uiStore.setRefreshModal(false)}
+                            sound='Back'
+                        >
+                            No
+                        </SoundButton>
+                        <SoundButton
                             variant='contained'
                             onClick={() => {
                                 dataStore.refreshData()
                                 uiStore.setRefreshModal(false)
                             }}
-                            color='error'
-                            style={{ backgroundColor: 'black', color: 'white' }}
+                            color='primary'
+                            sound='Click'
                         >
                             Yes
-                        </Button>
-                        <Button
-                            variant='contained'
-                            color='secondary'
-                            onClick={() => uiStore.setRefreshModal(false)}
-                            style={{ backgroundColor: 'white', color: 'black' }}
-                        >
-                            No
-                        </Button>
+                        </SoundButton>
                     </div>
                 </div>
             </Box>

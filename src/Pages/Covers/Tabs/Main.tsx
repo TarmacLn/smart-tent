@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Main.less';
-import { Button, Container, Divider, Grid } from '@mui/material';
+import { Container, Divider, Grid } from '@mui/material';
 import Droplet from '../../../assets/Droplet.svg';
 import Tip from '../../../assets/Tip.svg';
 import Sun from '../../../assets/Sun.svg';
@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import TipModal from '../../../components/TipModal';
 import CoverModal from '../../../components/CoverModal';
 import { CoverTypeEnum } from '../../../stores/types';
+import SoundButton from '../../../components/SoundButton';
 
 function Main() {
     const s = dataStore.getTentStats?.() ?? { humidity: 0, sunshine: 0, groundStability: 0 };
@@ -77,36 +78,39 @@ function Main() {
                                             </Grid>
                                         </Grid>
                                         <Grid size={12} className='buttons'>
-                                            <Button
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 style={{
                                                     width: '150px',
                                                 }}
                                                 onClick={() => setIsVisible(true)}
+                                                sound='Click'
                                             >
                                                 Add cover
-                                            </Button>
-                                            <Button
+                                            </SoundButton>
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 style={{
                                                     width: '150px',
                                                 }}
                                                 onClick={() => uiStore.setCurrentTab(2)}
+                                                sound='Click'
                                             >
                                                 Edit cover
-                                            </Button>
+                                            </SoundButton>
                                         </Grid>
                                         <Grid size={12} className='buttons'>
-                                            <Button
+                                            <SoundButton
                                                 className='tip'
                                                 variant='outlined'
                                                 startIcon={<Tip />}
                                                 onClick={() => setShowTips(true)}
+                                                sound='Click'
                                             >
                                                 Open quick tips
-                                            </Button>
+                                            </SoundButton>
                                         </Grid>
                                         <Grid size={12} sx={{ mt: 1, mb: 1 }}>
                                             <Divider />
@@ -139,7 +143,7 @@ function Main() {
                                             <div>{wind}%</div>
                                         </Grid>
                                         <Grid size={12} className='button'>
-                                            <Button
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 style={{
@@ -148,9 +152,10 @@ function Main() {
                                                 onClick={() => {
                                                     uiStore.setCurrentTab(1);
                                                 }}
+                                                sound='Click'
                                             >
                                                 Complete
-                                            </Button>
+                                            </SoundButton>
                                         </Grid>
                                     </Grid>
                                 </Container>
