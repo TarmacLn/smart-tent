@@ -12,7 +12,7 @@ export const foodItems = [
         name: "Apple Pie",
         description: "Warm apple pie with a flaky crust and cinnamon sugar, served with a dollop of cream.",
         price: 6.49,
-        meals: [MealEnum.Dessert, MealEnum.Dinner].filter(Boolean),
+        meals: [MealEnum.Dessert],
         vegetarian: true,
     },
     {
@@ -33,7 +33,7 @@ export const foodItems = [
         name: "Cheesecake",
         description: "Creamy baked cheesecake with a buttery biscuit base and berry compote.",
         price: 7.49,
-        meals: [MealEnum.Dessert, MealEnum.Dinner].filter(Boolean),
+        meals: [MealEnum.Dessert],
         vegetarian: true,
     },
     {

@@ -30,7 +30,7 @@ function Stakes() {
             angle: 90
         }));
         dataStore.setStakeConfigurations(initialConfigs);
-    }, []);
+    }, [stakes]);
 
     useEffect(() => {
         setStakeSaved(false);

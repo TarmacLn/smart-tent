@@ -103,7 +103,7 @@ export function Tab(
                                     }}
                                     onClick={() => onClick()}
                                     disabled={finishEnabled === false && id === 5}
-                                    sound={`${finishEnabled ? 'Complete' : 'Click'}`}
+                                    sound={finishEnabled ? 'Complete' : 'Click'}
                                     volume={0.3}
                                 >
                                     {id === 5 ? 'Finish' : 'Next'}

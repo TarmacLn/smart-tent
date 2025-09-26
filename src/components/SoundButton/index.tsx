@@ -33,8 +33,14 @@ export default function SoundButton({
 }: SoundButtonProps) {
   const howlRef = useRef<Howl | null>(null);
 
-  const resolveSrc = (s?: string | SoundKey) =>
-    !s ? undefined : s in SOUND_MAP ? SOUND_MAP[s as SoundKey] : s;
+  const isSoundKey = (val: unknown): val is SoundKey =>
+    typeof val === "string" && (val === "Click" || val === "Back" || val === "Complete");
+
+  const resolveSrc = (s?: string | SoundKey) => {
+    if (!s) return undefined;
+    if (isSoundKey(s)) return SOUND_MAP[s];
+    return s;
+  };
 
   useEffect(() => {
     const src = resolveSrc(sound);
@@ -70,14 +76,12 @@ export default function SoundButton({
     [allowOverlap, onPointerDown]
   );
 
-
   const handleClick: ButtonProps["onClick"] = useCallback(
     (ev: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(ev); // just forward user’s click
     },
     [onClick]
   );
-
 
   return (
     <Button {...rest} onPointerDown={handlePointerDown} onClick={handleClick}>
