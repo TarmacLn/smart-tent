@@ -6,6 +6,7 @@ import { Food } from "../../stores/types";
 import Basket from '../../assets/Basket.svg';
 import { dataStore } from "../../stores";
 import SoundButton from "../SoundButton";
+import FoodImage from "../FoodImage";
 
 function FoodModal({
     isVisible,
@@ -35,7 +36,7 @@ function FoodModal({
                         <div className="food-item">
                             <Grid container spacing={5} sx={{ height: '100%' }}>
                                 <Grid size={5}>
-                                    <div className="item-image" />
+                                    <FoodImage type="big" name={food.name} />
                                 </Grid>
                                 <Grid size={7} className="item-content">
                                     <div className="item">

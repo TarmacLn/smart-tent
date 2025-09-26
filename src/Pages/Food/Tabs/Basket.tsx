@@ -6,6 +6,7 @@ import './Basket.less';
 import { observer } from "mobx-react-lite";
 import ReceiptModal from "../../../components/ReceiptModal";
 import SoundButton from "../../../components/SoundButton";
+import FoodImage from "../../../components/FoodImage";
 
 function Basket() {
 
@@ -38,7 +39,7 @@ function Basket() {
                                         <div key={index} className="book-item">
                                             <Grid container spacing={2}>
                                                 <Grid size={5}>
-                                                    <div className="item-image" />
+                                                    <FoodImage type="small" name={item.name} />
                                                 </Grid>
                                                 <Grid size={7} className="item-content">
                                                     <div className="item-name">{item.name} x{item.quantity}</div>

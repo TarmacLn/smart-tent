@@ -11,93 +11,8 @@ import { MealEnum } from "../../../stores/types";
 import FoodModal from "../../../components/FoodModal";
 import { uiStore } from "../../../stores";
 import SoundButton from "../../../components/SoundButton";
-
-const foodItems = [
-    {
-        name: "Grilled Chicken Salad",
-        description: "Fresh greens topped with grilled chicken, cherry tomatoes, cucumbers, and a light vinaigrette.",
-        price: 12.99,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: false,
-    },
-    {
-        name: "Veggie Wrap",
-        description: "A whole wheat wrap filled with hummus, avocado, lettuce, tomato, cucumber, and shredded carrots.",
-        price: 10.99,
-        meals: [MealEnum.Breakfast, MealEnum.Lunch],
-        vegetarian: true
-    },
-    {
-        name: "Beef Stir-Fry",
-        description: "Tender beef strips stir-fried with bell peppers, broccoli, and snap peas in a savory soy sauce.",
-        price: 14.99,
-        meals: [MealEnum.Dinner],
-        vegetarian: false
-    },
-    {
-        name: "Margherita Pizza",
-        description: "Classic pizza topped with fresh mozzarella, tomatoes, basil, and a drizzle of olive oil.",
-        price: 11.99,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: true
-    },
-    {
-        name: "Pasta Primavera",
-        description: "Penne pasta tossed with seasonal vegetables in a light garlic and olive oil sauce.",
-        price: 13.99,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: true
-    },
-    {
-        name: "Chicken Tacos",
-        description: "Soft corn tortillas filled with seasoned grilled chicken, lettuce, cheese, and salsa.",
-        price: 9.99,
-        meals: [MealEnum.Breakfast, MealEnum.Lunch],
-        vegetarian: false
-    },
-    {
-        name: "Veggie Omelette",
-        description: "Fluffy omelette filled with spinach, mushrooms, bell peppers, and cheese.",
-        price: 8.99,
-        meals: [MealEnum.Breakfast],
-        vegetarian: true
-    },
-    {
-        name: "Caesar Salad",
-        description: "Crisp romaine lettuce tossed with Caesar dressing, croutons, and Parmesan cheese.",
-        price: 10.49,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: true
-    },
-    {
-        name: "BBQ Pulled Pork Sandwich",
-        description: "Slow-cooked pulled pork in BBQ sauce served on a toasted bun with coleslaw.",
-        price: 12.49,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: false
-    },
-    {
-        name: "Quinoa Salad",
-        description: "A healthy mix of quinoa, black beans, corn, avocado, and a lime-cilantro dressing.",
-        price: 11.49,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: true
-    },
-    {
-        name: "French Toast",
-        description: "Thick slices of bread soaked in a cinnamon-vanilla batter, grilled to perfection and topped with syrup.",
-        price: 9.49,
-        meals: [MealEnum.Breakfast],
-        vegetarian: true
-    },
-    {
-        name: "Veggie Burger",
-        description: "A delicious plant-based burger served with lettuce, tomato, and a side of sweet potato fries.",
-        price: 13.49,
-        meals: [MealEnum.Lunch, MealEnum.Dinner],
-        vegetarian: true
-    },
-];
+import { foodItems, handleFoodName } from "./FoodItems";
+import FoodImage from "../../../components/FoodImage";
 
 export default function Catalogue() {
     const navigate = useNavigate();
@@ -113,6 +28,8 @@ export default function Catalogue() {
             breakfast: true,
             lunch: true,
             dinner: true,
+            dessert: true,
+            drink: true,
         }
     });
     const openFilters = Boolean(filtersAnchor);
@@ -129,7 +46,9 @@ export default function Catalogue() {
             const mealMatches = it.meals.some(m =>
                 (m === MealEnum.Breakfast && filters.meals.breakfast) ||
                 (m === MealEnum.Lunch && filters.meals.lunch) ||
-                (m === MealEnum.Dinner && filters.meals.dinner)
+                (m === MealEnum.Dinner && filters.meals.dinner) ||
+                (m === MealEnum.Dessert && filters.meals.dessert) ||
+                (m === MealEnum.Drink && filters.meals.drink)
             );
             if (!mealMatches) return false;
             return true;
@@ -172,7 +91,7 @@ export default function Catalogue() {
                                 <div key={index} className="food-item">
                                     <Grid container spacing={2}>
                                         <Grid size={5}>
-                                            <div className="item-image" />
+                                            <FoodImage type="small" name={item.name} />
                                         </Grid>
                                         <Grid size={7} className="item-content">
                                             <div className="item-name">{item.name}</div>
@@ -201,7 +120,7 @@ export default function Catalogue() {
                                 <div key={index} className="food-item">
                                     <Grid container spacing={2}>
                                         <Grid size={5}>
-                                            <div className="item-image" />
+                                            <FoodImage type="small" name={item.name} />
                                         </Grid>
                                         <Grid size={7} className="item-content">
                                             <div className="item-name">{item.name}</div>
@@ -288,6 +207,14 @@ export default function Catalogue() {
                                             label="Dinner"
                                         />
                                         <FormControlLabel
+                                            control={<Checkbox checked={filters.meals.dessert} onChange={() => setFilters(f => ({ ...f, meals: { ...f.meals, dessert: !f.meals.dessert } }))} />}
+                                            label="Dessert"
+                                        />
+                                        <FormControlLabel
+                                            control={<Checkbox checked={filters.meals.drink} onChange={() => setFilters(f => ({ ...f, meals: { ...f.meals, drink: !f.meals.drink } }))} />}
+                                            label="Drink"
+                                        />
+                                        <FormControlLabel
                                             control={<Checkbox checked={filters.vegetarian} onChange={() => setFilters(f => ({ ...f, vegetarian: !f.vegetarian }))} />}
                                             label="Vegetarian only"
                                         />
@@ -310,7 +237,7 @@ export default function Catalogue() {
                                     />
                                 </Box>
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
-                                    <Button size="small" onClick={() => setFilters({ vegetarian: false, underPrice: false, maxPrice: 12, meals: { breakfast: true, lunch: true, dinner: true } })}>Reset</Button>
+                                    <Button size="small" onClick={() => setFilters({ vegetarian: false, underPrice: false, maxPrice: 12, meals: { breakfast: true, lunch: true, dinner: true, dessert: true, drink: true } })}>Reset</Button>
                                     <Button size="small" variant="contained" onClick={closeFiltersMenu}>Apply</Button>
                                 </Box>
                             </Box>
