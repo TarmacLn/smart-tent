@@ -168,7 +168,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/stakes')}
-                                        // disabled={!uiStore.TentReady}
+                                        disabled={!uiStore.TentReady}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -183,7 +183,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/covers')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -198,7 +198,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/lights')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -213,7 +213,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/food')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -228,7 +228,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/energy')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -243,7 +243,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/weather')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
@@ -258,7 +258,7 @@ function Menu() {
                                         aria-label='delete'
                                         color='success'
                                         onClick={() => navigate('/map')}
-                                        // disabled={disableMenu}
+                                        disabled={disableMenu}
                                         className='menu-item'
                                         sound='Click'
                                     >
