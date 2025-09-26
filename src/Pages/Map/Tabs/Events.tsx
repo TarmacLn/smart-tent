@@ -127,15 +127,16 @@ export default function Events() {
                                             <Button variant='outlined' color='primary' size='small'>
                                                 More info
                                             </Button>
-                                            <Button
+                                            <SoundButton
                                                 variant='contained'
                                                 color='primary'
                                                 size='small'
                                                 onClick={() => handleSelectEvent(event.id)}
                                                 disabled={selectedEvents.includes(event.id)}
+                                                sound='Complete'
                                             >
                                                 {selectedEvents.includes(event.id) ? 'Joined' : 'Join'}
-                                            </Button>
+                                            </SoundButton>
                                         </div>
                                     </div>
 

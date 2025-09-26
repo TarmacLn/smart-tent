@@ -9,6 +9,7 @@ import Droplet from "../../assets/Droplet.svg";
 import Warning from "../../assets/Warning.svg";
 import ForecastModal from "../../components/ForecastModal";
 import HandleWeatherIcon from "./HandleWeatherIcon";
+import { uiStore } from "../../stores";
 
 function Weather() {
 
@@ -62,12 +63,12 @@ function Weather() {
             <div className="content">
                 <Grid container spacing={2} className="grid">
                     <Grid size={2} >
-                        <div className="image-main" />
+                        <div className={`image-main ${uiStore.DarkMode ? 'night' : ''}`} />
                     </Grid>
                     <Grid size={4} >
                         <div className="stats" >
                             <div className="temp" >20°C</div>
-                            <div className="weather" >Sunny</div>
+                            <div className="weather" >{uiStore.DarkMode ? 'Clear Night' : 'Sunny'}</div>
                             <div className="humidity" >Humidity: 60%</div>
                             <div className="wind" >Wind: 10 km/h</div>
                             <div className="location">Freaky Camp</div>
